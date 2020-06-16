@@ -1,0 +1,28 @@
+.layout-menu-top{
+  width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  .layout-logo{
+    width: 112px;
+    display: flex;
+    align-items: center;
+    img{
+      width: 100%;
+    }
+  }
+  .layout-menu-top-item{
+    flex: 1;
+    padding: 0 14px;
+    .layout-menu-top-items{
+      padding: 0 20px;
+      &:hover{
+        color: #4A83C5;
+      }
+    }
+  }
+}
+
+.next-icestark-shell-brand .next-icestark-shell-header{
+  background: #fff;
+}
