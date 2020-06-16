@@ -20,4 +20,10 @@ export default {
   [mutationTypes.SET_QUESTION_GROUP_INFO] (state, payload) {
     state.questionGroupInfo = payload
   },
+  setOuterState(state, payload) {
+    state.outerState = payload
+  },
+  setInfo(state, payload) {
+    state.info = payload
+  }
 }

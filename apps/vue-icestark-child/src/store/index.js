@@ -7,15 +7,13 @@ import * as getters from './getters'
 import mutations from './mutations';
 
 Vue.use(Vuex)
-// 监听外部store变化
-outerStore.on('store', store => {
-  console.log(`current store is `, store);
-}, true);
+
 // 获取外user部store
 const outerState = outerStore.get('store');
 
+console.log(outerState)
 const NODE_ENV = process.env.NODE_ENV
-export default new Vuex.Store({
+const store = new Vuex.Store({
   actions,
   getters,
   mutations,
@@ -31,3 +29,9 @@ export default new Vuex.Store({
     ? []
     : []
 })
+// 监听外部store变化
+outerStore.on('store', payload => {
+  console.log(`current store is `, payload, store.commit);
+  store.commit('setOuterState', payload)
+}, true);
+export default store

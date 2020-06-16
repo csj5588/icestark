@@ -7,11 +7,9 @@ import { userPromise } from '@/utils/user';
 import { Provider } from 'react-redux';
 import PageLoading from '@/components/PageLoading';
 import FrameworkLayout from '@/layouts/FrameworkLayout';
-import './service-intercept';
+// import './service-intercept';
 import store from './store'
-import zhCN from 'antd/lib/locale-provider/zh_CN';
-
-import moment from 'moment';
+import './stark-data'
 import 'moment/locale/zh-cn';
 
 const appConfig = {
