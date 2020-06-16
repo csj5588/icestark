@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { createApp } from 'ice'
 import userInit from '@/entry/user-init';
+import ticketReplace from '@/entry/ticket-replace';
 import { userPromise } from '@/utils/user';
 // import { ConfigProvider } from '@alifd/next';
 import { Provider } from 'react-redux';
@@ -8,6 +9,10 @@ import PageLoading from '@/components/PageLoading';
 import FrameworkLayout from '@/layouts/FrameworkLayout';
 import './service-intercept';
 import store from './store'
+import zhCN from 'antd/lib/locale-provider/zh_CN';
+
+import moment from 'moment';
+import 'moment/locale/zh-cn';
 
 const appConfig = {
   app: {
@@ -72,9 +77,9 @@ const appConfig = {
   },
 };
 
-
-
 userInit();
+
+ticketReplace();
 
 userPromise.finally(function() {
   createApp(appConfig)
