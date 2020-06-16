@@ -4,6 +4,7 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import './styles/global.scss';
 import App from './App.vue';
+import store from './store'
 import router from './router';
 
 Vue.use(ElementUI);
@@ -13,6 +14,7 @@ Vue.config.productionTip = false;
 const mountNode = getMountNode(document.getElementById('app'));
 const vue = new Vue({
   router,
+  store,
   mounted: () => {
     console.log('App mounted');
   },
