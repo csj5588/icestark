@@ -17,9 +17,9 @@ const asideMenuConfig = [
     icon: 'account',
   },
   {
-    name: 'vuepage',
-    path: '/vuepage',
-    icon: 'vuepage',
+    name: '种子',
+    path: '/zd-imilive',
+    icon: 'atm',
   },{
     name: '管控',
     path: '/mid',

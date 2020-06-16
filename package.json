@@ -25,9 +25,10 @@
     "stylelint": "^13.1.0"
   },
   "scripts": {
-    "start": "concurrently \"npm run start-tark\" \"npm run start-mid\"",
+    "start": "concurrently \"npm run start-tark\" \"npm run start-mid\" \"npm run start-vue\"",
     "start-tark": "icejs start",
     "start-mid": "cd ./apps/child-seller-react-16/ && npm run start",
+    "start-vue": "cd ./apps/vue-icestark-child/ && npm run start",
     "build": "icejs build",
     "lint": "npm run eslint && npm run stylelint",
     "eslint": "eslint --cache --ext .js,.jsx ./",
