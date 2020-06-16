@@ -20,9 +20,9 @@
     ]
   ],
   "proxy": {
-    "/api/v1/**": {
+    "/sockjs-node/**": {
       "enable": true,
-      "target": "http://testapi.imilive.cn/",
+      "target": "http://localhost:3444/",
       "name": ""
     },
     "/upload/**": {

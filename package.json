@@ -27,7 +27,7 @@
   "scripts": {
     "start": "concurrently \"npm run start-tark\" \"npm run start-mid\"",
     "start-tark": "icejs start",
-    "start-mid": "cd ./apps/mid.meeshow.com/ && npm run start",
+    "start-mid": "cd ./apps/child-seller-react-16/ && npm run start",
     "build": "icejs build",
     "lint": "npm run eslint && npm run stylelint",
     "eslint": "eslint --cache --ext .js,.jsx ./",
