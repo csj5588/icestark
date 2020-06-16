@@ -8,6 +8,8 @@
     "@icedesign/container": "^1.x",
     "@types/react": "^16.9.20",
     "@types/react-dom": "^16.9.5",
+    "antd": "^3.12.1",
+    "axios-service": "^1.4.4",
     "classnames": "^2.2.5",
     "concurrently": "^4.1.2",
     "moment": "^2.24.0",
