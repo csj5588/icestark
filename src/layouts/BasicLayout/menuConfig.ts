@@ -17,8 +17,8 @@ const asideMenuConfig = [
     icon: 'account',
   },
   {
-    name: 'config',
-    path: '/config',
+    name: '管控',
+    path: '/mid',
     icon: 'account',
   },
   {
