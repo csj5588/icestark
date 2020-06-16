@@ -1,0 +1,18 @@
+{
+  "plugins": [
+    [
+      "import",
+      {
+        "libraryName": "antd",
+        "style": true,
+      },
+    ],
+    [
+      "ramda",
+      {
+        "useES": true
+      }
+    ],
+    "lodash"
+  ]
+}

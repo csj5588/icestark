@@ -1,0 +1,50 @@
+@prefix: component-service-table;
+
+.@{prefix}- {
+  &root{
+    margin-top: 30px;
+    .table{
+      table{
+        thead{
+          tr{
+            th{
+              background: #fff;
+              color: #909399;
+            }
+          }
+        }
+      }
+    }
+    .pagination{
+      text-align: center;
+    }
+  }
+  &operate{
+    display: flex;
+    .ml10{
+      margin-left: 10px;
+    }
+  }
+  &pagination {
+    text-align: center;
+    padding-top: 15px;
+  }
+  &domains{
+    .line{
+      padding: 4px 0;
+      display: flex;
+      .label{
+        min-width: 51px;
+        padding-left: 8px;
+        display: inline-block;
+      }
+    }
+  }
+}
+.title{
+  margin: 0;
+  padding: 4px 0;
+}
+.wide{
+  font-weight: 700;
+}

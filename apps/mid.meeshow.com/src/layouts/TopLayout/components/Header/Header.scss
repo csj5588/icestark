@@ -1,0 +1,13 @@
+.m-container-header {
+
+  &-title {
+    line-height: 52px;
+    color: #002140;
+    font-size: 18px;
+    font-weight: 600;
+    display: inline-block;
+  }
+  .hover:hover {
+    color: #00d8c9!important;
+  }
+}

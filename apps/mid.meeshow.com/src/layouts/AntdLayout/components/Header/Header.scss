@@ -1,0 +1,101 @@
+
+.m-container-header {
+  height: 52px;
+  line-height: 52px;
+
+  .app-choose {
+    float: right;
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    line-height: 54px;
+    margin-right: 20px;
+    .product{
+      padding-left: 15px;
+      span{
+        color: #00d8c9;
+        padding: 0 3px;
+        &:hover{
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  .user-info {
+    float: right;
+    cursor: pointer;
+
+    .user-current-role {
+      display: inline-block;
+      font-size: 12px;
+      line-height: 40px;
+    }
+
+    .avatar {
+      position: relative;
+      margin-right: 20px;
+      width: 40px;
+      border-radius: 50%;
+      white-space: nowrap;
+      font-weight: bold;
+      background-color: #00cc98;
+
+      i {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 10px;
+        height: 10px;
+        margin: 1px;
+        border-width: 2px;
+        border-style: solid;
+        border-radius: 100%;
+
+        &.bottom {
+          left: auto;
+          top: auto;
+          bottom: 0;
+          right: 0;
+        }
+
+        &.on {
+          background-color: #00d8c9;
+        }
+      }
+
+      img {
+        border-radius: 500px;
+        width: 100%;
+      }
+    }
+  }
+
+  .custom-trigger {
+    font-size: 18px;
+    padding-left: 16px;
+    vertical-align: middle;
+    cursor: pointer;
+    transition: color .3s;
+  }
+}
+.m-header-menu {
+  padding: 0 10px;
+  .ant-dropdown-menu-item-group-list {
+    padding: 0 0 10px 0;
+  }
+}
+.ant-dropdown {
+  min-width: 120px;
+}
+.ant-dropdown-menu-item:hover {
+  color: #00d8c9;
+  background: none;
+}
+.ant-dropdown-menu-item.user-current-role-set {
+  color: #00d8c9;
+  background: none;
+}
+ul {
+  list-style: none;
+}

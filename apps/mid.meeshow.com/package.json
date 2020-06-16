@@ -1,0 +1,124 @@
+{
+  "name": "admin-meeshow",
+  "version": "1.0.0",
+  "author": "lizh <lizh@inke.cn>",
+  "description": "直播中台",
+  "dependencies": {
+    "@antv/data-set": "^0.8.5",
+    "axios": "^0.18.0",
+    "axios-service": "^1.4.4",
+    "babel-plugin-lodash": "^3.3.4",
+    "babel-plugin-ramda": "^2.0.0",
+    "bizcharts": "^3.5.2",
+    "browser-md5-file": "^1.1.1",
+    "enquire-js": "^0.1.2",
+    "foundation-symbol": "^0.1.0",
+    "history": "^4.7.2",
+    "hoist-non-react-statics": "^2.5.5",
+    "invariant": "^2.2.4",
+    "lodash": "^4.17.11",
+    "mime": "^2.4.2",
+    "path-to-regexp": "^2.4.0",
+    "pinyin": "^2.9.0",
+    "prop-types": "^15.6.2",
+    "react": "^16.8.2",
+    "react-document-title": "^2.0.3",
+    "react-dom": "^16.8.2",
+    "react-redux": "^5.0.7",
+    "react-router-dom": "^4.2.2",
+    "react-router-redux": "5.0.0-alpha.6",
+    "redux": "3.6.0",
+    "redux-thunk": "^2.3.0"
+  },
+  "devDependencies": {
+    "@inkefe/components-custom-table": "^1.0.1",
+    "antd": "^3.12.1",
+    "babel-eslint": "^10.0.1",
+    "babel-plugin-import": "^1.11.0",
+    "babel-plugin-syntax-dynamic-import": "^6.18.0",
+    "chalk": "^2.4.2",
+    "classnames": "^2.2.6",
+    "confusing-browser-globals": "^1.0.5",
+    "cross-env": "^5.2.0",
+    "eslint": "^5.14.1",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-friendly-formatter": "^4.0.1",
+    "eslint-loader": "^2.1.1",
+    "eslint-plugin-babel": "^4.1.1",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.2",
+    "eslint-plugin-react": "^7.11.1",
+    "eslint-plugin-react-hooks": "^1.6.0",
+    "faker": "^4.1.0",
+    "ice-scripts": "1.9.3",
+    "ik-release": "git+ssh://git@code.inke.cn:opd/fe-aws/modules/ik-release.git",
+    "ik-utils": "git+ssh://git@code.inke.cn:opd/fe-aws/modules/ik-utils.git",
+    "open": "^6.4.0",
+    "standard": "^12.0.1"
+  },
+  "scripts": {
+    "dev": "ice dev",
+    "start": "npm run dev",
+    "build": "ice build --hash",
+    "build:debug": "ice build --debug",
+    "build:test": "npm run build:debug",
+    "build:path": "cross-env ASSET_PATH=/examplePath ice build --hash",
+    "lint": "eslint src --ext '.js,.jsx' --fix",
+    "deploy:test": "cross-env-shell DEPLOY_ENV=test ik-deploy",
+    "deploy:gray": "cross-env-shell DEPLOY_ENV=gray ik-deploy",
+    "deploy": "node scripts/deploy.js"
+  },
+  "publishConfig": {
+    "registry": "http://registry.npmjs.com",
+    "access": "public"
+  },
+  "buildConfig": {
+    "theme": "@icedesign/skin",
+    "entry": "src/index.js",
+    "localization": false,
+    "babelrc": true,
+    "external": {
+      "react": "window.React",
+      "react-dom": "window.ReactDOM",
+      "react-router": "window.ReactRouter",
+      "react-redux": "window.ReactRedux"
+    }
+  },
+  "themeConfig": {
+    "theme": "light",
+    "primaryColor": "#00d8c9",
+    "secondaryColor": "#FFC107"
+  },
+  "proxyConfig": {
+    "/api/v1/**": {
+      "enable": true,
+      "target": "http://testapi.imilive.cn/",
+      "name": ""
+    },
+    "/upload/**": {
+      "enable": true,
+      "target": "https://upload.inke.cn/",
+      "name": "资源上传接口（禁止修改）"
+    },
+    "/login/**": {
+      "enable": true,
+      "target": "https://testqarbac.busi.inke.cn/",
+      "name": "登录相关接口（禁止修改）"
+    },
+    "/web/op_log/**": {
+      "enable": true,
+      "target": "https://testrbac.busi.inke.cn/",
+      "name": "日志管理接口（禁止修改）"
+    },
+    "/api/log/analytics/**": {
+      "enable": true,
+      "target": "https://betaservice.busi.inke.cn/",
+      "name": "埋点上报接口（禁止修改）"
+    },
+    "/api_web/v1/**": {
+      "enable": true,
+      "target": "http://testapi.meeshow.com/",
+      "name": "serviceInfo"
+    }
+  }
+}

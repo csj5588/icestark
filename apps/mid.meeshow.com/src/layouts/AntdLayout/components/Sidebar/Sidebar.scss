@@ -1,0 +1,31 @@
+.m-container-sidebar {
+  user-select: none;
+
+  .ant-layout-sider-children .logo {
+    text-align: center;
+    height: 52px;
+    position: relative;
+    line-height: 52px;
+    transition: all .3s;
+    background: #002140;
+    overflow: hidden;
+    color: #fff;
+    vertical-align: middle;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  &.ant-layout-sider {
+    background-color: #001529;
+    box-shadow: 2px 0 6px rgba(0, 21, 41, 0.35);
+  }
+
+  .ant-menu-dark, .ant-menu-dark .ant-menu-sub {
+    background-color: #001529;
+  }
+
+  .ant-menu-dark .ant-menu-inline.ant-menu-sub {
+    background-color: #000c17;
+  }
+}

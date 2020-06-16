@@ -1,0 +1,92 @@
+
+
+.component-drag-sort{
+
+  .choose-sort-wrap{
+    // width: 1200px;
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .sort-list, .gift-list{
+    overflow: auto;
+    width: 520px;
+    height: 600px;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    padding: 10px 0;
+    .item{
+      position: relative;
+      width: 120px;
+      height: 120px;
+      margin-left: 3px;
+      margin-top: 3px;
+      border: 1px solid #ddeedd;
+      cursor: move;
+      cursor: grab;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+      transition: all .3s;
+      user-select: none;
+      &.is-cover{
+        transform: scale(1.2);
+      }
+      &.is-drag{
+        opacity: 0.8;
+      }
+      &.is-disabled{
+        border-color: red;
+      }
+      .image{
+        width: 50px;
+        height: 50px;
+        background: none no-repeat center;
+        background-size: contain;
+      }
+      .price{
+        line-height: 14px;
+        color: #e6a23c;
+        font-size: 12px;
+      }
+      .gift-id, .name, .status{
+        font-size: 12px;
+      }
+      .status{
+        color: greenyellow;
+        transform: scale(.8);
+        word-break: break-all;
+        white-space: nowrap;
+        &.is-disabled{
+          color: red;
+        }
+      }
+
+
+      .del-btn, .lock-btn{
+        position: absolute;
+        width: 16px;
+        height: 16px;
+        top: 3px;
+        right: 3px;
+        font-size: 14px;
+        z-index: 3;
+        cursor: default;
+
+      }
+      .lock-btn{
+        left: 3px;
+        &.is-locked{
+          color: red;
+        }
+      }
+    }
+  }
+
+  .gift-list{
+    // width: 120px;
+    height: auto;
+  }
+}
