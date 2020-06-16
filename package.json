@@ -26,6 +26,7 @@
     "build-plugin-fusion": "^0.1.0",
     "build-plugin-icestark": "^1.0.2",
     "build-plugin-moment-locales": "^0.1.0",
+    "chalk": "^4.1.0",
     "eslint": "^6.0.1",
     "ice.js": "^1.0.0",
     "stylelint": "^13.1.0"
@@ -35,6 +36,8 @@
     "start-tark": "icejs start",
     "start-mid": "cd ./apps/child-seller-react-16/ && npm run start",
     "start-vue": "cd ./apps/vue-icestark-child/ && npm run start",
+    "i-all": "npm install chalk && cross-env-shell node scripts/install.js",
+    "i-all:cnpm": "cnpm install chalk && cross-env-shell INSTALL_SCRIPT=cnpm node scripts/install.js",
     "build": "icejs build",
     "lint": "npm run eslint && npm run stylelint",
     "eslint": "eslint --cache --ext .js,.jsx ./",
