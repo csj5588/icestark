@@ -1,11 +1,11 @@
 import Home from '@/pages/Home';
-import About from '@/pages/About';
+import AuthPageButtonMs from '@/pages/AuthManage/AuthPageButtonMs';
 import Login from '@/pages/Login';
 import NotFound from '@/components/NotFound';
 
 const routes = [{
-  path: '/about',
-  component: About,
+  path: '/auth',
+  component: AuthPageButtonMs,
 }, {
   path: '/login',
   component: Login,

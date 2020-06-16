@@ -3,15 +3,19 @@ import { createApp } from 'ice'
 import userInit from '@/entry/user-init';
 import { userPromise } from '@/utils/user';
 import { ConfigProvider } from '@alifd/next';
+import { Provider } from 'react-redux';
 import PageLoading from '@/components/PageLoading';
 import FrameworkLayout from '@/layouts/FrameworkLayout';
+import './service-intercept';
+import store from './store'
 
 const appConfig = {
   app: {
     rootId: 'icestark-container',
     addProvider: ({ children }) => (
-      <ConfigProvider prefix="next-icestark-">{children}</ConfigProvider>
+      <Provider store={store}>{children}</Provider>
     ),
+    store: store,
   },
   router: {
     type: 'browser',
@@ -58,6 +62,8 @@ const appConfig = {
     },
   },
 };
+
+
 
 userInit();
 

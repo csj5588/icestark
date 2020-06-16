@@ -12,10 +12,13 @@
     "axios-service": "^1.4.4",
     "classnames": "^2.2.5",
     "concurrently": "^4.1.2",
+    "ik-utils": "git+ssh://git@code.inke.cn:opd/fe-aws/modules/ik-utils.git",
     "moment": "^2.24.0",
     "prop-types": "^15.5.8",
     "react": "^16.8.0",
-    "react-dom": "^16.8.0"
+    "react-dom": "^16.8.0",
+    "react-redux": "^5.0.7",
+    "react-router-redux": "^4.0.8"
   },
   "devDependencies": {
     "@ice/spec": "^1.0.1",

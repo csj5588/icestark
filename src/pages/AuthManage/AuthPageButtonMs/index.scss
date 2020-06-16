@@ -1,0 +1,61 @@
+
+.auth-tree-list {
+
+  .ant-tree-treenode-switcher-open .ant-tree-node-content-wrapper,
+  .ant-tree-treenode-switcher-close .ant-tree-node-content-wrapper {
+    width: calc(100% - 18px);
+
+    .custom-tree-node {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 14px;
+
+      .tree-button {
+        margin-left: 4px;
+        padding: 4px 10px;
+        color: #606266;
+        font-size: 14px;
+        line-height: 1;
+        text-align: center;
+        font-weight: 500;
+        white-space: nowrap;
+        background: #fff;
+        border: 1px solid #dcdfe6;
+        border-radius: 4px;
+        cursor: pointer;
+        display: inline-block;
+        box-sizing: border-box;
+        outline: none;
+        transition: .1s;
+        -ms-user-select: none;
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -webkit-appearance: none;
+
+        &[disabled] {
+          color: #bbbec4;
+          background: #f7f7f7;
+          border-color: #dddee1;
+          cursor: not-allowed;
+        }
+      }
+    }
+
+    &:hover {
+      color: #00d8c9;
+      background-color: #f4f4f4;
+
+      .tree-button {
+        color: #00d8c9;
+        border-color: #00d8c9;
+
+        &-del {
+          color: #f5222d;
+          border-color: #f5222d;
+        }
+      }
+    }
+  }
+}
