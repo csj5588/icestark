@@ -57,7 +57,7 @@
     "standard": "^12.0.1"
   },
   "scripts": {
-    "dev": "ice dev",
+    "dev": "ice dev -p 3334",
     "start": "npm run dev",
     "build": "ice build --hash",
     "build:debug": "ice build --debug",

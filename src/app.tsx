@@ -43,21 +43,19 @@ const appConfig = {
         // Angular app demo: https://github.com/ice-lab/icestark-child-apps/tree/master/child-common-angular-9 
         entry: '//ice.alicdn.com/icestark/child-common-angular/index.html',
       },
-      // {
-      //   path: '/config',
-      //   title: 'config',
-      //   sandbox: true,
-      //   // Angular app demo: https://github.com/ice-lab/icestark-child-apps/tree/master/child-common-angular-9 
-      //   entry: 'http://localhost:4444/',
-      // },
       {
         path: '/vuepage',
         title: 'vuepage',
         sandbox: true,
         // Angular app demo: https://github.com/ice-lab/icestark-child-apps/tree/master/child-common-angular-9 
         entry: 'http://localhost:3334/',
-      }
-    ];
+      }, {
+        path: '/mid',
+        title: 'mid',
+        sandbox: true,
+        // Angular app demo: https://github.com/ice-lab/icestark-child-apps/tree/master/child-common-angular-9 
+        entry: 'http://localhost:3444/',
+      }];
       return apps;
     },
     appRouter: {

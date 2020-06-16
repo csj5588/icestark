@@ -9,7 +9,7 @@
     "@types/react": "^16.9.20",
     "@types/react-dom": "^16.9.5",
     "classnames": "^2.2.5",
-    "concurrently": "^4.0.1",
+    "concurrently": "^4.1.2",
     "moment": "^2.24.0",
     "prop-types": "^15.5.8",
     "react": "^16.8.0",
@@ -25,7 +25,9 @@
     "stylelint": "^13.1.0"
   },
   "scripts": {
-    "start": "icejs start",
+    "start": "concurrently \"npm run start-tark\" \"npm run start-mid\"",
+    "start-tark": "icejs start",
+    "start-mid": "cd ./apps/child-seller-react-16/ && npm run start",
     "build": "icejs build",
     "lint": "npm run eslint && npm run stylelint",
     "eslint": "eslint --cache --ext .js,.jsx ./",
@@ -46,5 +48,37 @@
     "name": "ice-react"
   },
   "private": true,
-  "originTemplate": "@icedesign/stark-layout-scaffold"
+  "originTemplate": "@icedesign/stark-layout-scaffold",
+  "proxyConfig": {
+    "/api/v1/**": {
+      "enable": true,
+      "target": "http://testapi.imilive.cn/",
+      "name": ""
+    },
+    "/upload/**": {
+      "enable": true,
+      "target": "https://upload.inke.cn/",
+      "name": "资源上传接口（禁止修改）"
+    },
+    "/login/**": {
+      "enable": true,
+      "target": "https://testqarbac.busi.inke.cn/",
+      "name": "登录相关接口（禁止修改）"
+    },
+    "/web/op_log/**": {
+      "enable": true,
+      "target": "https://testrbac.busi.inke.cn/",
+      "name": "日志管理接口（禁止修改）"
+    },
+    "/api/log/analytics/**": {
+      "enable": true,
+      "target": "https://betaservice.busi.inke.cn/",
+      "name": "埋点上报接口（禁止修改）"
+    },
+    "/api_web/v1/**": {
+      "enable": true,
+      "target": "http://testapi.meeshow.com/",
+      "name": "serviceInfo"
+    }
+  }
 }

@@ -16,15 +16,14 @@ const asideMenuConfig = [
     path: '/login',
     icon: 'account',
   },
-  // {
-  //   name: 'config',
-  //   path: '/config',
-  //   icon: 'account',
-  // },
   {
     name: 'vuepage',
     path: '/vuepage',
     icon: 'vuepage',
+  },{
+    name: '管控',
+    path: '/mid',
+    icon: 'account',
   },
   {
     name: 'Angular',
