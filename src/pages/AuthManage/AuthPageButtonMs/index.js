@@ -16,7 +16,6 @@ import srcConfig from '@/config'
 import { ADD, MODIFY, ADD_PAGE, ADD_BUTTON } from './constants/modalTypes'
 
 import ModalForm from './components/ModalForm'
-
 import './index.scss'
 
 const { TreeNode } = Tree

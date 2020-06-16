@@ -27,7 +27,7 @@ const asideMenuConfig = [
   },
   {
     name: '系统管理',
-    path: '/mid',
+    path: '/auth',
     icon: 'account',
   },
 ];
