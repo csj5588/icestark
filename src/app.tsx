@@ -42,13 +42,22 @@ const appConfig = {
         sandbox: true,
         // Angular app demo: https://github.com/ice-lab/icestark-child-apps/tree/master/child-common-angular-9 
         entry: '//ice.alicdn.com/icestark/child-common-angular/index.html',
-      }, {
-        path: '/config',
-        title: 'config',
+      },
+      // {
+      //   path: '/config',
+      //   title: 'config',
+      //   sandbox: true,
+      //   // Angular app demo: https://github.com/ice-lab/icestark-child-apps/tree/master/child-common-angular-9 
+      //   entry: 'http://localhost:4444/',
+      // },
+      {
+        path: '/vuepage',
+        title: 'vuepage',
         sandbox: true,
         // Angular app demo: https://github.com/ice-lab/icestark-child-apps/tree/master/child-common-angular-9 
-        entry: 'http://192.168.11.103:8586/',
-      }];
+        entry: 'http://localhost:3334/',
+      }
+    ];
       return apps;
     },
     appRouter: {

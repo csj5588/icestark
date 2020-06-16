@@ -62,6 +62,6 @@ export default () => {
     store.dispatch(setUserLogin({ ...data }))
   }, ({ dm_error: dmError } = {}) => {
     // token验证失效: 用户未登录, 跳转登录页并带服务参数, 重新验证
-    redirect(srcConfig.SSO_PAGE_SERVICE)
+    // redirect(srcConfig.SSO_PAGE_SERVICE)
   })
 }
