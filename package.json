@@ -5,6 +5,7 @@
   "dependencies": {
     "@alifd/next": "^1.x",
     "@alifd/theme-design-pro": "^0.x",
+    "@ice/stark-data": "^0.1.2",
     "@icedesign/container": "^1.x",
     "@types/react": "^16.9.20",
     "@types/react-dom": "^16.9.5",

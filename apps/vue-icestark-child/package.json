@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@ice/stark-app": "^1.0.1",
+    "@ice/stark-data": "^0.1.2",
     "element-ui": "^2.12.0",
     "vue": "^2.6.11",
     "vue-router": "^3.0.1",

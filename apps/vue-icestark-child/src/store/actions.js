@@ -8,5 +8,7 @@
 import * as mutationTypes from './mutation-types'
 
 export default {
-
+  setOuterStore({ commit, state, dispatch }, payload) {
+    commit('SET_Ticket', payload)
+  },
 }
