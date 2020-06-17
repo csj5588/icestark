@@ -1,6 +1,7 @@
 import React from 'react';
 import { Shell } from '@alifd/next';
 import { AppLink } from '@ice/stark';
+import { BrowserRouter as Router, Link } from 'react-router-dom';
 import { connect } from 'react-redux'
 import { asideMenuConfig } from './menuConfig';
 import { getDataAuth } from '@/entry/apis';
@@ -22,6 +23,10 @@ declare global {
 }
 
 class BasicLayout extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
   componentDidMount () {
     this.getDataAuth();
     this.initActions();
@@ -68,8 +73,21 @@ class BasicLayout extends React.Component {
       })
   }
 
+  renderChildMenu = () => {
+    const { pathname } = this.props;
+
+    const menuChild = asideMenuConfig.find(x => {
+      const [name, ...other] = pathname.split('-')
+      return x.path.includes(name);
+    }) || {};
+    const menuChildren = menuChild.children || [];
+    return menuChildren;
+  }
+
   render() {
-    const { children, pathname } = this.props;
+    const { children } = this.props;
+    const menuChildren = this.renderChildMenu();
+
     return (
       <Shell
         type="brand"
@@ -97,7 +115,17 @@ class BasicLayout extends React.Component {
         <Shell.Content>
           <div className="layout-content">
             <div className="side-menu">
-              side
+              <Router>
+                {
+                  menuChildren.map((item, idx) => {
+                    return (
+                      <Link key={idx} to={item.path} className="layout-menu-top-items">
+                        {item.name}
+                      </Link>
+                    )
+                  })
+                }
+              </Router>
             </div>
             <div className="layout-content-router">
               {children}

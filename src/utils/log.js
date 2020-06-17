@@ -5,12 +5,12 @@
  * @desc http://wiki.inkept.cn/pages/viewpage.action?pageId=54597351
  */
 import { uniqWith, isEqual, get as _get } from 'lodash'
-import { getRequestsByRoot } from 'entry/service-auth'
+import { getRequestsByRoot } from '@/entry/service-auth'
 
-import $user from 'user'
+import $user from '@/utils/user'
 import $common from './common'
-import srcConfig from 'src/config'
-import store from 'src/store'
+import srcConfig from '@/config'
+import store from '@/store'
 
 // 获取 store 中的数据
 const getUserInfo = store => _get(store.getState(), 'user.info', {})

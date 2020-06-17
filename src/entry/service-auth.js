@@ -3,7 +3,7 @@ import axiosService from 'axios-service'
 // import loading from 'components/loading'
 import srcConfig from '@/config'
 import $user from '@/utils/user'
-import { Message } from 'antd'
+import { message } from 'antd'
 
 // 设置 ticket 和 system_id
 const setTicketAndSystemIdToParams = config => {
@@ -61,7 +61,7 @@ instance.interceptors.request.use(config => {
 }, error => {
   // loading.hide()
   console.error('加载超时')
-  Message.error('服务器开小差了，请稍后再试')
+  message.error('服务器开小差了，请稍后再试')
   return Promise.reject(error)
 })
 
@@ -78,14 +78,14 @@ instance.interceptors.response.use(response => {
   if (data.dm_error === 4000001 || data.dm_error === 4000003) {
     $user.logout()
   } else if (data.dm_error !== 0) {
-    Message.error(data.error_msg || '接口响应异常，请联系管理员')
+    message.error(data.error_msg || '接口响应异常，请联系管理员')
   }
 
   return response
 }, error => {
   // loading.hide()
   console.error('加载失败')
-  Message.error('服务器开小差了，请稍后再试')
+  message.error('服务器开小差了，请稍后再试')
   return Promise.reject(error)
 })
 

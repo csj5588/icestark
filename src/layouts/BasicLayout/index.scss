@@ -29,11 +29,38 @@
   margin: 0 auto;
   display: flex;
   .side-menu{
-    width: 15%;
+    width: 17%;
     display: inline-table;
     background: #F7F7F7;
     margin-right: 44px;
     border-radius: 8px;
+    padding: 12px 0;
+    a{
+      color: rgba(0, 0, 0, 0.65);
+      transition: all 0.3s;
+      padding: 16px 0 16px 46px;
+      display: block;
+      position: relative;
+      &:hover{
+        color: #1EE0CA;
+        background: rgba(30,224,202, 0.08);
+        border-right: 3px solid #1EE0CA;
+        &::before{
+          background: #1EE0CA;
+        }
+      }
+      &::before{
+        content: '';
+        position: absolute;
+        left: 28px;
+        top: calc(50% - 3px);
+        width: 6px;
+        height: 6px;
+        border-radius: 6px;
+        transition: all 0.3s;
+        background: #DDDDDD;
+      }
+    }
   }
   .layout-content-router{
     flex: 1;

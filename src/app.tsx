@@ -7,7 +7,7 @@ import { ConfigProvider } from '@alifd/next';
 import { Provider } from 'react-redux';
 import PageLoading from '@/components/PageLoading';
 import FrameworkLayout from '@/layouts/FrameworkLayout';
-import './service-intercept';
+import '@/entry/service-intercept';
 import store from './store'
 import zhCN from 'antd/lib/locale-provider/zh_CN';
 
@@ -61,13 +61,13 @@ const appConfig = {
         // Angular app demo: https://github.com/ice-lab/icestark-child-apps/tree/master/child-common-angular-9 
         entry: 'http://localhost:3334/',
       },
-      // {
-      //   path: '/mid',
-      //   title: 'mid',
-      //   sandbox: true,
-      //   // Angular app demo: https://github.com/ice-lab/icestark-child-apps/tree/master/child-common-angular-9 
-      //   entry: 'http://localhost:3444/',
-      // }
+      {
+        path: '/mid',
+        title: 'mid',
+        sandbox: true,
+        // Angular app demo: https://github.com/ice-lab/icestark-child-apps/tree/master/child-common-angular-9 
+        entry: 'http://localhost:3444/',
+      }
     ];
       return apps;
     },

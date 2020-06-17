@@ -10,23 +10,23 @@ const systemManage = [
     children: [
       {
         name: '页面与按钮管理',
-        path: '/auth/pageButtonMs',
+        path: '/auth-pageButtonMs',
       },
       {
         name: '角色类型管理',
-        path: '/auth/roleTypeMs',
+        path: '/auth-roleTypeMs',
       },
       {
         name: '角色管理',
-        path: '/auth/roleMs',
+        path: '/auth-roleMs',
       },
       {
         name: '用户管理',
-        path: '/auth/userMs',
+        path: '/auth-userMs',
       },
       {
         name: '日志管理',
-        path: '/auth/logMs',
+        path: '/auth-logMs',
       },
     ],
   },
@@ -139,6 +139,6 @@ function getAuthorityMenuTree(tree, menu) {
 }
 export {
   headerPromise,
-  asideMenuConfig,
+  asideMixMenuConfig as asideMenuConfig,
 };
 export default asidePromise;

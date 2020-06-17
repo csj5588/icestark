@@ -55,10 +55,6 @@ class TreeList extends Component {
     nodeData: {},
   }
 
-  componentDidMount() {
-    console.log(this.props);
-  }
-
   showDeleteBtn = srcConfig.SUPER_ADMIN.indexOf($user.get().email) >= 0
 
   // 新增

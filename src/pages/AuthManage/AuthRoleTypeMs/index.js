@@ -6,7 +6,8 @@
 
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-
+import { message } from 'antd';
+import $log from '@/utils/log'
 import S from './apis'
 import { ADD, VIEW, MODIFY } from './constants/modalTypes'
 
@@ -76,10 +77,10 @@ class PageFilterTable extends Component {
           tableData
         })
 
-        this.$message.success('查询成功')
+        message.success('查询成功')
       })
 
-    this.$log.reportBtnWithButtonCtrl({
+    $log.reportBtnWithButtonCtrl({
       key: 'SEARCH',
       request_params: searchParams
     })

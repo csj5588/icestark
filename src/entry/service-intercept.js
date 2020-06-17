@@ -1,12 +1,12 @@
 import axios from 'axios'
 import axiosService from 'axios-service'
-import loading from 'components/loading'
-import srcConfig from 'src/config'
-import $user from 'user'
-import Cookie from 'utils/cookies'
-import { Message } from 'antd'
-import store from 'src/store'
-import build from 'src/config/build';
+// import loading from 'components/loading'
+import srcConfig from '@/config'
+import $user from '@/utils/user'
+import Cookie from '@/utils/cookies'
+import { message } from 'antd'
+import store from '@/store'
+import build from '@/config/build';
 
 const root = srcConfig.APIS.root
 const saveAppKey = 'cur-auth-app'
@@ -110,7 +110,7 @@ axios.interceptors.request.use(config => {
   const { autoLoading } = config
 
   if (autoLoading === undefined || autoLoading === true) {
-    loading.show()
+    // loading.show()
 
     // let _timer = setTimeout(() => {
     //   clearTimeout(_timer)
@@ -126,9 +126,9 @@ axios.interceptors.request.use(config => {
 
   return config
 }, error => {
-  loading.hide()
+  // loading.hide()
   console.error('加载超时')
-  Message.error('服务器开小差了，请稍后再试')
+  message.error('服务器开小差了，请稍后再试')
   return Promise.reject(error)
 })
 
@@ -137,7 +137,7 @@ axios.interceptors.response.use(response => {
   const { autoLoading } = response.config
 
   if (autoLoading === undefined || autoLoading === true) {
-    loading.hide()
+    // loading.hide()
   }
 
   const { data = {} } = response
@@ -148,13 +148,13 @@ axios.interceptors.response.use(response => {
   if (code === 4000001 || code === 4000003) {
     $user.logout()
   } else if (code !== successCode) {
-    Message.error(data[msgKey] || '接口响应异常，请联系管理员')
+    message.error(data[msgKey] || '接口响应异常，请联系管理员')
   }
 
   return response
 }, error => {
-  loading.hide()
+  // loading.hide()
   console.error('加载失败')
-  Message.error('服务器开小差了，请稍后再试')
+  message.error('服务器开小差了，请稍后再试')
   return Promise.reject(error)
 })
