@@ -79,7 +79,7 @@ class PageFilterTable extends Component {
 
         message.success('查询成功')
       })
-
+    console.log(1)
     $log.reportBtnWithButtonCtrl({
       key: 'SEARCH',
       request_params: searchParams
@@ -101,8 +101,8 @@ class PageFilterTable extends Component {
   // 新增
   handleAdd = () => {
     this.handleModalConfig({}, '新增', ADD)
-
-    this.$log.reportBtnWithButtonCtrl({
+    console.log(2)
+    $log.reportBtnWithButtonCtrl({
       key: 'ADD',
       request_params: ''
     })
@@ -141,8 +141,8 @@ class PageFilterTable extends Component {
       default:
         this.hideDialog()
     }
-
-    this.$log.reportBtn({
+    console.log(4)
+    $log.reportBtn({
       btnId: `${type}_submit`,
       btnName: `${title}_提交`,
       request_params: params

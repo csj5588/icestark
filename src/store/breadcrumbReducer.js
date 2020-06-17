@@ -9,6 +9,7 @@ const initialState = {
 }
 
 function getRoute (pathname) {
+  console.log('??')
   let routeList = pathname.split('/').filter(i => i)
   routeList = routeList.map((item, index, array) => {
     return `/${array.slice(0, index + 1).join('/')}`
@@ -49,7 +50,6 @@ function getPathname (payload) {
 
 const breadcrumbReducer = function (state = initialState, action) {
   const { payload = {} } = action
-
   switch (action.type) {
     case LOCATION_CHANGE:
       return Object.assign({}, state, {

@@ -46,6 +46,15 @@ const log = {
     event_action: '', // 页面：''；按钮：click
     request_params: '' // 按钮接口传的参数
   },
+
+  transferPageId () {
+    if (log.getPageRoot()) {
+      return log.getPageRoot();
+    } else {
+      const starkPathName = window.location.pathname.slice(1);
+      return starkPathName && starkPathName.replace('-', '_');
+    }
+  },
   /**
    * 从 面包屑 中取页面名称
    */
@@ -139,7 +148,8 @@ const log = {
       operater_email: process.env.SSO_LOGIN ? userInfo.email : userInfo.phone, // 操作人邮箱
       hit_type: 'event',
       identifier: identifier || `${pageRoot || log.getPageRoot()}_${params.btnId}`,
-      page_id: log.getPageRoot(),
+      // page_id: log.getPageRoot(),
+      page_id: log.transferPageId(),
       title: log.getPageName(),
       label: btnName,
       event_category: 'button',
@@ -147,6 +157,7 @@ const log = {
       ...params,
       request_params: _requestParams || ''
     }
+
     return API_LOG(logParams)
   },
 
@@ -156,7 +167,6 @@ const log = {
     if (!buttonCtrl[key]) {
       throw new TypeError(`${key} 没有对应的 id 和 label`)
     }
-
     log.reportBtn({
       // btnId: buttonCtrl[key].id,
       btnId: key.toLowerCase(),
