@@ -6,7 +6,8 @@
 
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-
+import $log from '@/utils/log'
+import { message } from 'antd'
 import S from './apis'
 import { ADD, VIEW, MODIFY } from './constants/modalTypes'
 
@@ -89,14 +90,14 @@ class PageFilterTable extends Component {
     // console.log('查询', searchParams)
     S.getRoleList(searchParams)
       .then(({ data }) => {
-        this.$message.success('查询成功')
+        message.success('查询成功')
         this.setState({
           tableData: data.list || [],
           tableTotal: +data.count
         })
       })
 
-    this.$log.reportBtnWithButtonCtrl({
+    $log.reportBtnWithButtonCtrl({
       key: 'SEARCH',
       request_params: searchParams
     })
@@ -118,7 +119,7 @@ class PageFilterTable extends Component {
   handleAdd = () => {
     this.handleModalConfig({}, '新增', ADD)
 
-    this.$log.reportBtnWithButtonCtrl({
+    $log.reportBtnWithButtonCtrl({
       key: 'ADD',
       request_params: ''
     })
@@ -204,7 +205,7 @@ class PageFilterTable extends Component {
         this.handleModalConfig(params, '编辑', MODIFY)
       })
 
-    this.$log.reportBtnWithButtonCtrl({
+    $log.reportBtnWithButtonCtrl({
       key: 'MODIFY',
       request_params: ''
     })
@@ -216,7 +217,7 @@ class PageFilterTable extends Component {
     const moduleId = rolesAddParams.join()
 
     if (!moduleId) {
-      this.$message.error('请选择页面权限')
+      message.error('请选择页面权限')
       return
     }
 
@@ -241,7 +242,7 @@ class PageFilterTable extends Component {
         this.hideDialog()
     }
 
-    this.$log.reportBtn({
+    $log.reportBtn({
       btnId: `${type}_submit`,
       btnName: `${title}_提交`,
       request_params: {

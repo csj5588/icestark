@@ -7,8 +7,8 @@
  *  @desc http://wiki.inkept.cn/pages/viewpage.action?pageId=50851416
  */
 
-import srcConfig from 'src/config'
-import { getRequestsByRoot } from 'entry/service-auth'
+import srcConfig from '@/config'
+import { getRequestsByRoot } from '@/entry/service-auth'
 
 // import { mockGetRoleList, mockPostRoleModify, mockPostDataDel } from './mock'
 

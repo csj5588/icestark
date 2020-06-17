@@ -2,7 +2,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Form, Table, Button, Pagination, Popconfirm } from 'antd'
-import CustomTable from 'components/CustomTable'
+import CustomTable from '@/components/CustomTable'
 
 const pageSizeList = ['10', '20', '30', '40', '50', '100']
 

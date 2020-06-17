@@ -6,7 +6,8 @@
 
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-
+import { message } from 'antd'
+import $log from '@/utils/log'
 import S from './apis'
 import { ADD, VIEW, MODIFY } from './constants/modalTypes'
 
@@ -100,14 +101,14 @@ class PageFilterTable extends Component {
     // console.log('查询', searchParams)
     S.getUserList(searchParams)
       .then(({ data }) => {
-        this.$message.success('查询成功')
+        message.success('查询成功')
         this.setState({
           tableData: data.users || [],
           tableTotal: +data.total
         })
       })
 
-    this.$log.reportBtnWithButtonCtrl({
+    $log.reportBtnWithButtonCtrl({
       key: 'SEARCH',
       request_params: searchParams
     })
@@ -129,7 +130,7 @@ class PageFilterTable extends Component {
   handleAdd = () => {
     this.handleModalConfig({}, '新增', ADD)
 
-    this.$log.reportBtnWithButtonCtrl({
+    $log.reportBtnWithButtonCtrl({
       key: 'ADD',
       request_params: ''
     })
@@ -182,7 +183,7 @@ class PageFilterTable extends Component {
   handleEdit = params => {
     this.handleModalConfig(params, '编辑', MODIFY)
 
-    this.$log.reportBtnWithButtonCtrl({
+    $log.reportBtnWithButtonCtrl({
       key: 'MODIFY',
       request_params: ''
     })
@@ -198,7 +199,7 @@ class PageFilterTable extends Component {
       case MODIFY:
         S.postUserModify(params)
           .then(() => {
-            this.$message.success('提交成功')
+            message.success('提交成功')
             this.getUserList()
             this.hideDialog()
           })
@@ -207,7 +208,7 @@ class PageFilterTable extends Component {
         this.hideDialog()
     }
 
-    this.$log.reportBtn({
+    $log.reportBtn({
       btnId: `${type}_submit`,
       btnName: `${title}_提交`,
       request_params: params

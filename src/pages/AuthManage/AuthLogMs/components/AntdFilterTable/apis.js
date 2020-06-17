@@ -10,9 +10,9 @@
 /**
  *  @overview 开发项目需将以下注释取消
  */
-import user from 'user'
-import srcConfig from 'src/config'
-import { getRequestsByRoot } from 'entry/service-auth'
+import user from '@/utils/user'
+import srcConfig from '@/config'
+import { getRequestsByRoot } from '@/entry/service-auth'
 
 import { mockGetLogList, mockPostLogModify, mockPostLogDel } from './mock'
 

@@ -6,11 +6,11 @@
 
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Message } from 'antd'
 import { stringifyParams } from 'ik-utils'
-
+import $log from '@/utils/log'
+import { message } from 'antd'
 import S from './apis'
-import srcConfig from 'src/config'
+import srcConfig from '@/config'
 import { ADD, VIEW, MODIFY } from './constants/modalTypes'
 import { SYSTEM_START_TIME } from './constants/timeFormat'
 
@@ -96,14 +96,14 @@ class PageFilterTable extends Component {
     // console.log('查询', searchParams)
     S.getLogList(searchParams)
       .then(({ data }) => {
-        Message.success('查询成功')
+        message.success('查询成功')
         this.setState({
           tableData: data.list || [],
           tableTotal: +data.total
         })
       })
 
-    this.$log.reportBtnWithButtonCtrl({
+    $log.reportBtnWithButtonCtrl({
       key: 'SEARCH',
       request_params: searchParams
     })
@@ -129,7 +129,7 @@ class PageFilterTable extends Component {
     // console.log('导出', `${S.logListExport}&${stringifyParams(searchParams)}`)
     window.open(`${S.logListExport}&${stringifyParams(searchParams)}`)
 
-    this.$log.reportBtnWithButtonCtrl({
+    $log.reportBtnWithButtonCtrl({
       key: 'EXPORT',
       request_params: searchParams
     })
@@ -182,7 +182,7 @@ class PageFilterTable extends Component {
   handleView = params => {
     this.handleModalConfig(params, '查看', VIEW)
 
-    this.$log.reportBtnWithButtonCtrl({
+    $log.reportBtnWithButtonCtrl({
       key: 'VIEW',
       request_params: ''
     })
