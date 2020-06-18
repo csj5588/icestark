@@ -22,7 +22,7 @@
   "proxy": {
     "/sockjs-node/**": {
       "enable": true,
-      "target": "http://localhost:3334/",
+      "target": "http://localhost:3444/",
       "name": ""
     },
     "/upload/**": {
