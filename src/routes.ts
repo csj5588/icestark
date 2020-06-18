@@ -10,7 +10,7 @@ import NotFound from '@/components/NotFound';
 const routes = [
   {
     path: '/auth',
-    component: AuthRoleTypeMs,
+    component: AuthPageButtonMs,
   },
   {
     path: '/auth-roleTypeMs',

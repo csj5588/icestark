@@ -5,25 +5,19 @@ import { Button } from '@alifd/next';
 import IceContainer from '@icedesign/container';
 import PageTitle from '@/components/PageTitle';
 
-export default function Home() {
-
-  useEffect(() => {
-    console.log('Home Page mounted');
-    return () => {
-      console.log('Home Page unmounted');
-    };
-  }, []);
-
-  return (
-    <IceContainer>
-      <PageTitle title="商家首页" />
-
-      <Link to="/detail">子应用内跳转</Link>
-      <br />
-      <Button type="primary" onClick={() => {
-        appHistory.push('/message');
-      }}>子应用间跳转</Button>
-      <br />
-    </IceContainer>
-  );
+class Home extends React.Component {
+  render() {
+    return (
+      <div className="root">这边开始写业务</div>
+    )
+  }
 }
+
+export default Home;
+
+// 跳转demo
+// <Link to="/detail">子应用内跳转</Link>
+// <br />
+// <Button type="primary" onClick={() => {
+//   appHistory.push('/message');
+// }}>子应用间跳转</Button>
