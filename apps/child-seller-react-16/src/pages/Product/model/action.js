@@ -23,7 +23,6 @@ export const getTableList = (payload = {}) => async (dispatch, getState) => {
     ...payload,
   }
   S.getDataList(params).then(res => {
-    console.log(res)
     const { data = {} } = res;
     dispatch(saveTable({
       data: data.apps || [],

@@ -4,7 +4,6 @@ const instance = axios.create()
 
 export default (params) => {
   const { headers = {}, action, withCredentials = false, file, filename, data, onSuccess, onError, onProgress } = params
-  console.log(params)
   // instance.post(action, {
   instance({
     url: action,
@@ -15,10 +14,8 @@ export default (params) => {
     },
     withCredentials
   }).then(res => {
-    console.log(res.data)
     onSuccess && onSuccess(res.data, file, res)
   }).catch(err => {
-    console.log(err)
     onError && onError(err)
   })
 }

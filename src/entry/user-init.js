@@ -59,7 +59,6 @@ export default () => {
   }
 
   userReady(({ data }) => {
-    console.log(data);
     // user.set({ ...data })
     // store.dispatch(setUserLogin({ ...data }))
   }, ({ dm_error: dmError } = {}) => {

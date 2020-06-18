@@ -64,7 +64,6 @@ class PageFilterTable extends Component {
   getRoleTypeList = () => {
     const { searchParams } = this.state
 
-    // console.log('查询', searchParams)
     S.getRoleTypeList(searchParams)
       .then(({ data }) => {
         let tableData = data || []
@@ -79,7 +78,6 @@ class PageFilterTable extends Component {
 
         message.success('查询成功')
       })
-    console.log(1)
     $log.reportBtnWithButtonCtrl({
       key: 'SEARCH',
       request_params: searchParams
@@ -101,7 +99,6 @@ class PageFilterTable extends Component {
   // 新增
   handleAdd = () => {
     this.handleModalConfig({}, '新增', ADD)
-    console.log(2)
     $log.reportBtnWithButtonCtrl({
       key: 'ADD',
       request_params: ''
@@ -109,7 +106,6 @@ class PageFilterTable extends Component {
   }
 
   handleModalConfig = (_formData, _title, _type) => {
-    // console.log(_title, _formData)
     this.setState({
       formData: {
         ...this.state.formData,
@@ -141,7 +137,6 @@ class PageFilterTable extends Component {
       default:
         this.hideDialog()
     }
-    console.log(4)
     $log.reportBtn({
       btnId: `${type}_submit`,
       btnName: `${title}_提交`,

@@ -5,6 +5,5 @@ store.set('store', 'CH'); // 设置语言
 store.set('user', userInfo); // 设置登录后当前用户信息
 
 setTimeout(() => {
-  console.log('set store')
   store.set('store', 'EN');
 }, 3000);

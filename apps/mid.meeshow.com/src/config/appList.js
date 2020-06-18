@@ -99,7 +99,6 @@ export const getApiHost = () => {
   }
 
   let app = Cookie.getItem(saveAppKey);
-  console.log('this app ', app)
   const item = AppList.filter(one => one.appid === app)[0];
   if (!item) {
     return defaultApiHost

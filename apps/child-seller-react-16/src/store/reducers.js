@@ -5,6 +5,7 @@
 import { combineReducers } from 'redux'
 import { LOCATION_CHANGE } from 'react-router-redux'
 
+import stark from './action-stark';
 import product from '@/pages/Product/model/reducer';
 
 /*
@@ -40,6 +41,7 @@ function routeReducer (state = routeInitialState, action) {
 export default function createReducer (injectedReducers) {
   return combineReducers({
     product,
+    stark,
     route: routeReducer,
     ...injectedReducers,
   })

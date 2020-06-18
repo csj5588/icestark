@@ -12,7 +12,7 @@ export default function FrameworkLayout(props: {
   const { pathname, children, appLeave, appEnter } = props;
   const Layout = pathname === '/login' ? UserLayout : BasicLayout;
   useEffect(() => {
-    console.log('== app leave ==', appLeave);
+    // console.log('== app leave ==', appLeave);
     if (appLeave.path === '/angular' && window.webpackJsonp) {
       // remove webpackJsonp added by Angular app
       delete window.webpackJsonp;
@@ -20,7 +20,7 @@ export default function FrameworkLayout(props: {
   }, [appLeave]);
 
   useEffect(() => {
-    console.log('== app enter ==', appEnter);
+    // console.log('== app enter ==', appEnter);
   }, [appEnter]);
 
   return (

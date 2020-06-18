@@ -39,7 +39,6 @@ class ModalForm extends Component {
 
   constructor (props) {
     super(props)
-    console.log('props', props)
   }
 
   componentWillMount () {
@@ -105,7 +104,6 @@ class ModalForm extends Component {
       }
 
       // delete params.apps
-      console.log('params', params, this.props.formData)
       this.props.handleSubmit(params)
     })
   }

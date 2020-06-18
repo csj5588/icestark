@@ -64,7 +64,6 @@ const LoginBlock: React.FunctionComponent<LoginProps> = (props: LoginProps): JSX
       console.log('errors', errors);
       return;
     }
-    console.log('values:', values);
     Message.success('登录成功');
     appHistory.push('/');
   };

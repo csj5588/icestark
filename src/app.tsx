@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { createApp } from 'ice'
+import { createApp } from 'ice';
+import { store as stark } from '@ice/stark-data';
 import userInit from '@/entry/user-init';
 import ticketReplace from '@/entry/ticket-replace';
 import { userPromise } from '@/utils/user';
@@ -74,6 +75,10 @@ const appConfig = {
     },
   },
 };
+
+store.subscribe(() => {
+  stark.set('stark', store.getState());
+})
 
 userInit();
 
