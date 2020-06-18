@@ -3,15 +3,13 @@ import { createApp } from 'ice'
 import userInit from '@/entry/user-init';
 import ticketReplace from '@/entry/ticket-replace';
 import { userPromise } from '@/utils/user';
-import { ConfigProvider } from '@alifd/next';
+// import { ConfigProvider } from '@alifd/next';
 import { Provider } from 'react-redux';
 import PageLoading from '@/components/PageLoading';
 import FrameworkLayout from '@/layouts/FrameworkLayout';
 import '@/entry/service-intercept';
 import store from './store'
-import zhCN from 'antd/lib/locale-provider/zh_CN';
-
-import moment from 'moment';
+import './stark-data'
 import 'moment/locale/zh-cn';
 
 const appConfig = {
@@ -57,7 +55,7 @@ const appConfig = {
       {
         path: '/zd-imilive',
         title: '种子视频',
-        sandbox: true,
+        sandbox: false,
         // Angular app demo: https://github.com/ice-lab/icestark-child-apps/tree/master/child-common-angular-9 
         entry: 'http://localhost:3334/',
       },

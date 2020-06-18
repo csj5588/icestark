@@ -9,9 +9,11 @@
   },
   "dependencies": {
     "@ice/stark-app": "^1.0.1",
+    "@ice/stark-data": "^0.1.2",
     "element-ui": "^2.12.0",
-    "vue": "^2.5.13",
-    "vue-router": "^3.0.1"
+    "vue": "^2.6.11",
+    "vue-router": "^3.0.1",
+    "vuex": "^3.4.0"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
