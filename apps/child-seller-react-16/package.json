@@ -13,15 +13,22 @@
     "history": "^4.10.1",
     "moment": "^2.24.0",
     "react": "^16.8.0",
-    "react-dom": "^16.8.0",
-    "react-router-dom": "^5.0.0"
+    "react-dom": "^16.8.0"
   },
   "devDependencies": {
     "@ice/spec": "^0.1.1",
+    "@inke-design/utils": "^1.0.2",
+    "antd": "^3.12.1",
+    "browser-md5-file": "^1.1.1",
     "eslint": "^6.0.1",
-    "stylelint": "^10.1.0",
+    "ice-plugin-fusion": "^0.1.4",
     "ice-scripts": "^2.0.0",
-    "ice-plugin-fusion": "^0.1.4"
+    "react-redux": "^5.0.7",
+    "react-router-dom": "^4.2.2",
+    "react-router-redux": "^5.0.0-alpha.6",
+    "redux": "^3.6.0",
+    "redux-thunk": "^2.3.0",
+    "stylelint": "^10.1.0"
   },
   "scripts": {
     "start": "ice-scripts dev -p 3444",

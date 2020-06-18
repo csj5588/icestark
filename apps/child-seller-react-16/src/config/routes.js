@@ -1,9 +1,9 @@
 import { renderNotFound } from '@ice/stark-app';
 import BasicLayout from '@/layouts/BasicLayout';
 
-import Detail from '@/pages/Detail';
 import List from '@/pages/List';
 import Home from '@/pages/Home';
+import Product from '@/pages/Product';
 
 const routerConfig = [
   {
@@ -20,9 +20,8 @@ const routerConfig = [
         component: List,
       },
       {
-        path: '/detail',
-        component: Detail,
-
+        path: '/product',
+        component: Product,
       },
       {
         path: '*',

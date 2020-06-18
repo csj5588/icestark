@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { appHistory } from '@ice/stark-app';
 import { Button } from '@alifd/next';
@@ -13,7 +14,9 @@ class Home extends React.Component {
   }
 }
 
-export default Home;
+export default connect(stores => ({
+  store: stores,
+}))(Home);
 
 // 跳转demo
 // <Link to="/detail">子应用内跳转</Link>

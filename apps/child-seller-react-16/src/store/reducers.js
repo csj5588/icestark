@@ -5,6 +5,8 @@
 import { combineReducers } from 'redux'
 import { LOCATION_CHANGE } from 'react-router-redux'
 
+import product from '@/pages/Product/model/reducer';
+
 /*
  * routeReducer
  *
@@ -37,6 +39,7 @@ function routeReducer (state = routeInitialState, action) {
  */
 export default function createReducer (injectedReducers) {
   return combineReducers({
+    product,
     route: routeReducer,
     ...injectedReducers,
   })

@@ -3,6 +3,10 @@ import React from 'react';
 import path from 'path';
 import { getBasename } from '@ice/stark-app';
 import routes from '@/config/routes';
+import { Provider } from 'react-redux';
+import { LocaleProvider } from 'antd';
+import zhCN from 'antd/lib/locale-provider/zh_CN';
+import store from './store'
 
 const RouteItem = props => {
   const { redirect, path: routePath, component, key } = props;
@@ -14,38 +18,42 @@ const RouteItem = props => {
 
 export default () => {
   return (
-    <Router basename={getBasename()}>
-      <Switch>
-        {routes.map((route, id) => {
-          const { component: RouteComponent, children, ...others } = route;
-          return (
-            <Route
-              key={id}
-              {...others}
-              component={props => {
-                return children ? (
-                  <RouteComponent key={id} {...props}>
-                    <Switch>
-                      {children.map((child, idx) => {
-                        const { path: childPath, ...childOthers } = child;
-                        return (
-                          <RouteItem
-                            {...childOthers}
-                            key={`${id}-${idx}`}
-                            path={childPath && path.join(route.path, childPath)}
-                          />
-                        );
-                      })}
-                    </Switch>
-                  </RouteComponent>
-                ) : (
-                  <RouteItem key={id} {...props} />
-                );
-              }}
-            />
-          );
-        })}
-      </Switch>
-    </Router>
+    <Provider store={store}>
+      <LocaleProvider locale={zhCN}>
+        <Router basename={getBasename()}>
+          <Switch>
+            {routes.map((route, id) => {
+              const { component: RouteComponent, children, ...others } = route;
+              return (
+                <Route
+                  key={id}
+                  {...others}
+                  component={props => {
+                    return children ? (
+                      <RouteComponent key={id} {...props}>
+                        <Switch>
+                          {children.map((child, idx) => {
+                            const { path: childPath, ...childOthers } = child;
+                            return (
+                              <RouteItem
+                                {...childOthers}
+                                key={`${id}-${idx}`}
+                                path={childPath && path.join(route.path, childPath)}
+                              />
+                            );
+                          })}
+                        </Switch>
+                      </RouteComponent>
+                    ) : (
+                      <RouteItem key={id} {...props} />
+                    );
+                  }}
+                />
+              );
+            })}
+          </Switch>
+        </Router>
+      </LocaleProvider>
+    </Provider>
   );
 };
