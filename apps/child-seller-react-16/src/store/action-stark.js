@@ -1,22 +1,23 @@
+import { store as stark } from '@ice/stark-data';
 import * as types from './action-types'
 
-const starkState = {
-  stark: {},
-}
+const starkState = {}
 
-export const syncStark = payload => ({ type: types.STARK_EMIT, payload })
+export const syncStarkDown = payload => ({ type: types.STARK_EMIT_DOWN, payload })
+
+export const syncStarkUp = (starkAction, payload) => {
+  stark.set('dispatch', { starkAction, payload });
+  return ({ type: types.STARK_EMIT_UP });
+}
 
 const starkReducer = (state = starkState, action) => {
   const { payload = {} } = action
 
   switch (action.type) {
-    case types.STARK_EMIT:
+    case types.STARK_EMIT_DOWN:
       return {
         ...state,
-        stark: {
-          ...state.stark,
-          ...payload,
-        },
+        ...payload,
       }
     default:
       return {

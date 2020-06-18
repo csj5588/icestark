@@ -9,15 +9,20 @@ import { Provider } from 'react-redux';
 import PageLoading from '@/components/PageLoading';
 import FrameworkLayout from '@/layouts/FrameworkLayout';
 import '@/entry/service-intercept';
+import StoreInjectionToStark from './stark'
 import store from './store'
-import './stark-data'
+
 import 'moment/locale/zh-cn';
 
 const appConfig = {
   app: {
     rootId: 'icestark-container',
     addProvider: ({ children }) => (
-      <Provider store={store}>{children}</Provider>
+      <Provider store={store}>
+        <StoreInjectionToStark>
+          {children}
+        </StoreInjectionToStark>
+      </Provider>
     ),
     store: store,
   },

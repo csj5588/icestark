@@ -17,3 +17,5 @@ export const SET_AUTH_APP_CUR = 'SET_AUTH_APP_CUR'
 export const SET_AUTH_APP_LIST = 'SET_AUTH_APP_LIST'
 
 export const SET_APP_LIST = 'SET_APP_LIST'
+
+export const CHANGE_COUNT = 'CHANGE_COUNT'

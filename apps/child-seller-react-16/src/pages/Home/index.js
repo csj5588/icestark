@@ -3,19 +3,25 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { appHistory } from '@ice/stark-app';
 import { Button } from '@alifd/next';
-import IceContainer from '@icedesign/container';
-import PageTitle from '@/components/PageTitle';
+import { syncStarkUp } from '@/store/action-stark';
 
 class Home extends React.Component {
+  handleClick = () => {
+    const { stark, dispatch } = this.props;
+    dispatch(syncStarkUp('changeCount', 2));
+  }
+
   render() {
     return (
-      <div className="root">这边开始写业务</div>
+      <div className="root">
+        <Button onClick={this.handleClick}>点我改变stark</Button>
+      </div>
     )
   }
 }
 
 export default connect(stores => ({
-  store: stores,
+  stark: stores.stark,
 }))(Home);
 
 // 跳转demo

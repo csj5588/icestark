@@ -58,7 +58,7 @@ const authState = {
     },
   },
 
-  userQueryButtonCtrl: {}
+  userQueryButtonCtrl: {},
 }
 
 function splitRoute (pageButtonTreeRightUid, arr) {

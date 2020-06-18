@@ -1,17 +1,17 @@
 import React from 'react';
 import { store as stark } from '@ice/stark-data';
-import { syncStark } from '../store/action-stark';
+import { syncStarkDown } from '../store/action-stark';
 import { connect } from 'react-redux';
 
 class StarkInjectionToStore extends React.Component {
   componentDidMount() {
-    this.syncStark()
+    this.syncStarkDown()
   }
 
-  syncStark = () => {
+  syncStarkDown = () => {
     const { dispatch } = this.props;
     stark.on('stark', (starks) => {
-      dispatch(syncStark(starks));
+      dispatch(syncStarkDown(starks));
     }, true)
   }
 

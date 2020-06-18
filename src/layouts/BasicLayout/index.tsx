@@ -86,7 +86,7 @@ class BasicLayout extends React.Component {
   }
 
   render() {
-    const { children, pathname } = this.props;
+    const { children, pathname, authApp } = this.props;
     const menuChildren = this.renderChildMenu();
 
     const needSideMenu = !_isEmpty(menuChildren)
@@ -116,6 +116,10 @@ class BasicLayout extends React.Component {
                 )
               })
             }
+            <span>
+              count
+              {authApp.count}
+            </span>
           </div>
         </Shell.Branding>
 
