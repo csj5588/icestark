@@ -3,6 +3,7 @@ import { Shell } from '@alifd/next';
 import { AppLink } from '@ice/stark';
 import { BrowserRouter as Router, Link } from 'react-router-dom';
 import { connect } from 'react-redux'
+import _isEmpty from 'lodash/isEmpty'
 import { asideMenuConfig } from './menuConfig';
 import { getDataAuth } from '@/entry/apis';
 import Cookie from '@/utils/cookies'
@@ -85,8 +86,10 @@ class BasicLayout extends React.Component {
   }
 
   render() {
-    const { children } = this.props;
+    const { children, pathname } = this.props;
     const menuChildren = this.renderChildMenu();
+
+    const needSideMenu = !_isEmpty(menuChildren)
 
     return (
       <Shell
@@ -103,7 +106,11 @@ class BasicLayout extends React.Component {
             {
               asideMenuConfig.map((item, idx) => {
                 return (
-                  <AppLink key={idx} to={item.path} className="layout-menu-top-items">
+                  <AppLink
+                    key={idx}
+                    to={item.path}
+                    className={`layout-menu-top-items`}
+                  >
                     {item.name}
                   </AppLink>
                 )
@@ -114,19 +121,27 @@ class BasicLayout extends React.Component {
 
         <Shell.Content>
           <div className="layout-content">
-            <div className="side-menu">
-              <Router>
-                {
-                  menuChildren.map((item, idx) => {
-                    return (
-                      <Link key={idx} to={item.path} className="layout-menu-top-items">
-                        {item.name}
-                      </Link>
-                    )
-                  })
-                }
-              </Router>
-            </div>
+            {
+              needSideMenu ? (
+                <div className="side-menu">
+                  <Router>
+                    {
+                      menuChildren.map((item, idx) => {
+                        return (
+                          <Link
+                            key={idx}
+                            to={item.path}
+                            className={`layout-menu-top-items ${pathname === item.path ? 'act' : ''}`}
+                          >
+                            {item.name}
+                          </Link>
+                        )
+                      })
+                    }
+                  </Router>
+                </div>
+              ) : null
+            }
             <div className="layout-content-router">
               {children}
             </div>

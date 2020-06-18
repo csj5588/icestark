@@ -35,13 +35,14 @@
     margin-right: 44px;
     border-radius: 8px;
     padding: 12px 0;
-    a{
+    .layout-menu-top-items{
       color: rgba(0, 0, 0, 0.65);
       transition: all 0.3s;
       padding: 16px 0 16px 46px;
       display: block;
       position: relative;
-      &:hover{
+      &:hover,
+      &.act{
         color: #1EE0CA;
         background: rgba(30,224,202, 0.08);
         border-right: 3px solid #1EE0CA;
@@ -64,7 +65,9 @@
   }
   .layout-content-router{
     flex: 1;
-    overflow: hidden;
+    height: calc(100vh - 170px);
+    overflow-x: hidden;
+    overflow-y: auto;
     background: #F6F6F6;
     padding: 15px;
     border-radius: 8px;
