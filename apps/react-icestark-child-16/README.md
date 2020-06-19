@@ -1,4 +1,4 @@
-# ice-stark-child
+# ice-stark-react-child
 
 ## 使用
 
