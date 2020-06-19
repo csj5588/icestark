@@ -34,19 +34,9 @@ const systemManage = [
 
 const asideMenuConfig = [
   {
-    name: 'Home',
+    name: '首页',
     path: '/',
     icon: 'chart-pie',
-  },
-  {
-    name: 'About',
-    path: '/about',
-    icon: 'chart-pie',
-  },
-  {
-    name: 'Login',
-    path: '/login',
-    icon: 'account',
   },
   {
     name: '种子',

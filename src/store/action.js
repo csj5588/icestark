@@ -11,8 +11,6 @@ const ALL_AUTH = { appid: 'all', name: '全部' }
 
 const ALL = 'all' // 全部app权限
 
-export const changeCount = payload => ({ type: types.CHANGE_COUNT, payload })
-
 const onGetPageButtonTree = payload => ({ type: types.GET_PAGE_BUTTON_TREE, payload })
 
 const onGetPageButtonTreeUid = payload => ({ type: types.GET_PAGE_BUTTON_TREE_UID, payload })

@@ -4,7 +4,6 @@
  * @date 2018-12-3
  */
 import build from './build';
-import AppList, { getApiHost } from './appList'
 
 const IS_DEV = build.IS_DEV;
 const HOST = window.location.host;
@@ -74,8 +73,6 @@ const DEV = {
   }
 };
 
-export const getBusiAPiHost = getApiHost
-
 const ssoService = `${ORIGIN + PATHNAME}`;
 
 // 开发环境权限总开关：false - 关闭权限菜单，true - 开启权限菜单
@@ -124,6 +121,4 @@ export default {
 
   // 手机登录情况下，登录页面路由地址
   PHONE_LOGGIN_PATH: 'login',
-
-  getBusiAPiHost: getApiHost
 };
