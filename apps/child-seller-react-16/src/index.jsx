@@ -1,5 +1,6 @@
 import ReactDOM from 'react-dom';
 import { isInIcestark, getMountNode, registerAppEnter, registerAppLeave } from '@ice/stark-app';
+import '@/entry/service-intercept'
 import router from './router';
 
 if (isInIcestark()) {

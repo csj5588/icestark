@@ -54,7 +54,7 @@ const asideMenuConfig = [
     icon: 'atm',
   },{
     name: '管控',
-    path: '/mid',
+    path: '/mid/product',
     icon: 'account',
   },
 ];

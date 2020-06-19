@@ -4,14 +4,15 @@ import { connect } from 'react-redux';
 import { Modal, Form } from 'antd';
 import { DETAIL } from './../../constants/modalTypes';
 import { momentToTime } from './../../constants/timeFormat';
-// import { getProductList } from 'src/store/action'
 import { saveCreate, add, initCreateParams } from './../../model/action';
 import Content from './Content';
 
 class Create extends React.Component {
-  handleSubmit = e => {
+  handleSubmit = (e) => {
     const { form, store } = this.props;
-    const { create: { type } } = store;
+    const {
+      create: { type },
+    } = store;
     if (type === DETAIL) {
       this.handleCancel();
       return;
@@ -20,14 +21,30 @@ class Create extends React.Component {
     form.validateFields((err, values) => {
       if (!err) {
         const { dispatch } = this.props;
-        const { launch_date: date } = values;
+        const {
+          createParams: { before_custom_verify: beforeCustomVerify },
+        } = store;
+        const newVerify = beforeCustomVerify.map((item) => {
+          const {
+            desc,
+            method,
+            read_timeout: readTimeout,
+            service_name: serviceName,
+            uri,
+          } = item;
+          return {
+            desc,
+            method,
+            read_timeout: readTimeout,
+            service_name: serviceName,
+            uri,
+          };
+        });
         const params = {
           ...values,
-          launch_date: momentToTime(date),
-        }
-        dispatch(add(params)).then(() => {
-          // dispatch(getProductList())
-        });
+          before_custom_verify: newVerify,
+        };
+        dispatch(add(params));
       }
     });
   };
@@ -36,31 +53,29 @@ class Create extends React.Component {
     const { dispatch } = this.props;
     dispatch(saveCreate({ show: false }));
     dispatch(initCreateParams({ show: false }));
-  }
+  };
 
   render() {
     const { form, store } = this.props;
     const { create } = store;
     return (
       <Modal
+        width={800}
         title={create.title}
         visible={create.show}
         onOk={this.handleSubmit}
         onCancel={this.handleCancel}
         destroyOnClose
       >
-        <Content
-          store={store}
-          form={form}
-        />
+        <Content form={form} />
       </Modal>
-    )
+    );
   }
 }
 
 export default compose(
   Form.create(),
-  connect(stores => ({
-    store: stores.product,
-  })),
+  connect((stores) => ({
+    store: stores.dispatcher,
+  }))
 )(Create);
