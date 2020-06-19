@@ -108,7 +108,7 @@ axios.interceptors.request.use(config => {
     config.url = url.replace(root, host)
   }
   const { autoLoading } = config
-
+  console.log('拦截', config);
   if (autoLoading === undefined || autoLoading === true) {
     // loading.show()
 
