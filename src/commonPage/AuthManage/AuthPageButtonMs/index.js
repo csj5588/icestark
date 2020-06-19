@@ -286,29 +286,31 @@ class TreeList extends Component {
       hundleSubmitSuccess
     } = this
 
-    return <div>
-      {
-        pageButtonTreeRightUid[0].children.length > 0 ? <Tree
-          {...this.props}
-          switcherIcon={<Icon type="down" />}
-          className="auth-tree-list"
-          defaultExpandAll
-          checkStrictly
-        >
-          {
-            renderTreeList(pageButtonTreeRightUid, 1)
-          }
-        </Tree> : <div style={{ lineHeight: '40px', textAlign: 'center' }}>loading tree</div>
-      }
+    return (
+      <div style={{ padding: '15px' }}>
+        {
+          pageButtonTreeRightUid[0].children.length > 0 ? <Tree
+            {...this.props}
+            switcherIcon={<Icon type="down" />}
+            className="auth-tree-list"
+            defaultExpandAll
+            checkStrictly
+          >
+            {
+              renderTreeList(pageButtonTreeRightUid, 1)
+            }
+          </Tree> : <div style={{ lineHeight: '40px', textAlign: 'center' }}>loading tree</div>
+        }
 
-      <ModalForm
-        {...this.props}
-        modalConfig={modalConfig}
-        formData={formData}
-        nodeData={nodeData}
-        hideDialog={hideDialog}
-        hundleSubmitSuccess={hundleSubmitSuccess}
-      />
-    </div>
+        <ModalForm
+          {...this.props}
+          modalConfig={modalConfig}
+          formData={formData}
+          nodeData={nodeData}
+          hideDialog={hideDialog}
+          hundleSubmitSuccess={hundleSubmitSuccess}
+        />
+      </div>
+    )
   }
 }

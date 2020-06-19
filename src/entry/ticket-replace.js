@@ -1,4 +1,3 @@
-
 export default _ => {
   const reg = /\?ticket=[A-Za-z0-9]+/;
   const href = window.location.href;

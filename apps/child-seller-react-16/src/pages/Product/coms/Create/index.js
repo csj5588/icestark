@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Modal, Form } from 'antd';
 import { DETAIL } from './../../constants/modalTypes';
 import { momentToTime } from './../../constants/timeFormat';
-import { getProductList } from 'src/store/action'
+// import { getProductList } from 'src/store/action'
 import { saveCreate, add, initCreateParams } from './../../model/action';
 import Content from './Content';
 
@@ -26,7 +26,7 @@ class Create extends React.Component {
           launch_date: momentToTime(date),
         }
         dispatch(add(params)).then(() => {
-          dispatch(getProductList())
+          // dispatch(getProductList())
         });
       }
     });

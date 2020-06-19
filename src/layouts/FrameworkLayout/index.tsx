@@ -1,6 +1,5 @@
 import * as React from 'react';
 import BasicLayout from '../BasicLayout';
-import UserLayout from '../UserLayout';
 
 const { useEffect } = React;
 export default function FrameworkLayout(props: {
@@ -10,7 +9,8 @@ export default function FrameworkLayout(props: {
   appEnter: { path: string };
 }) {
   const { pathname, children, appLeave, appEnter } = props;
-  const Layout = pathname === '/login' ? UserLayout : BasicLayout;
+  // there can change the layout
+  const Layout = BasicLayout;
   useEffect(() => {
     // console.log('== app leave ==', appLeave);
     if (appLeave.path === '/angular' && window.webpackJsonp) {

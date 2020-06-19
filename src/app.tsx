@@ -1,18 +1,15 @@
 import * as React from 'react';
 import { createApp } from 'ice';
 import { store as stark } from '@ice/stark-data';
-import userInit from '@/entry/user-init';
-import ticketReplace from '@/entry/ticket-replace';
+import '@/entry';
 import { userPromise } from '@/utils/user';
 // import { ConfigProvider } from '@alifd/next';
 import { Provider } from 'react-redux';
 import PageLoading from '@/components/PageLoading';
 import FrameworkLayout from '@/layouts/FrameworkLayout';
-import '@/entry/service-intercept';
+
 import StoreInjectionToStark from './stark'
 import store from './store'
-
-import 'moment/locale/zh-cn';
 
 const appConfig = {
   app: {
@@ -68,7 +65,7 @@ const appConfig = {
       {
         path: '/mid',
         title: 'mid',
-        sandbox: true,
+        sandbox: false,
         // Angular app demo: https://github.com/ice-lab/icestark-child-apps/tree/master/child-common-angular-9 
         entry: 'http://localhost:3444/',
       }
@@ -84,10 +81,6 @@ const appConfig = {
 store.subscribe(() => {
   stark.set('stark', store.getState());
 })
-
-userInit();
-
-ticketReplace();
 
 userPromise.finally(function() {
   createApp(appConfig)

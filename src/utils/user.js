@@ -1,7 +1,7 @@
 /* eslint-disable import/no-mutable-exports */
-// import srcConfig from 'src/config';
+import srcConfig from '@/config';
+import { store as stark } from '@ice/stark-data';
 import $cookies from '@/utils/cookies';
-// import apis from 'src/entryPhone/apis'
 
 const storageKeys = {
   token: 'TOKEN',
@@ -29,6 +29,9 @@ const user = {
 
   set (_userInfo) {
     if (_userInfo && typeof _userInfo === 'object') {
+      // 同步下行
+      stark.set('userInfo', _userInfo);
+
       userInfo = _userInfo;
     }
   },
@@ -53,14 +56,8 @@ const user = {
   logout () {
     this.removeToken();
     setTimeout(() => {
-      // window.location.href = srcConfig.SSO_LOGOUT_PAGE_SERVICE;
+      window.location.href = srcConfig.SSO_LOGOUT_PAGE_SERVICE;
     });
-  },
-
-  logoutByPhone () {
-    apis.getLogout().then(() => {
-      // window.location.href = `/${srcConfig.PHONE_LOGGIN_PATH}`
-    })
   },
 
   logoutByOtherMethods () {

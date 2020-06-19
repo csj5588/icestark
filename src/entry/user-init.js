@@ -6,8 +6,8 @@ import srcConfig from '@/config'
 import { getUserInfo } from './apis'
 import { message } from 'antd'
 import ChainAsync from '@/utils/chain-async'
-// import store from '../store'
-// import { setUserLogin, setUserLogout } from '../store/action'
+import store from '@/store'
+import { setUserLogin, setUserLogout } from '@/store/action'
 
 const mockUserInfo = {
   username: '诸葛亮',
@@ -59,11 +59,10 @@ export default () => {
   }
 
   userReady(({ data }) => {
-    // user.set({ ...data })
-    // store.dispatch(setUserLogin({ ...data }))
+    user.set({ ...data })
+    store.dispatch(setUserLogin({ ...data }))
   }, ({ dm_error: dmError } = {}) => {
     // token验证失效: 用户未登录, 跳转登录页并带服务参数, 重新验证
-    console.log(dmError);
     redirect(srcConfig.SSO_PAGE_SERVICE)
   })
 }

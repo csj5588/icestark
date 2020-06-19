@@ -52,8 +52,6 @@ class BasicLayout extends React.Component {
     const { dispatch } = this.props
     getDataAuth({})
       .then(async ({ data }) => {
-        // if (!data || !data.data_power_tree || !data.data_power_tree.data_power) return
-        // console.log(data.data_power_tree)÷
         const { data: appList } = await S.getAppList()
         const dataAuth = data.data_power_tree.data_power
         const { apps = [] } = dataAuth
@@ -86,7 +84,7 @@ class BasicLayout extends React.Component {
   }
 
   render() {
-    const { children, pathname, authApp } = this.props;
+    const { children, pathname } = this.props;
     const menuChildren = this.renderChildMenu();
 
     const needSideMenu = !_isEmpty(menuChildren)
@@ -116,10 +114,6 @@ class BasicLayout extends React.Component {
                 )
               })
             }
-            <span>
-              count
-              {authApp.count}
-            </span>
           </div>
         </Shell.Branding>
 

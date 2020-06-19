@@ -11,7 +11,7 @@
  */
 
 import user from 'utils/user'
-import { Message } from 'antd'
+import { message } from 'antd'
 import srcConfig from 'src/config'
 import { getRequestsByRoot, getMessageDecorator, serviceHocs } from 'axios-service'
 
@@ -25,7 +25,7 @@ const { get, post, postXForm } = getRequestsByRoot({ root })
 
 // 消息装饰器
 const showSuccess = text => _ => _
-const showErrorMessage = text => Message.error(text)
+const showErrorMessage = text => message.error(text)
 const messageDecorator = getMessageDecorator({ success: showSuccess, error: showErrorMessage })
 const errorMessageDecorator = messageDecorator({ errorMsg: getErrorMsg('接口响应异常，请联系管理员') })
 
