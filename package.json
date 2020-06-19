@@ -1,7 +1,7 @@
 {
   "name": "@icedesign/stark-layout-scaffold",
   "version": "0.1.0",
-  "description": "微前端方案 icestark 的框架应用模板，用于快速初始化框架应用",
+  "description": "微前端方案 icestark 的框架应用，用于快速初始化框架应用",
   "dependencies": {
     "@alifd/next": "^1.x",
     "@alifd/theme-design-pro": "^0.x",
