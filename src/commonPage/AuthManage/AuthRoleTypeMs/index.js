@@ -175,7 +175,7 @@ class PageFilterTable extends Component {
     } = this
 
     return (
-      <section>
+      <section style={{ padding: '15px' }}>
         <PageFilter
           {...this.props}
           searchParams={searchParams}

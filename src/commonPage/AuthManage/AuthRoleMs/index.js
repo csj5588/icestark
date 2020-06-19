@@ -323,7 +323,7 @@ class PageFilterTable extends Component {
 
     const { authApp: { authList = [] } } = this.props
     return (
-      <section>
+      <section style={{ padding: '15px' }}>
         <PageFilter
           {...this.props}
           searchParams={searchParams}

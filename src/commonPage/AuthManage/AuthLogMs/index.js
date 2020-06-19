@@ -9,7 +9,7 @@ export default class AuthLogMs extends Component {
 
   render() {
     return (
-      <div className="auth-log-ms-page">
+      <div className="auth-log-ms-page" style={{ padding: '15px' }}>
         {/* 基于 ant-design v3.12.1 的表单模板 */}
         <AntdFilterTable />
       </div>

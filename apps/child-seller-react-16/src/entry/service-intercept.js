@@ -1,9 +1,9 @@
 import axios from 'axios'
 import axiosService from 'axios-service'
 import srcConfig from '@/config'
-// import $user from 'user'
+import $user from '@/utils/user'
 import { message } from 'antd'
-// import store from 'src/store'
+import store from '@/store'
 import build from '@/config/build';
 
 const root = srcConfig.APIS.root
@@ -47,7 +47,7 @@ const setTicketToParams = config => {
 const setAppidToHeader = config => {
   const { headers } = config
   const state = store.getState()
-  const { authApp: { curApp } } = state
+  const { stark: { authApp: { curApp } } } = state
   headers['uberctx-_namespace_appkey_'] = curApp || 'demo'
   // 上线之前改回来
   // headers['uberctx-_namespace_appkey_'] = 'demo'
@@ -93,27 +93,27 @@ axios.defaults.timeout = TIME_OUT
 
 // 请求拦截器
 axios.interceptors.request.use(config => {
-  // const { url } = config
-  // // 获取app
-  // const state = store.getState()
-  // const { authApp: { curApp, appList } } = state
-  // // 根据app获取域名
-  // const { root: host } = getApiHost(curApp, appList)
-  // // 礼物墙接口 更改域名
-  // if (url.includes('api/v1/gift_wall') && !url.includes(host)) {
-  //   // 替换域名
-  //   config.url = url.replace(root, host)
-  // }
-  // const { autoLoading } = config
+  const { url } = config
+  // 获取app
+  const state = store.getState()
+  const { stark: { authApp: { curApp, appList } } } = state
+  // 根据app获取域名
+  const { root: host } = getApiHost(curApp, appList)
+  // 礼物墙接口 更改域名
+  if (url.includes('api/v1/gift_wall') && !url.includes(host)) {
+    // 替换域名
+    config.url = url.replace(root, host)
+  }
+  const { autoLoading } = config
 
-  // if (autoLoading === undefined || autoLoading === true) {
-  // }
+  if (autoLoading === undefined || autoLoading === true) {
+  }
 
   // 将 ticket 放入 header 或 query 中，按需选用，二选一
   // setTicketToHeader(config)
-  // setTicketToParams(config)
+  setTicketToParams(config)
 
-  // setAppidToHeader(config)
+  setAppidToHeader(config)
 
   return config
 }, error => {
