@@ -9,7 +9,9 @@ import { getDataAuth } from '@/entry/apis';
 import Cookie from '@/utils/cookies'
 import * as actions from '@/store/action'
 import Footer from './components/Footer';
+import Header from './components/Header/Header';
 import S from './apis';
+
 import 'antd/dist/antd.css';
 import './index.scss';
 
@@ -115,6 +117,7 @@ class BasicLayout extends React.Component {
               })
             }
           </div>
+          <Header />
         </Shell.Branding>
 
         <Shell.Content>

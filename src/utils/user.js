@@ -56,6 +56,7 @@ const user = {
   logout () {
     this.removeToken();
     setTimeout(() => {
+      console.log(srcConfig.SSO_LOGOUT_PAGE_SERVICE);
       window.location.href = srcConfig.SSO_LOGOUT_PAGE_SERVICE;
     });
   },
