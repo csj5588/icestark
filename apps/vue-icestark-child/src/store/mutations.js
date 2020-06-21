@@ -22,7 +22,7 @@ export default {
   },
   setStark(state, payload) {
     state.stark = payload
-    stark.set('dispatch', { starkAction, payload });
+    // stark.set('dispatch', { starkAction, payload });
   },
   setInfo(state, payload) {
     state.info = payload
