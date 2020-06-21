@@ -39,11 +39,11 @@ const asideMenuConfig = [
     icon: 'chart-pie',
   },
   {
-    name: '种子',
+    name: 'Vue',
     path: '/zd-imilive',
     icon: 'atm',
   },{
-    name: '管控',
+    name: 'React',
     path: '/mid/product',
     icon: 'account',
   },

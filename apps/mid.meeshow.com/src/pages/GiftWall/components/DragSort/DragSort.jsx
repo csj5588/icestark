@@ -207,7 +207,6 @@ class App extends Component {
     }
 
     if (startIndex === index) {
-      console.log('位置没变 不用交换')
       return;
     }
     Modal.confirm({
@@ -242,7 +241,6 @@ class App extends Component {
     const { listData, startIndex } = this.state;
     const item = { ...listData[index] };
     if (item.lock === 1) {
-      console.log('is locked', index);
       return;
     }
     const startItem = { ...listData[startIndex] };
@@ -264,7 +262,6 @@ class App extends Component {
 
   // 删除
   delHandle = (index, e) => {
-    console.log('delHandle', index);
     const { listData } = this.state;
     // listData.splice(index, 1);
     listData[index] = {}
@@ -284,7 +281,6 @@ class App extends Component {
   }
 
   handleChangeTab = (val) => {
-    console.log('handleChangeTab', val)
     if (val !== this.state.selectTab) {
       this.props.handleChangeType(this.state.selectBz, val);
     }
@@ -330,7 +326,6 @@ class App extends Component {
       gift_ids: giftIds
     };
     delete data.gifts;
-    console.log('data', data);
     this.props.handleSubmit(data);
   }
 

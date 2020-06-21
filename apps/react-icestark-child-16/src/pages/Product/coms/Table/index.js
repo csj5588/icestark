@@ -160,7 +160,6 @@ class Tables extends React.PureComponent {
         limit,
       }
     } = store;
-    console.log('data', data);
     return (
       <div className={cx('root')}>
         <Table

@@ -46,33 +46,6 @@ const setTicketToParams = config => {
   }
 }
 
-// 请求头设置 appid
-const setAppidToHeader = config => {
-  const { headers } = config
-  const state = store.getState()
-  const { authApp: { curApp } } = state
-  headers['uberctx-_namespace_appkey_'] = curApp || 'demo'
-  // 上线之前改回来
-  // headers['uberctx-_namespace_appkey_'] = 'demo'
-}
-
-/**
- * 获取业务接口的域名，不同app 域名不一样
- * 主要原因： 区分 阿里机房 腾讯机房 百度机房
- **/
-const getApiHost = (app, AppList) => {
-  if (IS_DEV) {
-    return {
-      root: DEFAULT_ROOT
-    }
-  }
-  const item = AppList.filter(one => one.appid === app)[0];
-  if (!item) {
-    return defaultApiHost[curEnv]
-  }
-  return item.apiHost[curEnv] || defaultApiHost[curEnv]
-}
-
 const TIME_OUT = srcConfig.TIME_OUT
 
 const requestDefaults = {
@@ -97,32 +70,9 @@ axios.defaults.timeout = TIME_OUT
 // 请求拦截器
 axios.interceptors.request.use(config => {
   const { url } = config
-  // 获取app
-  const state = store.getState()
-  const { authApp: { curApp, appList } } = state
-  // 根据app获取域名
-  const { root: host } = getApiHost(curApp, appList)
-  // 礼物墙接口 更改域名
-  if (url.includes('api/v1/gift_wall') && !url.includes(host)) {
-    // 替换域名
-    config.url = url.replace(root, host)
-  }
-  const { autoLoading } = config
-  console.log('拦截', config);
-  if (autoLoading === undefined || autoLoading === true) {
-    // loading.show()
-
-    // let _timer = setTimeout(() => {
-    //   clearTimeout(_timer)
-    //   loading.hide()
-    // }, TIME_OUT)
-  }
-
   // 将 ticket 放入 header 或 query 中，按需选用，二选一
   // setTicketToHeader(config)
   setTicketToParams(config)
-
-  setAppidToHeader(config)
 
   return config
 }, error => {
