@@ -5,7 +5,7 @@
     <br />
     <router-link to="/list">list</router-link>
     <br />
-    <span @click="changeState">store=>{{info}} + {{outerState}}</span>
+    <span @click="changeState">store=>{{info}} + {{stark}}</span>
     <el-alert
       title="这是一个 Element 6的组件"
       type="success"
@@ -20,7 +20,7 @@ import { mapState } from 'vuex'
 
 export default {
   computed: {
-    ...mapState(['info', 'outerState'])
+    ...mapState(['info', 'stark'])
   },
   mounted() {
     console.log(this.$store)

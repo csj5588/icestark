@@ -32,4 +32,5 @@ class product extends React.Component {
 
 export default connect(stores => ({
   store: stores.product,
+  stark: stores.stark,
 }))(product);

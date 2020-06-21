@@ -1,4 +1,4 @@
-import { store as outerStore } from '@ice/stark-data';
+import { store as stark } from '@ice/stark-data';
 import Vuex from 'vuex'
 import Vue from 'vue'
 import state from './state'
@@ -9,9 +9,8 @@ import mutations from './mutations';
 Vue.use(Vuex)
 
 // 获取外user部store
-const outerState = outerStore.get('store');
+const outerStark = stark.get('stark');
 
-console.log(outerState)
 const NODE_ENV = process.env.NODE_ENV
 const store = new Vuex.Store({
   actions,
@@ -19,7 +18,7 @@ const store = new Vuex.Store({
   mutations,
   state: {
     ...state,
-    outerState
+    stark: outerStark
   },
   modules: {
     // demo
@@ -30,8 +29,8 @@ const store = new Vuex.Store({
     : []
 })
 // 监听外部store变化
-outerStore.on('store', payload => {
-  console.log(`current store is `, payload, store.commit);
-  store.commit('setOuterState', payload)
+stark.on('dispatch', payload => {
+  console.log(`current store is `, payload);
+  store.commit('setStark', payload)
 }, true);
 export default store

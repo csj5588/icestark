@@ -10,7 +10,7 @@
  *   }
  * }
  */
-
+import { store as stark } from '@ice/stark-data';
 import * as mutationTypes from './mutation-types'
 
 export default {
@@ -20,8 +20,9 @@ export default {
   [mutationTypes.SET_QUESTION_GROUP_INFO] (state, payload) {
     state.questionGroupInfo = payload
   },
-  setOuterState(state, payload) {
-    state.outerState = payload
+  setStark(state, payload) {
+    state.stark = payload
+    stark.set('dispatch', { starkAction, payload });
   },
   setInfo(state, payload) {
     state.info = payload
