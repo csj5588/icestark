@@ -70,8 +70,8 @@ const appConfig = {
           ]
         },
         {
-          path: '/mid',
-          title: '管控中心',
+          path: '/react',
+          title: 'React',
           sandbox: true,
           // Angular app demo: https://github.com/ice-lab/icestark-child-apps/tree/master/child-common-angular-9 
           entry: 'http://localhost:3444/',
