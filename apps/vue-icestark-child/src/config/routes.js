@@ -12,6 +12,7 @@ const routerConfig = [
       { path: '/', component: Home, exact: true },
       { path: '/list', component: List },
       { path: '/detail', component: Detail },
+      { path: '/codestatistics', component: () => import('@/pages/codestatistics') },
       {
         path: '*',
         component: () => renderNotFound(),

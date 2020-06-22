@@ -8,8 +8,7 @@ import mutations from './mutations';
 
 Vue.use(Vuex)
 
-// 获取外user部store
-const outerStark = stark.get('stark');
+
 
 const NODE_ENV = process.env.NODE_ENV
 const store = new Vuex.Store({
@@ -18,7 +17,7 @@ const store = new Vuex.Store({
   mutations,
   state: {
     ...state,
-    stark: outerStark
+    stark: {}
   },
   modules: {
     // demo
@@ -29,8 +28,8 @@ const store = new Vuex.Store({
     : []
 })
 // 监听外部store变化
-stark.on('dispatch', payload => {
-  console.log(`current store is `, payload);
-  store.commit('setStark', payload)
+stark.on('stark', payload => {
+  store.commit('syncStarkDown', payload || {})
 }, true);
+
 export default store

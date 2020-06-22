@@ -52,6 +52,8 @@ export const setUserLogin = payload => ({ type: types.USER_LOGIN, payload })
 
 // 手机登出
 export const setUserLogout = payload => ({ type: types.USER_LOGOUT, payload })
+// 测试stark
+export const changeStarkCount = payload => ({ type: types.CHANGE_COUNT, payload })
 
 export const userLogout = params => (dispatch, getState) => {
   return apis.getLogout().then(() => {

@@ -20,9 +20,14 @@ export default {
   [mutationTypes.SET_QUESTION_GROUP_INFO] (state, payload) {
     state.questionGroupInfo = payload
   },
-  setStark(state, payload) {
+  // 通过监听外部的stark变化来更改Vue应用的stark
+  syncStarkDown(state, payload) {
     state.stark = payload
-    // stark.set('dispatch', { starkAction, payload });
+  },
+  // Vue应用提交更改stark的数据
+  syncStarkUp(state, muster) {
+    const { starkAction, payload } = muster;
+    stark.set('dispatch', { starkAction, payload });
   },
   setInfo(state, payload) {
     state.info = payload
