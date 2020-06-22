@@ -32,9 +32,9 @@
     "stylelint": "^13.1.0"
   },
   "scripts": {
-    "start": "concurrently \"npm run start-mid\" \"npm run start-vue\" \"npm run start-tark\" ",
+    "start": "concurrently \"npm run start-react\" \"npm run start-vue\" \"npm run start-tark\" ",
     "start-tark": "icejs start",
-    "start-mid": "cd ./apps/child-seller-react-16/ && npm run start",
+    "start-react": "cd ./apps/react-icestark-child-16/ && npm run start",
     "start-vue": "cd ./apps/vue-icestark-child/ && npm run start",
     "i-all": "npm install chalk && cross-env-shell node scripts/install.js",
     "i-all:cnpm": "cnpm install chalk && cross-env-shell INSTALL_SCRIPT=cnpm node scripts/install.js",
@@ -59,36 +59,4 @@
   },
   "private": true,
   "originTemplate": "@icedesign/stark-layout-scaffold",
-  "proxyConfig": {
-    "/api/v1/**": {
-      "enable": true,
-      "target": "http://testapi.imilive.cn/",
-      "name": ""
-    },
-    "/upload/**": {
-      "enable": true,
-      "target": "https://upload.inke.cn/",
-      "name": "资源上传接口（禁止修改）"
-    },
-    "/login/**": {
-      "enable": true,
-      "target": "https://testqarbac.busi.inke.cn/",
-      "name": "登录相关接口（禁止修改）"
-    },
-    "/web/op_log/**": {
-      "enable": true,
-      "target": "https://testrbac.busi.inke.cn/",
-      "name": "日志管理接口（禁止修改）"
-    },
-    "/api/log/analytics/**": {
-      "enable": true,
-      "target": "https://betaservice.busi.inke.cn/",
-      "name": "埋点上报接口（禁止修改）"
-    },
-    "/api_web/v1/**": {
-      "enable": true,
-      "target": "http://testapi.meeshow.com/",
-      "name": "serviceInfo"
-    }
-  }
 }
