@@ -4,7 +4,18 @@
 
 ## 了解飞冰
 
-创建项目和接入项目之前，请先 [了解飞冰](https://ice.work/) 和 [映客接入飞冰规则](https://wiki.inkept.cn/pages/viewpage.action?pageId=41773307)，以保证顺利开发。
+创建项目和接入项目之前，请先
+
+- [了解飞冰](https://ice.work/)
+- [映客接入飞冰规则](https://wiki.inkept.cn/pages/viewpage.action?pageId=41773307)
+- [映客飞冰物料](https://code.inke.cn/opd/fe-aws/ikice-materials/tree/master/react-materials/blocks/AntdFilterTable/src)
+- [@ice/stark](https://ice.work/docs/icestark/reference/api)
+
+以保证顺利开发。
+
+## 架构导图
+
+![MAP](https://img.ikstatic.cn/MTU5MjgwOTQ1Mjg2MCM4NjIjcG5n.png)
 
 ## 如何使用项目？
 
@@ -94,6 +105,15 @@ tsconfig.json               <span style="color: #007947">// typescript 根目录
 
 - 架构如有修改，请维护README.md 让架构更加优秀。
 - 接入过程中如有问题，请钉钉联系 [崔世杰](dingtalk://dingtalkclient/action/sendmsg)
+
+
+## 辅助参考
+
+1. [运营后台权限接入](https://wiki.inkept.cn/pages/viewpage.action?pageId=55946806)
+2. [React 异步引入组件](https://reactjs.org/docs/code-splitting.html#reactlazy)
+3. [常见图表 Api 使用说明](https://wiki.inkept.cn/pages/viewpage.action?pageId=67387957)
+4. [inke-design武库](http://ide.hnmlw.cn/)
+5. [question&answer文档库](http://qa.hnmlw.cn/#/index?_k=96u2dp)
 
 ## 效果图
 
