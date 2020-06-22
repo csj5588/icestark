@@ -1,22 +1,23 @@
-# ice-stark-layout
+# ikice-stark
 
-## 使用
+[![ice](https://img.shields.io/badge/developing%20with-ICE-2077ff.svg)](https://github.com/alibaba/ice)
 
-- 启动调试服务: `npm start`
-- 构建 dist: `npm run build`
+## 了解飞冰
 
-## 目录结构
+创建项目和接入项目之前，请先 [了解飞冰](https://ice.work/) 和 [映客接入飞冰规则](https://wiki.inkept.cn/pages/viewpage.action?pageId=41773307)，以保证顺利开发。
 
-- 应用配置: `src/app.js`
-- 路由配置: `src/routes.js`
-- 布局文件: `src/layouts`
-- 通用组件: `src/components`
-- 页面文件: `src/pages`
+## 如何使用项目？
 
-### 项目结构
+- 安装依赖: `npm run i-all`
+- 全局启动: `npm run start`
+- 独立启动应用模板: `npm run start-react`
+
+### 目录结构
 
 <pre style="font-size: 12px">
 apps                        <span style="color: #007947">// 应用文件</span>
+  |-- react-icestark-child-16   <span style="color: #007947">// react16应用接入模版</span>
+  |-- vue-icestark-child    <span style="color: #007947">// vue应用接入模版</span>
 build                       <span style="color: #007947">// 包文件</span>
 public                      <span style="color: #007947">// 公共文件</span>
 scripts                     <span style="color: #007947">// 脚本文件夹</span>
