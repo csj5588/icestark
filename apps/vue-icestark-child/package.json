@@ -10,13 +10,14 @@
   "dependencies": {
     "@ice/stark-app": "^1.0.1",
     "@ice/stark-data": "^0.1.2",
-    "element-ui": "^2.12.0",
     "axios": "^0.16.2",
     "echarts": "^4.1.0",
     "element-resize-detector": "^1.2.0",
+    "element-ui": "^2.12.0",
     "highcharts": "^5.0.14",
     "iview": "^2.8.0",
     "popper.js": "^1.14.6",
+    "ramda": "^0.27.0",
     "vue": "^2.6.11",
     "vue-router": "^3.0.1",
     "vuex": "^3.4.0"
