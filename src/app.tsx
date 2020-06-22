@@ -60,12 +60,16 @@ const appConfig = {
         title: '种子视频',
         sandbox: false,
         // Angular app demo: https://github.com/ice-lab/icestark-child-apps/tree/master/child-common-angular-9 
-        entry: 'http://localhost:3334/',
+        // entry: 'http://localhost:3334/',
+        url: [
+          'http://localhost:3334/app.js',
+          'http://localhost:3334/css/app.css'
+        ]
       },
       {
         path: '/mid',
         title: 'mid',
-        sandbox: false,
+        sandbox: true,
         // Angular app demo: https://github.com/ice-lab/icestark-child-apps/tree/master/child-common-angular-9 
         entry: 'http://localhost:3444/',
       }

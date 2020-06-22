@@ -12,6 +12,7 @@ Vue.use(ElementUI);
 Vue.config.productionTip = false;
 
 const mountNode = getMountNode(document.getElementById('app'));
+console.log('mountNode', mountNode);
 const vue = new Vue({
   router,
   store,

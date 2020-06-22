@@ -3,16 +3,17 @@ import BasicLayout from '@/layouts/BasicLayout';
 import List from '@/pages/List';
 import Detail from '@/pages/Detail';
 import Home from '@/pages/Home';
+import Cod from '@/pages/codestatistics';
 
 const routerConfig = [
   {
     path: '/',
     component: BasicLayout,
     children: [
-      { path: '/', component: Home, exact: true },
+      { path: '/', component: Cod, exact: true },
       { path: '/list', component: List },
       { path: '/detail', component: Detail },
-      { path: '/codestatistics', component: () => import('@/pages/codestatistics') },
+      { path: '/codestatistics', component: Cod },
       {
         path: '*',
         component: () => renderNotFound(),
