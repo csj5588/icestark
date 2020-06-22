@@ -32,9 +32,13 @@
 
 如需要迁移**老**的业务木块进入，可将原业务文件夹复制至应用pages目录下, 按照以下步骤修改。
 
-- [./build.json](./build.json) 配置代理
-- 配至应用内部路由, react[./apps/react-icestark-child-16/src/router.jsx](./apps/react-icestark-child-16/src/router.jsx) , vue[./apps/vue-icestark-child/src/router/routes/index.js](./apps/vue-icestark-child/src/router/routes/index.js)
-- 配置状态管理, react [./apps/react-icestark-child-16/src/store/reducer.js](./apps/react-icestark-child-16/src/store/reducer.js) , vue[./apps/vue-icestark-child/src/store/index.js](./apps/vue-icestark-child/src/store/index.js)
+1. [./build.json](./build.json) 配置代理
+2. 配至应用内部路由,
+    - react[./apps/react-icestark-child-16/src/router.jsx](./apps/react-icestark-child-16/src/router.jsx) 
+    - vue[./apps/vue-icestark-child/src/router/routes/index.js](./apps/vue-icestark-child/src/router/routes/index.js)
+3. 配置状态管理
+    - react [./apps/react-icestark-child-16/src/store/reducer.js](./apps/react-icestark-child-16/src/store/reducer.js)
+    - vue[./apps/vue-icestark-child/src/store/index.js](./apps/vue-icestark-child/src/store/index.js)
 
 将公共方法和公共组件提取至[inke-design](http://ide.hnmlw.cn/docs/react/introduce)中进行复用。具体接入方法请参照[introduce](http://ide.hnmlw.cn/docs/react/introduce)
 
