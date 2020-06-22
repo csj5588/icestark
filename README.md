@@ -15,7 +15,7 @@
 
 ## 架构导图
 
-![screenshot](https://img.ikstatic.cn/MTU5MjgwOTEyMzg2MSM1MDUjanBn.jpg)
+![screenshot](https://img.ikstatic.cn/MTU5MjgxMDEwMjU0NyM1NDQjanBn.jpg)
 
 ## 如何使用项目？
 
