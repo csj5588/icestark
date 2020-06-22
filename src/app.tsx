@@ -65,7 +65,7 @@ const appConfig = {
       {
         path: '/mid',
         title: 'mid',
-        sandbox: false,
+        sandbox: true,
         // Angular app demo: https://github.com/ice-lab/icestark-child-apps/tree/master/child-common-angular-9 
         entry: 'http://localhost:3444/',
       }
