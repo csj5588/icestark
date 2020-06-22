@@ -1,0 +1,9 @@
+export const SAVE_CREATE = 'SAVE_CREATE';
+
+export const SAVE_CREATE_PARAMS = 'SAVE_CREATE_PARAMS';
+
+export const INIT_CREATE_PARAMS = 'INIT_CREATE_PARAMS';
+
+export const SAVE_TABLE = 'SAVE_TABLE';
+
+export const SAVE_SEARCH_PARAMS = 'SAVE_SEARCH_PARAMS';
