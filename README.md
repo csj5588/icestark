@@ -26,6 +26,18 @@
 
 4. [src/layouts/BaseicLayout/menuConfig.ts](./src/layouts/BaseicLayout/menuConfig.ts) 配置一级菜单入口。
 
+## 业务模块如何接入
+
+如需要编写**新**的业务模块，请先下载运行 [映客飞冰物料](https://code.inke.cn/opd/fe-aws/ikice-materials/tree/master/react-materials/blocks/AntdFilterTable/src)，熟悉代码逻辑，其中包含**vue**、react业务物料进行选择。
+
+如需要迁移**老**的业务木块进入，可将原业务文件夹复制至应用pages目录下, 按照以下步骤修改。
+
+- [./build.json](./build.json) 配置代理
+- 配至应用内部路由, react[./apps/react-icestark-child-16/src/router.jsx](./apps/react-icestark-child-16/src/router.jsx) , vue[./apps/vue-icestark-child/src/router/routes/index.js](./apps/vue-icestark-child/src/router/routes/index.js)
+- 配置状态管理, react [./apps/react-icestark-child-16/src/store/reducer.js](./apps/react-icestark-child-16/src/store/reducer.js) , vue[./apps/vue-icestark-child/src/store/index.js](./apps/vue-icestark-child/src/store/index.js)
+
+将公共方法和公共组件提取至[inke-design](http://ide.hnmlw.cn/docs/react/introduce)中进行复用。具体接入方法请参照[introduce](http://ide.hnmlw.cn/docs/react/introduce)
+
 ## 目录结构
 
 <pre style="font-size: 12px">
@@ -73,6 +85,12 @@ screenshot.png              <span style="color: #007947">// 项目快捷截图</
 tsconfig.json               <span style="color: #007947">// typescript 根目录/编译选项</span>
 </pre>
 
+
+## 注意事项
+
+- 架构如有修改，请维护README.md 让架构更加优秀。
+- 接入过程中如有问题，请钉钉联系 [崔世杰](dingtalk://dingtalkclient/action/sendmsg)
+
 ## 效果图
 
-![screenshot](https://img.alicdn.com/tfs/TB14igtaVT7gK0jSZFpXXaTkpXa-2878-1368.png)
+![screenshot](https://img.ikstatic.cn/MTU5MjgwOTEyMzg2MSM1MDUjanBn.jpg)
