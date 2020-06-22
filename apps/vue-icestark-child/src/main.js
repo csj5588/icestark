@@ -1,33 +1,33 @@
-import Vue from 'vue';
-import { getMountNode, registerAppLeave } from '@ice/stark-app';
-import ElementUI from 'element-ui';
-import 'element-ui/lib/theme-chalk/index.css';
 import './styles/global.scss';
 import App from './App.vue';
 import store from './store'
-import router from './router';
+import entry from 'entry'
+import router from './router'
+import $user, { userReady } from 'user'
+import S from 'service'
+import * as apis from './apis'
+import { mergeRolesToPermission } from 'common/permission'
 
-Vue.use(ElementUI);
+S.$extend(apis)
+const R = require('ramda')
 
-Vue.config.productionTip = false;
+// Promise.all([userPromise, store.dispatch(mutationTypes.SET_INITIAL_STATE)])
+// .then(() => {
+//   entry(App, {
+//     router,
+//     store
+//   })
+// })
+userReady(() => {
+  // R.compose(
+  //   $user.set,
+  //   mergeRolesToPermission,
+  //   $user.get
+  // )()
 
-const mountNode = getMountNode(document.getElementById('app'));
-console.log('mountNode', mountNode);
-const vue = new Vue({
+  
+})
+entry(App, {
   router,
-  store,
-  mounted: () => {
-    console.log('App mounted');
-  },
-  destroyed: () => {
-    console.log('App destroyed');
-  },
-  render: h => h(App),
-}).$mount();
-// for vue don't replace mountNode
-mountNode.appendChild(vue.$el);
-
-// trigger unmount manually
-registerAppLeave(() => {
-  vue.$destroy();
-});
+  store
+})

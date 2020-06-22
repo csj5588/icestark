@@ -1,0 +1,88 @@
+/*
+  动画
+  统一命名空间 @ani-
+  @author libx@libaoxu.com 2017-05-24
+*/
+
+.ani-slide-in {
+  
+}
+
+@keyframes tada {
+  0% {
+    transform: scale3d(1, 1, 1);
+  }
+  5%, 10% {
+    transform: scale3d(.9, .9, .9) rotate3d(0, 0, 1, -3deg);
+  }
+  15%, 25%, 35%, 45% {
+    transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
+  }
+  20%, 30%, 40% {
+    transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
+  }
+  50%, 100% {
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+
+@keyframes tranX1{
+  0%{
+    transform:translateX(0);
+  }
+  100%{
+    transform:translateX(10rem);
+  }
+}
+
+@keyframes tranX2{
+  0%{
+    transform:translateX(0);
+  }
+  100%{
+    transform:translateX(-10rem);
+  }
+}
+@keyframes tranX3{
+  0%{
+    transform:translateX(0);
+  }
+  100%{
+    transform:translateX(-10rem);
+  }
+}
+
+@keyframes swing-linear {
+  0% {
+    transform: rotate3d(0,0,1,0deg)
+  }
+  
+  30% {
+    transform: rotate3d(0,0,1,10deg)
+  }
+
+  50% {
+    transform: rotate3d(0,0,1,0deg)
+  }
+
+  70% {
+    transform: rotate3d(0,0,1,-10deg)
+  }
+
+  100% {
+    transform: rotate3d(0,0,1,0deg)
+  }
+}
+
+@keyframes tranY {
+  0% {
+    transform:translateY(0);
+  }
+  50% {
+    transform:translateY(-.26rem);
+  }
+  100% {
+    transform:translateY(0rem);
+  }
+}

@@ -92,7 +92,7 @@
           });
           this.chartData.series[0].data = ary;
         }).catch((err) => {
-          this.$Message.error(err.error_msg)
+          this.$Message.error(err.error_msg || '')
         });
         window.setTimeout(getCount, 60000)
       };
@@ -102,7 +102,8 @@
       this.getCodeData()
     }
 
-    mounted () {}
+    mounted () {
+    }
 
     render (h) {
       const {

@@ -47,6 +47,9 @@ module.exports = {
         'mixins': path.resolve(__dirname, 'src/common/mixins'),
         // vue相关插件
         'plugins': path.resolve(__dirname, 'src/common/plugins'),
+        // 具体实现组件, 按需引用时候用
+        'iview-ui': path.resolve(__dirname, 'src/common/ui/iview/src/components'),
+        'element-ui': path.resolve(__dirname, 'src/common/ui/element-ui')
       },
     },
   },

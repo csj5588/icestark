@@ -1,0 +1,94 @@
+/*
+  常用样式工具方法
+  统一命名空间 .com-
+  @author libx@libaoxu.com 2017-05-22
+*/
+
+@com-color: black;
+.com-triangle-down (@color, @size: 6) {
+  width: 0;
+  height: 0;
+  border-top: @size * 1px solid @color;
+  border-left: @size * 1px solid transparent;
+  border-right: @size * 1px solid transparent;
+  border-bottom: 0;
+  position: absolute;
+  top: 50%;
+  margin-top: -(@size / 2) * 1px;
+}
+
+.com-triangle-up (@color, @size: 6) {
+  width: 0;
+  height: 0;
+  border-bottom: @size * 1px solid @color;
+  border-left: @size * 1px solid transparent;
+  border-right: @size * 1px solid transparent;
+  border-top: 0;
+  position: absolute;
+  top: 50%;
+  margin-top: -(@size / 2) * 1px;
+}
+
+.border-basic () {
+  position: absolute;
+  content: '';
+  display: block;
+}
+.border-horizon (@color) {
+  .border-basic;
+  height: 1px; /*no*/
+  width: 100%;
+  background-color: @color;
+  transform-origin: 0 100%;
+  transform: scaleY(0.5);
+}
+.border-vertical (@color) {
+  .border-basic;
+  width: 1px; /*no*/
+  height: 100%;
+  background-color: @color;
+  transform-origin: 100 0%;
+  transform: scaleX(0.5);
+}
+
+/*
+  @example
+  top 跟 right 可以一起用, 伪类分别是before 和 after
+  left 跟 bottom 可以一起用
+  .com-border-mixin (top, @color); 
+  .com-border-mixin (right, @color); 
+*/
+.com-border-mixin (top, @color) {
+  position: relative;
+  &::before {
+    .border-horizon(@color);
+    left: 0;
+    top: 0;
+  }
+}
+.com-border-mixin (left, @color) {
+  position: relative;
+  &::before {
+    .border-vertical(@color);
+    top: 0;
+    left: 0;
+  }
+}
+
+.com-border-mixin (bottom, @color) {
+  position: relative;
+  &::after {
+    .border-horizon(@color);
+    bottom: 0;
+    left: 0;
+  }
+}
+
+.com-border-mixin (right, @color) {
+  position: relative;
+  &::after {
+    .border-vertical(@color);
+    right: 0;
+    top: 0;
+  }
+}

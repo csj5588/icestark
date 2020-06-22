@@ -1,0 +1,81 @@
+
+/*
+  ui
+*/
+
+img {
+  width: 100%;
+  height: auto;
+  vertical-align: top;
+}
+.show-important {
+  display: block !important;
+}
+.hide-important {
+  display: none !important;
+}
+.clearfix {
+  *zoom: 1;
+}
+.fl {
+  float: left;
+}
+.fr {
+  float: right;
+}
+.clearfix:before,
+.clearfix:after {
+  display: table;
+  line-height: 0;
+  content: "";
+}
+.clearfix:after {
+  clear: both;
+}
+
+.hide {
+  display: none;
+}
+
+.show {
+  display: block;
+}
+
+/*单行样式溢出*/
+.base-text-over {
+  word-break: break-all;
+  word-wrap: break-word;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* 词内断句 */
+.base-break-text {
+  word-wrap: break-word;
+  word-break: break-all;
+}
+
+/* 图片点击放大 */
+.zoom-out {
+  cursor: zoom-out;
+  width: 30%;
+}
+.tra-img {
+  text-align: center;
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+.bg-img {
+  position: fixed;
+  background-color: hsla(0,0%,75%,.5);
+  z-index: 9999;
+  display: none;
+  top: 0;
+  left: 0;
+}
