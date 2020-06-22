@@ -5,19 +5,17 @@ import Detail from '@/pages/Detail';
 import Home from '@/pages/Home';
 import Cod from '@/pages/codestatistics';
 import Highchart from '@/components/highchart';
-import Demo from '@/pages/demo';
 
 const routerConfig = [
   {
     path: '/',
     component: BasicLayout,
     children: [
-      { path: '/', component: Home, exact: true },
+      { path: '/', component: Cod, exact: true },
       { path: '/list', component: List },
       { path: '/detail', component: Detail },
       { path: '/codestatistics', component: Cod },
       { path: '/highchart', component: Highchart },
-      { path: '/demo', component: Demo },
       {
         path: '*',
         component: () => renderNotFound(),
