@@ -34,7 +34,7 @@
   "scripts": {
     "start": "concurrently \"npm run start-react\" \"npm run start-vue\" \"npm run start-tark\" ",
     "start-tark": "icejs start",
-    "start-react": "cd ./apps/react-apps/ && npm run start",
+    "start-react": "cd ./apps/react-icestark-child-16/ && npm run start",
     "start-vue": "cd ./apps/vue-icestark-child/ && npm run start",
     "i-all": "npm install chalk && cross-env-shell node scripts/install.js",
     "i-all:cnpm": "cnpm install chalk && cross-env-shell INSTALL_SCRIPT=cnpm node scripts/install.js",
