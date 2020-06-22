@@ -6,7 +6,8 @@
 </style>
 
 <template>
-  <div ref="chartEle" class="chart-ele">
+  <div ref="wrapper">
+    <div ref="chartEle" class="chart-ele"/>
   </div>
 </template>
 
@@ -15,11 +16,13 @@ import Highcharts from 'highcharts'
 import HighchartsExport from 'highcharts/modules/exporting'
 import ExportingData from 'highcharts/modules/export-data'
 
-
 export default {
-  props: [
-    'chartData'
-  ],
+  props: {
+    chartData: {
+      type: Object,
+      default: () => ({})
+    }
+  },
   mounted() {
     Highcharts.chart(this.$refs.chartEle, { ...this.chartData })
     HighchartsExport(Highcharts);
@@ -50,6 +53,7 @@ export default {
       return this.chartData.series
     }, () => {
       Highcharts.chart(this.$refs.chartEle, { ...this.chartData })
+      this.$refs.wrapper.appendChild(this.$refs.chartEle)
     }, {
       deep: true
     })
