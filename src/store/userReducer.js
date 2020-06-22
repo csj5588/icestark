@@ -6,12 +6,13 @@ import * as types from './action-types'
 const defaultUserInfo = {
   uid: '',
   username: '',
-  phone: ''
+  phone: '',
 }
 
 const initialState = {
   info: { ...defaultUserInfo },
-  isLogin: false
+  isLogin: false,
+  count: 0
 };
 
 const SOME_ACTION = 'SOME_ACTION';
@@ -23,6 +24,11 @@ function user (state = initialState, action) {
         info: action.payload,
         isLogin: true
       });
+    case types.CHANGE_COUNT:
+      return {
+        ...state,
+        count: action.payload
+      };
     case types.USER_LOGOUT:
       return Object.assign({}, state, {
         info: { ...defaultUserInfo },

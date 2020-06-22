@@ -25,6 +25,11 @@
       "target": "192.168.101.120:3444/",
       "name": ""
     },
+    "/api/oper/**": {
+      "enable": true,
+      "target": "http://service.imilive.cn/",
+      "name": ""
+    },
     "/upload/**": {
       "enable": true,
       "target": "https://upload.inke.cn/",
