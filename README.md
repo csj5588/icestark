@@ -12,12 +12,26 @@
 - 全局启动: `npm run start`
 - 独立启动应用模板: `npm run start-react`
 
-### 目录结构
+## 如何接入应用
+
+1. **apps**目录已置放两个vue / react 应用模板，根据业务需求，复制一份新应用出来进行接入。
+
+2. [src/app.tsx](./src/app.tsx)中 **getApps**方法中注册新应用入口。
+
+3. [package.json](./package.json)添加start-xxx命令，并添加到scripts -> start命令中。
+
+```
+"start": "concurrently \"npm run start-react\" \"npm run start-vue\" \"npm run start-tark\" ",
+```
+
+4. [src/layouts/BaseicLayout/menuConfig.ts](./src/layouts/BaseicLayout/menuConfig.ts) 配置一级菜单入口。
+
+## 目录结构
 
 <pre style="font-size: 12px">
 apps                        <span style="color: #007947">// 应用文件</span>
   |-- react-icestark-child-16   <span style="color: #007947">// react16应用接入模版</span>
-  |-- vue-icestark-child    <span style="color: #007947">// vue应用接入模版</span>
+  |-- vue-icestark-child        <span style="color: #007947">// vue应用接入模版</span>
 build                       <span style="color: #007947">// 包文件</span>
 public                      <span style="color: #007947">// 公共文件</span>
 scripts                     <span style="color: #007947">// 脚本文件夹</span>
