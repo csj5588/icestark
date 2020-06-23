@@ -1,6 +1,6 @@
 import { renderNotFound } from '@ice/stark-app';
 import BasicLayout from '@/layouts/BasicLayout';
-import Demo from '@/pages/Demo';
+import Demo from '@/pages/demo';
 
 const routerConfig = [
   {
