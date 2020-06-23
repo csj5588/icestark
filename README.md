@@ -53,6 +53,25 @@
 
 将公共方法和公共组件提取至[inke-design](http://ide.hnmlw.cn/docs/react/introduce)中进行复用。具体接入方法请参照[introduce](http://ide.hnmlw.cn/docs/react/introduce)
 
+## 如何传递状态
+
+如果**react**子应用想订阅微前端状态，与订阅自身**stores**方法一致，因为已经合并到了自身状态管理中。调用方法如下：
+
+```javascript
+import { connect } from 'react-redux';
+
+class ReactAppsComponents extends React.Component {
+  render{ ... }
+}
+
+export default connect(stores => ({
+  stark: stores.stark,
+}))(ReactAppsComponents)
+
+```
+
+保留了与以前架构相同的开发者习惯。
+
 ## 目录结构
 
 <pre style="font-size: 12px">
