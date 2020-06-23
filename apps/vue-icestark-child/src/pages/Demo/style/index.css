@@ -27,3 +27,6 @@
   /* -webkit-box-pack: center; */
   justify-content: center;
 }
+.element-table-wrapper{
+  padding: 30px;
+}

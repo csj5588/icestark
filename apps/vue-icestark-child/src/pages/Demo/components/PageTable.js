@@ -2,7 +2,7 @@ import Vue from 'vue'
 import VueClassDecorator from 'vue-class-component'
 import { Table, TableColumn, Button, MessageBox } from 'element-ui'
 
-// import '../style/index.css'
+import '../style/index.css'
 
 import { VIEW, EDIT } from '../constants/modalTypes'
 
