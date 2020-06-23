@@ -40,7 +40,7 @@ const asideMenuConfig = [
   },
   {
     name: 'Vue',
-    path: '/zd-imilive',
+    path: '/vue-app',
     icon: 'atm',
   },{
     name: 'React',

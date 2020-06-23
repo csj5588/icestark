@@ -1,0 +1,29 @@
+.element-filter-form .ivu-form-item-content {
+  display: inline-block;
+}
+
+.element-filter-p {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.element-filter-span {
+  float: left;
+  font-size: 18px;
+  line-height: 40px;
+  margin-right: 10px;
+}
+
+.element-filter-button {
+  margin: 0 5px;
+}
+
+.element-table-button {
+  margin: 0 5px;
+}
+
+.el-pagination {
+  display: flex;
+  /* -webkit-box-pack: center; */
+  justify-content: center;
+}
