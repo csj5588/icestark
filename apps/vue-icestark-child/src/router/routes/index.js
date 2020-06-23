@@ -1,21 +1,13 @@
 import { renderNotFound } from '@ice/stark-app';
 import BasicLayout from '@/layouts/BasicLayout';
-import List from '@/pages/List';
-import Detail from '@/pages/Detail';
-import Home from '@/pages/Home';
-import Cod from '@/pages/codestatistics';
-import Highchart from '@/components/highchart';
+import Demo from '@/pages/Demo';
 
 const routerConfig = [
   {
     path: '/',
     component: BasicLayout,
     children: [
-      { path: '/', component: Cod, exact: true },
-      { path: '/list', component: List },
-      { path: '/detail', component: Detail },
-      { path: '/codestatistics', component: Cod },
-      { path: '/highchart', component: Highchart },
+      { path: '/', component: Demo, exact: true },
       {
         path: '*',
         component: () => renderNotFound(),
