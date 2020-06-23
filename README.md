@@ -55,7 +55,7 @@
 
 ## 如何传递状态
 
-**stark**为微前端架构中的状态管理，采用**redux**与**@ice/stark-data**相护同步方案，不推荐直接使用**@ice/stark-data**接口
+**stark**为微前端架构中的状态管理，采用**redux**与@**ice/stark-data**相护同步方案，不推荐直接使用@**ice/stark-data**接口
 
 如果**react**子应用想订阅微前端**stark**状态，与订阅自身**stores**方法一致，因为已经合并到了自身状态管理中。调用方法如下：
 
@@ -150,3 +150,18 @@ tsconfig.json               <span style="color: #007947">// typescript 根目录
 ## 效果图
 
 ![screenshot](https://img.ikstatic.cn/MTU5MjgwOTEyMzg2MSM1MDUjanBn.jpg)
+
+
+## 常见问题
+
+1. 为什么启动项目显示很多sockjs-node/info status 500 报错？
+
+答： 项目热更新跨域问题，正在想办法解决，不会影响开发。
+
+2. 我业务拷贝进来之后，为什么请求失效了？
+
+答： 请检查一下有没有在stark根目录build.json中配置全局代理。
+
+2. 业务接口代理名称重复了怎么办？
+
+答： 匹配规则请延长一些，尽量区分不一样的业务，以后会上动态代理模块。
