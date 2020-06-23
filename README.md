@@ -55,7 +55,9 @@
 
 ## 如何传递状态
 
-如果**react**子应用想订阅微前端状态，与订阅自身**stores**方法一致，因为已经合并到了自身状态管理中。调用方法如下：
+**stark**为微前端架构中的状态管理，采用**redux**与**@ice/stark-data**相护同步方案，不推荐直接使用**@ice/stark-data**接口
+
+如果**react**子应用想订阅微前端**stark**状态，与订阅自身**stores**方法一致，因为已经合并到了自身状态管理中。调用方法如下：
 
 ```javascript
 import { connect } from 'react-redux';
@@ -70,7 +72,18 @@ export default connect(stores => ({
 
 ```
 
-保留了与以前架构相同的开发者习惯。
+保留了与以前**redux**架构相同的开发者习惯。一样通过**connect**注入的方式。
+
+如果是**react**子应用想改变微前端状态**stark**状态，可通过调用**action-stark**中的**syncStarkUp**方法。
+
+```javascript
+import { syncStarkUp } from '@/store/action-stark';
+
+dispatch(syncStarkUp('acitonForStark', payload));
+
+```
+
+**acitonForStark**是你需要触发的**stark**中的**aciton**操作，**payload**为对应的值。
 
 ## 目录结构
 
