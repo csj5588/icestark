@@ -51,7 +51,9 @@
     - react [./apps/react-icestark-child-16/src/store/reducer.js](./apps/react-icestark-child-16/src/store/reducer.js)
     - vue[./apps/vue-icestark-child/src/store/index.js](./apps/vue-icestark-child/src/store/index.js)
 
-将公共方法和公共组件提取至[inke-design](http://ide.hnmlw.cn/docs/react/introduce)中进行复用。具体接入方法请参照[introduce](http://ide.hnmlw.cn/docs/react/introduce)
+将公共方法和公共组件提取至[inke-design](http://ide.hnmlw.cn/docs/react/introduce)中进行复用。
+
+具体接入方法请参照[introduce](http://ide.hnmlw.cn/docs/react/introduce)
 
 ## 如何传递状态
 
