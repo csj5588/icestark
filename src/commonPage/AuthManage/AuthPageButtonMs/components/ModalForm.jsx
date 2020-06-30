@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { Form, Input, Select, DatePicker, Button, Modal } from 'antd'
+import { Form, Input, Select, DatePicker, Button, Modal, message } from 'antd'
 import { filterOption } from 'ik-utils'
 
 import S from '../apis'
@@ -65,13 +65,13 @@ class ModalForm extends Component {
     })
 
     if (formData.type !== ADD_PAGE && !apipath.replace('/', '')) {
-      this.$message.error('请输入完整的接口地址')
+      message.error('请输入完整的接口地址')
       return
     }
 
     S.postModuleModify(formDataAll)
       .then(() => {
-        this.$message.success('提交成功')
+        message.success('提交成功')
         hundleSubmitSuccess()
         this.onCancel()
       })

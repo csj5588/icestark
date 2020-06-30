@@ -1,7 +1,8 @@
 import { LOCATION_CHANGE } from 'react-router-redux'
-// import { setAuthorityTree } from '../menuConfig'
-import * as types from './action-types'
 import srcConfig from '@/config'
+import { setAuthorityTree } from '../layouts/BasicLayout/menuConfig'
+import * as types from './action-types'
+
 
 const authState = {
   pageButtonTreeRight: [{
@@ -65,7 +66,13 @@ function splitRoute (pageButtonTreeRightUid, arr) {
   if (!arr[0]) {
     arr.splice(0, 1)
   }
-
+  let formatArr = arr
+  let isFrameworkRoute = false
+  // 如果是微前端的路由
+  isFrameworkRoute = formatArr.findIndex(item => item.includes('-')) !== -1
+  if(isFrameworkRoute) {
+    formatArr = formatArr[0] && formatArr[0].split('-')
+  }
   let level = 0
   let routeCode = []
   const findCode = (content, route) => {
@@ -84,7 +91,7 @@ function splitRoute (pageButtonTreeRightUid, arr) {
     })
   }
 
-  findCode(pageButtonTreeRightUid, arr)
+  findCode(pageButtonTreeRightUid, formatArr)
   return routeCode
 }
 
@@ -95,7 +102,7 @@ const auth = (state = authState, action) => {
   switch (action.type) {
     case types.GET_PAGE_BUTTON_TREE:
       // cancel
-      // setAuthorityTree(payload)
+      setAuthorityTree(payload)
       return {
         ...state,
         pageButtonTreeRight: [{

@@ -7,9 +7,9 @@ import { userPromise } from '@/utils/user';
 import { Provider } from 'react-redux';
 import PageLoading from '@/components/PageLoading';
 import FrameworkLayout from '@/layouts/FrameworkLayout';
-
 import StoreInjectionToStark from './stark'
 import store from './store'
+import '@/assets/styles/index.less'
 
 const appConfig = {
   app: {

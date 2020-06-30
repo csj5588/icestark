@@ -19,3 +19,5 @@ export const SET_AUTH_APP_LIST = 'SET_AUTH_APP_LIST'
 export const SET_APP_LIST = 'SET_APP_LIST'
 // 测试stark
 export const CHANGE_COUNT = 'CHANGE_COUNT'
+
+export const SET_CUR_APP_ITEM = 'SET_CUR_APP_ITEM'

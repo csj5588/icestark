@@ -9,7 +9,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import $user from '@/utils/user';
 import * as actions from '@/store/action'
-import { Tree, Icon, Popconfirm } from 'antd'
+import { Tree, Icon, Popconfirm, message } from 'antd'
 
 import S from './apis'
 import srcConfig from '@/config'
@@ -94,7 +94,7 @@ class TreeList extends Component {
 
     S.postModuleModify({ id, parent, name, apipath, root, code, type, status: STATUS_DELETE })
       .then(() => {
-        this.$message.success('删除成功')
+        message.success('删除成功')
         this.hundleSubmitSuccess()
       })
   }

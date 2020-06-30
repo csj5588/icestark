@@ -63,11 +63,20 @@ export const userLogout = params => (dispatch, getState) => {
 
 // 设置select 默认选中的app
 const getDefaultApp = list => {
-  let app = Cookie.getItem(saveAppKey)
+  const app = Cookie.getItem(saveAppKey)
   if (list.findIndex(x => x.appid === app) !== -1) {
     return app
   }
   return list[0] && list[0].appid
+}
+
+const getDefaultAppItem = list => {
+  const app = Cookie.getItem(saveAppKey);
+  const index = list.findIndex((x) => x.appid === app)
+  if ( index !== -1) {
+    return list[index];
+  }
+  return list[0] || {};
 }
 
 // 获取业务线下拉列表
@@ -79,6 +88,7 @@ export const getProductList = () => async (dispatch, getState) => {
     const dataPower = _get(dataAuth, 'data_power_tree.data_power', {})
     const { apps = [] } = dataPower
     const defaultApp = getDefaultApp(productList);
+    const defaultAppItem = getDefaultAppItem(productList);
     Cookie.setItem(saveAppKey, defaultApp);
     const appListOptions = (apps.includes(ALL)) ? productList : productList.filter(item => (apps.includes(item.appid)))
     const authList = [ ALL_AUTH, ...productList ]
@@ -86,6 +96,7 @@ export const getProductList = () => async (dispatch, getState) => {
       curApp: defaultApp,
       appList: appListOptions,
       authList,
+      curAppItem: defaultAppItem,
     }))
     // 默认去掉全局ALL这一选项
     // const appList = (dataPowerList.includes(ALL)) ? appFullOpt : appFullOpt.filter(item => dataPowerList.includes(item.app))
