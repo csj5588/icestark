@@ -2,7 +2,7 @@ import _get from 'lodash/get'
 import * as types from './action-types'
 import Cookie from '@/utils/cookies'
 import apis, { getModuleList, getDataAuth } from '@/entry/apis'
-import { Message } from 'antd'
+import { message } from 'antd'
 import S from './apis'
 
 const saveAppKey = 'cur-auth-app'
@@ -31,7 +31,7 @@ export const getPageButtonTree = params => async (dispatch, getState) => {
     // 4000005, 接口返回无权限时，设置为空
     // 接口报错也设置为 全部无权限
     dispatch(onGetPageButtonTree([]))
-    Message.error(error.error_msg || '接口响应异常，请联系管理员')
+    message.error(error.error_msg || '接口响应异常，请联系管理员')
   }
 }
 
@@ -43,7 +43,7 @@ export const getPageButtonTreeUid = params => async (dispatch, getState) => {
     // 4000005, 接口返回无权限时，设置为空
     // 接口报错也设置为 全部无权限
     dispatch(onGetPageButtonTreeUid([]))
-    Message.error(error.error_msg || '接口响应异常，请联系管理员')
+    message.error(error.error_msg || '接口响应异常，请联系管理员')
   }
 }
 
@@ -101,6 +101,6 @@ export const getProductList = () => async (dispatch, getState) => {
     // 默认去掉全局ALL这一选项
     // const appList = (dataPowerList.includes(ALL)) ? appFullOpt : appFullOpt.filter(item => dataPowerList.includes(item.app))
   } catch (error) {
-    Message.error(error || '接口响应异常，请联系管理员')
+    message.error(error || '接口响应异常，请联系管理员')
   }
 }

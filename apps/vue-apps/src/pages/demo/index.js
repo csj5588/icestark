@@ -6,7 +6,7 @@
 
 import Vue from 'vue'
 import VueClassDecorator from 'vue-class-component'
-import { Message } from 'element-ui'
+import { message } from 'element-ui'
 import { stringifyParams } from 'ik-utils'
 
 import PageFilter from './components/PageFilter'
@@ -130,11 +130,11 @@ export default class PageTableFilter extends Vue {
   getDataList () {
     console.log('查询数据: ', this.searchParmas)
     S.getDataList(this.searchParmas).then(res => {
-      Message.success('查询成功')
+      message.success('查询成功')
       this.tableData = res.data.list || []
       this.tableTotal = +res.data.total || 0
     }).catch(res => {
-      Message.error(res.error_msg || '接口响应异常，请联系管理员')
+      message.error(res.error_msg || '接口响应异常，请联系管理员')
     })
   }
 
@@ -171,7 +171,7 @@ export default class PageTableFilter extends Vue {
 
     console.log('删除id: ', id)
     S.postDataDel({ id }).then(res => {
-      Message.success('删除成功')
+      message.success('删除成功')
       /**
        *  @overview 如果删除操作只是修改状态，需将以下判断注释
        */
@@ -180,7 +180,7 @@ export default class PageTableFilter extends Vue {
       }
       this.getDataList()
     }).catch(res => {
-      Message.error(res.error_msg || '接口响应异常，请联系管理员')
+      message.error(res.error_msg || '接口响应异常，请联系管理员')
     })
   }
 
@@ -203,11 +203,11 @@ export default class PageTableFilter extends Vue {
 
     console.log('提交数据: ', formParmas)
     S.postDataModify(formParmas).then(res => {
-      Message.success('提交成功')
+      message.success('提交成功')
       this.getDataList()
       this.hideDialog()
     }).catch(res => {
-      Message.error(res.error_msg || '接口响应异常，请联系管理员')
+      message.error(res.error_msg || '接口响应异常，请联系管理员')
     })
   }
 

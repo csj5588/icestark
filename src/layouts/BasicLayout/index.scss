@@ -126,7 +126,7 @@
 
 .layout-content{
   width: 1200px;
-  padding-top: 44px;
+  // padding-top: 44px;
   margin: 0 auto;
   display: flex;
   .side-menu{
@@ -166,11 +166,11 @@
   }
   .layout-content-router{
     flex: 1;
-    height: calc(100vh - 170px);
-    overflow-x: hidden;
-    overflow-y: auto;
-    background: #F6F6F6;
-    border-radius: 8px;
+    // height: calc(100vh - 170px);
+    // overflow-x: hidden;
+    // overflow-y: auto;
+    // background: #F6F6F6;
+    // border-radius: 8px;
   }
 }
 

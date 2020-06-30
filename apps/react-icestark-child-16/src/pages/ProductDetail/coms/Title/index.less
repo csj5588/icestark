@@ -1,0 +1,35 @@
+@prefix: product-detail-title;
+
+.@{prefix}- {
+  &root{
+    width: 100%;
+    .highlight {
+      color: red
+    }
+    .grey {
+      color: #b5b5b3
+    }
+    .ellipsis {
+      white-space: nowrap; /* 内容超出容器宽度时强制不换行 */
+      overflow: hidden;        /* 内容超出容器时隐藏超出部分 */
+      text-overflow: ellipsis;   /* 隐藏部分显示成"..." */
+    }
+    .mt20 {
+      margin-top: 15px;
+    }
+    .mb20 {
+      margin-bottom: 15px;
+    }
+    .top {
+      display: flex;
+      justify-content: start;
+      align-items: center;
+      .text {
+        font-weight: bold;
+        font-size: 24px;
+        margin: 0 20px;
+      }
+    }
+
+  }
+}

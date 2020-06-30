@@ -4,7 +4,7 @@ import $log from 'utils/log';
 import $common from 'utils/common';
 import $loading from 'components/loading';
 
-import { Modal, Message } from 'antd'
+import { Modal, message } from 'antd'
 
 const staicMixMap = {
   // 用户
@@ -17,7 +17,7 @@ const staicMixMap = {
   // ui
   $loading,
   $modal: Modal,
-  $message: Message,
+  $message: message,
 };
 
 const inject = (source, key, val) => {

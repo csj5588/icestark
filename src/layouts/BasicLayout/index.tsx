@@ -1,6 +1,6 @@
 import React from 'react';
 import { Shell } from '@alifd/next';
-import { AppLink } from '@ice/stark';
+import { AppLink, appHistory } from '@ice/stark';
 import { BrowserRouter as Router, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import _isEmpty from 'lodash/isEmpty';
@@ -133,10 +133,14 @@ class BasicLayout extends React.Component {
     return menuChildren;
   };
 
+  handleToMange = () => {
+    const { appToken } = this.props;
+    appHistory.push(`/react/productDetail?app_key=${appToken}`);
+  }
+
   render() {
-    const { children, pathname } = this.props;
+    const { children, pathname, appToken } = this.props;
     const menuChildren = this.renderChildMenu();
-    console.log(pathname.includes(MANAGE))
     const needSideMenu = !_isEmpty(menuChildren);
 
     return (
@@ -169,14 +173,13 @@ class BasicLayout extends React.Component {
             */}
             <div className="layout-menu-top-items">
               <a className={`layout-menu-top-document`}>文档中心</a>
-              <AppLink
-                to="/react/product"
-                onClick={this.handChangeRoute}
+              <div
+                onClick={this.handleToMange}
                 className={`layout-menu-top-control ${
                   pathname.includes(CONTROL) ? 'act' : ''}`}
               >
                 管控中心
-              </AppLink>
+              </div>
             </div>
             <div className={`layout-menu-top-items`}>
               <AppLink

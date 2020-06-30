@@ -1,0 +1,67 @@
+@prefix: meeshow-basic-layout-product-list;
+
+.@{prefix}- {
+  &root {
+    position: absolute;
+    width: 100%;
+    background: rgba(41,44,47,1);
+    height: 91px;
+    top: 64px;
+    left: 0;
+    .tabs {
+      width: 1200px;
+      position: relative;
+      margin: 0 auto;
+      .ant-tabs-tab-arrow-show {
+        color: #e6e2e2;
+        .anticon.ant-tabs-tab-next-icon-target,
+        .anticon.ant-tabs-tab-prev-icon-target {
+           font-size: 14px;
+        }
+      }
+      .tabs-left {
+
+      }
+      .tabs-right {
+
+      }
+      .ant-tabs-ink-bar {
+        height: 3px;
+      }
+      .ant-tabs-tab-active {
+        &::before{
+          content: '';
+          position: absolute;
+          width: 100%;
+          height: 70px;
+          left: 0px;
+          top: calc(50% - 16px);
+          background: url(https://img.ikstatic.cn/MTU5MzQ5OTUzMjY0OSMgNTQjcG5n.png) no-repeat center center;
+          background-size: 100%;
+        }
+      }
+      .ant-tabs-bar {
+        border-bottom: none;
+      }
+      .tabPane{
+        display: flex;
+        align-items: center;
+        height: 68px;
+        img {
+          width:23px;
+          height:23px;
+          margin-right: 10px;
+          background:rgba(218,218,218,1);
+          border-radius:6px;
+        }
+        .tabPane-text {
+          font-size:14px;
+          color:rgba(153,153,153,1);
+          &.act {
+            color:#1EE0CA;
+          }
+        }
+      }
+    }
+  }
+}
