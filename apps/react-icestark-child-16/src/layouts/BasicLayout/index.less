@@ -1,0 +1,62 @@
+@prefix: meeshow-basic-layout;
+
+.@{prefix}- {
+  &root {
+    margin-top: 92px;
+    .content {
+      // height: calc(100vh - 227px);
+      // overflow-x: hidden;
+      // overflow-y: auto;
+      .layout-content {
+        width: 1200px;
+        // padding-top: 44px;
+        margin: 0 auto;
+        display: flex;
+        .side-menu {
+          width: 264px;
+          display: inline-table;
+          background: #f7f7f7;
+          margin-right: 44px;
+          border-radius: 8px;
+          padding: 12px 0;
+          .layout-menu-top-items {
+            color: rgba(0, 0, 0, 0.65);
+            transition: all 0.3s;
+            padding: 16px 0 16px 46px;
+            display: block;
+            position: relative;
+            &:hover,
+            &.act {
+              color: #1ee0ca;
+              background: rgba(30, 224, 202, 0.08);
+              border-right: 3px solid #1ee0ca;
+              &::before {
+                background: #1ee0ca;
+              }
+            }
+            &::before {
+              content: '';
+              position: absolute;
+              left: 28px;
+              top: calc(50% - 3px);
+              width: 6px;
+              height: 6px;
+              border-radius: 6px;
+              transition: all 0.3s;
+              background: #dddddd;
+            }
+          }
+        }
+        .layout-content-router {
+          flex: 1;
+          // height: calc(100vh - 170px);
+          // overflow-x: hidden;
+          // overflow-y: auto;
+          // background: #F6F6F6;
+          // border-radius: 8px;
+        }
+      }
+    }
+  }
+}
+

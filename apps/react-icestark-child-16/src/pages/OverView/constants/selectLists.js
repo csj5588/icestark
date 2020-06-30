@@ -28,3 +28,22 @@ export const multipleSelectList = [
     label: '选项23'
   }
 ]
+
+export const ENV = [
+  {
+    value: 'dev',
+    label: '联调'
+  },
+  {
+    value: 'qa',
+    label: 'QA'
+  },
+  {
+    value: 'gray',
+    label: '灰度'
+  },
+  {
+    value: 'line',
+    label: '生产'
+  }
+]

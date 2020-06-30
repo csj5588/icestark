@@ -36,5 +36,5 @@ class Config extends React.Component {
 
 export default connect(store => ({
   store: store.dispatcher,
-  curApp: store.authApp.curApp
+  authApp: store.stark.authApp.curApp
 }))(Config)

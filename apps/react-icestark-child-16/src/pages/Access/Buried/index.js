@@ -32,5 +32,5 @@ class buried extends React.Component {
 
 export default connect(store => ({
   store: store.buried,
-  curApp: store.authApp.curApp
+  authApp: store.stark.authApp.curApp
 }))(buried);

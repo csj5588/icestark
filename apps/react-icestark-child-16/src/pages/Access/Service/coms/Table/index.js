@@ -75,7 +75,7 @@ class Tables extends React.PureComponent {
                         }
                       />
                       <span className="label">{x.env}</span>
-                      <Ellipsis width={500}>{`${proto}://${key}${x.uri}`}</Ellipsis>
+                      <Ellipsis width={250}>{`${proto}://${key}${x.uri}`}</Ellipsis>
                     </div>
                   );
                 })}

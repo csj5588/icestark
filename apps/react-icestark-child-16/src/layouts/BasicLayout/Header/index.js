@@ -1,13 +1,15 @@
 import React from 'react';
 import { Tabs } from 'antd';
 import common from 'utils/common';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom'
 import styles from './index.less';
 import { ROUTE_CONFIG, OVERVIEW, PRODUCT, ACCESS } from '../constant';
 
 const { TabPane } = Tabs;
 const cx = common.classnames('meeshow-basic-layout-header', styles);
 
-class index extends React.Component {
+class Header extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -16,19 +18,19 @@ class index extends React.Component {
   }
 
   renderTab = (item, curApp) => {
+    // const _path = item.path.substring(1, item.path.length);
     return (
-      <div className="tabPane">
+      <Link to={item.path} className="tabPane">
         <span
           className={`tabPane-text ${item.appid === curApp ? 'act' : null}`}
         >
           {item.name}
         </span>
-      </div>
+      </Link>
     );
   };
 
   render() {
-    const { current } = this.props
     return (
       <div className={cx('root')}>
         <Tabs tabPosition="top" onChange={this.handleTabs}>
@@ -41,4 +43,6 @@ class index extends React.Component {
   }
 }
 
-export default index;
+export default connect(stores => ({
+  authApp: stores.stark.authApp
+}))(Header);

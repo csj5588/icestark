@@ -11,7 +11,6 @@ const cx = common.classnames('meeshow-basic-layout-product-list', styles);
 
 class index extends React.Component {
   renderTab = (item, curApp) => {
-    console.log(item, curApp)
     return (
       <div className='tabPane'>
         <img src={item.icon || BASE_IMG} alt=""/>
@@ -29,13 +28,14 @@ class index extends React.Component {
   }
 
   handleTabs = activeKey => {
-    const { dispatch, authApp } = this.props
+    const { dispatch, authApp, handleTabs } = this.props
     const { authList } = authApp || {}
     const curAppItem = this.getDefaultAppItem(activeKey, authList)
     dispatch(syncStarkUp('setAuthAppList', {
       curApp: activeKey,
       curAppItem,
     }));
+    handleTabs()
   }
 
   render() {

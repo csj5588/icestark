@@ -18,10 +18,10 @@ class ProductDetail extends React.Component {
   }
 
   getTableList = () => {
-    const { dispatch, location = {} } = this.props;
-    const { search } = location
-    const { app_key: appKey } = getUrlParams(search);
-    dispatch(getAppDetail({ app_key: appKey }));
+    const { dispatch, authApp } = this.props;
+    const { curApp } = authApp || {}
+    if(!curApp) return
+    dispatch(getAppDetail({ app_key: curApp }));
   }
 
   render () {
@@ -41,4 +41,5 @@ class ProductDetail extends React.Component {
 
 export default connect(store => ({
   store: store.productDetail,
+  authApp: store.stark.authApp
 }))(ProductDetail);

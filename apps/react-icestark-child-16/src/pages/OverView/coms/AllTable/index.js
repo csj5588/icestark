@@ -16,11 +16,45 @@ class Tables extends React.PureComponent {
     columns: [
       {
         title: '产品线名称',
-        dataIndex: 'app_key',
+        dataIndex: 'app_name',
       },
       {
         title: '接入服务',
         dataIndex: 'function_name',
+      },
+      {
+        title: '对接人',
+        dataIndex: 'email',
+      },
+      {
+        title: '当前版本（官网）',
+        dataIndex: 'web_site',
+        render: text => (
+          <span className={cx('website')} onClick={() => this.openWebsite(text)}>{text}</span>
+        )
+      },
+      {
+        title: '环境',
+        dataIndex: 'env',
+        render: (text, record) => {
+          const { envs = {} } = record;
+          return (
+            <div className={cx('check-group')}>
+              {
+                envs && envs.map(items => {
+                  return (
+                    <div
+                      key={items.key}
+                      className={`check ${items.enabled ? 'act' : ''}`}
+                    >
+                      {items.key}
+                    </div>
+                  )
+                })
+              }
+            </div>
+          )
+        }
       },
       {
         title: '接入时间',
@@ -63,7 +97,6 @@ class Tables extends React.PureComponent {
           className="table"
           dataSource={data || []}
           columns={columns}
-          scroll={{ y: 500 }}
           rowKey={record => record.cv}
           pagination={false}
         />

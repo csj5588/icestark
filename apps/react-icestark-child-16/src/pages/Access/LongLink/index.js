@@ -32,5 +32,5 @@ class longLink extends React.Component {
 
 export default connect(store => ({
   store: store.longLink,
-  curApp: store.authApp.curApp
+  authApp: store.stark.authApp.curApp
 }))(longLink);

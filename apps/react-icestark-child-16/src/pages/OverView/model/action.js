@@ -14,6 +14,7 @@ export const saveAllSearchParams = payload => ({ type: SAVE_ALL_SEARCH_PARAMS, p
 
 export const getTableList = (payload = {}) => async (dispatch, getState) => {
   const { overView: state } = getState();
+  console.log(payload)
   const params = {
     ...state.searchParams,
     ...payload,
@@ -24,9 +25,9 @@ export const getTableList = (payload = {}) => async (dispatch, getState) => {
   }
   S.getDataList(formatParams).then(res => {
     const { data = {} } = res;
-    const { functions } = data || {}
+    const { list } = data || {}
     dispatch(saveTable({
-      data: functions || [],
+      data: list || [],
     }));
     // 回存
     dispatch(saveSearchParams(params));
@@ -46,9 +47,9 @@ export const getAllTableList = (payload = {}) => async (dispatch, getState) => {
   Reflect.deleteProperty(params, 'uid')
   S.getDataList(formatParams).then(res => {
     const { data = {} } = res;
-    const { functions } = data || {}
+    const { list } = data || {}
     dispatch(saveAllTable({
-      data: functions || [],
+      data: list || [],
     }));
     // 回存
     dispatch(saveAllSearchParams(params));

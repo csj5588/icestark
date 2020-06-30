@@ -133,11 +133,6 @@ class BasicLayout extends React.Component {
     return menuChildren;
   };
 
-  handleToMange = () => {
-    const { appToken } = this.props;
-    appHistory.push(`/react/productDetail?app_key=${appToken}`);
-  }
-
   render() {
     const { children, pathname, appToken } = this.props;
     const menuChildren = this.renderChildMenu();
@@ -173,13 +168,13 @@ class BasicLayout extends React.Component {
             */}
             <div className="layout-menu-top-items">
               <a className={`layout-menu-top-document`}>文档中心</a>
-              <div
-                onClick={this.handleToMange}
+              <AppLink
+                to="/react/overView"
                 className={`layout-menu-top-control ${
                   pathname.includes(CONTROL) ? 'act' : ''}`}
               >
                 管控中心
-              </div>
+              </AppLink>
             </div>
             <div className={`layout-menu-top-items`}>
               <AppLink

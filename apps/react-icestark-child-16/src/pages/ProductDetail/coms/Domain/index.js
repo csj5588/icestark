@@ -32,5 +32,5 @@ class BusiDomain extends React.Component {
 
 export default connect(store => ({
   store: store.busiDomain,
-  curApp: store.authApp.curApp
+  authApp: store.stark.authApp.curApp
 }))(BusiDomain);

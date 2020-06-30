@@ -1,18 +1,15 @@
 import { renderNotFound } from '@ice/stark-app';
 import BasicLayout from '@/layouts/BasicLayout';
-import { lazy } from 'react';
 import Home from '@/pages/Home';
 import Product from '@/pages/Product';
 import ProductDetail from '@/pages/ProductDetail';
-
-// const ProductDetail = lazy(() => import('@/pages/ProductDetail'));
-const OverView = lazy(() => import('@/pages/OverView'));
-const Service = lazy(() => import('@/pages/Access/Service'));
-const Config = lazy(() => import('@/pages/Access/Config'));
-const Dispatcher = lazy(() => import('@/pages/Access/Dispatcher'));
-const DispatcherDetail = lazy(() => import('@/pages/Access/DispatcherDetail'));
-const LongLink = lazy(() => import('@/pages/Access/LongLink'));
-const Buried = lazy(() => import('@/pages/Access/Buried'));
+import OverView from '@/pages/OverView';
+import Service from '@/pages/Access/Service';
+import Config from '@/pages/Access/Config';
+import Dispatcher from '@/pages/Access/Dispatcher';
+import DispatcherDetail from '@/pages/Access/DispatcherDetail';
+import LongLink from '@/pages/Access/LongLink';
+import Buried from '@/pages/Access/Buried';
 
 const routerConfig = [
   {

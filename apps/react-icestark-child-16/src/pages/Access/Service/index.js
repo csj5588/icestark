@@ -34,5 +34,5 @@ class Service extends React.Component {
 
 export default connect(store => ({
   store: store.service,
-  curApp: store.authApp.curApp
+  authApp: store.stark.authApp.curApp
 }))(Service);

@@ -52,10 +52,6 @@ const asideMenuConfig = [
         name: '埋点服务',
         path: '/access/buried',
       },
-      {
-        name: 'dispatcher接入详情',
-        path: '/access/dispatcherDetail',
-      },
     ],
   }
 ];
