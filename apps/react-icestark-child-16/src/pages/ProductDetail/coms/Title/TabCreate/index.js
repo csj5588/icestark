@@ -38,6 +38,6 @@ export default compose(
   Form.create(),
   connect(stores => ({
     store: stores.productDetail,
-    curApp: store.stark.authApp.curApp
+    curApp: stores.stark.authApp.curApp
   })),
 )(Create);

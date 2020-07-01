@@ -40,6 +40,7 @@ export const getTableList = (payload = {}) => async (dispatch, getState) => {
   S.getDataList(params).then((res) => {
     const { data = [] } = res;
     const [first, ...otr] = data;
+    dispatch(saveSearchParams(params));
     if (!first) return;
     try {
       const { id, buz_config: buzConfig, usage_config: usagConfig } = first;
@@ -55,7 +56,6 @@ export const getTableList = (payload = {}) => async (dispatch, getState) => {
         })
       );
       // 回存
-      dispatch(saveSearchParams(params));
       dispatch(saveUsage(usagConfigObje));
       const createParams = {
         id,
