@@ -6,89 +6,6 @@ import $user from 'src/utils/user';
 import { filterOption } from 'ik-utils';
 import styles from './index.less';
 
-const domains = [
-  {
-    id: 107,
-    app_key: 'buylive',
-    domain: 'testapi.meeshow.com',
-    proto: 'http',
-    env: 'test',
-    usage: 'zt',
-    desc: '调中台接口域名',
-    item: {
-      domain: 'testapi.meeshow.com',
-      label: '调中台接口域名',
-      env: '中台测试环境',
-      update_time: '2020-06-29T19:17:22+08:00',
-      operator: 'liyue@inke.cn',
-    },
-  },
-  {
-    id: 106,
-    app_key: 'buylive',
-    domain: 'service.buylivehk.com',
-    proto: 'https',
-    env: 'online',
-    usage: 'bz',
-    desc: '线上API接口域名',
-    item: {
-      domain: 'service.buylivehk.com',
-      label: '线上API接口域名',
-      env: '香港电商线上环境',
-      update_time: '2020-06-23T22:39:40+08:00',
-      operator: 'zhangxy1@inke.cn',
-    },
-  },
-  {
-    id: 105,
-    app_key: 'buylive',
-    domain: 'ztapi.9zhenge.com',
-    proto: 'https',
-    env: 'test',
-    usage: 'zt',
-    desc: '测试API接口域名',
-    item: {
-      domain: 'ztapi.9zhenge.com',
-      label: '测试API接口域名',
-      env: '中台测试环境',
-      update_time: '2020-06-23T22:26:17+08:00',
-      operator: 'zhangxy1@inke.cn',
-    },
-  },
-  {
-    id: 104,
-    app_key: 'buylive',
-    domain: 'serviceinfo.test.inke.cn',
-    proto: 'http',
-    env: 'test',
-    usage: 'zt',
-    desc: '测试长连接配置域名',
-    item: {
-      domain: 'serviceinfo.test.inke.cn',
-      label: '测试长连接配置域名',
-      env: '中台测试环境',
-      update_time: '2020-06-23T22:26:33+08:00',
-      operator: 'zhangxy1@inke.cn',
-    },
-  },
-  {
-    id: 103,
-    app_key: 'buylive',
-    domain: 'ztapi.buylivehk.com',
-    proto: 'https',
-    env: 'online',
-    usage: 'zt',
-    desc: '线上API接口域名',
-    item: {
-      domain: 'ztapi.buylivehk.com',
-      label: '线上API接口域名',
-      env: '中台线上环境',
-      update_time: '2020-06-23T22:26:07+08:00',
-      operator: 'zhangxy1@inke.cn',
-    },
-  },
-];
-
 const HTTPS = 'https';
 
 const cx = $common.classnames('buried-create-form-item', styles);
@@ -160,7 +77,7 @@ class index extends React.Component {
       console.log(info.file, info.fileList);
     }
     if (info.file.status === 'done') {
-      const { form, dispatch } = this.props;
+      const { form } = this.props;
       const { data, error_msg: errorMsg } = info.file.response;
       if (!data) {
         message.error(`上传失败 ${errorMsg}`);
@@ -189,7 +106,7 @@ class index extends React.Component {
       console.log(info.file, info.fileList);
     }
     if (info.file.status === 'done') {
-      const { form, dispatch } = this.props;
+      const { form } = this.props;
       const { data, error_msg: errorMsg } = info.file.response;
       if (!data) {
         message.error(`上传失败 ${errorMsg}`);
@@ -207,7 +124,7 @@ class index extends React.Component {
   };
 
   render() {
-    const { getFieldDecorator, data, isDisable, index, isEdit, appKey } = this.props;
+    const { getFieldDecorator, data, isDisable, index, appKey, domainList } = this.props;
     const { isShow, publicFileList, privateFileList } = this.state;
     const {
       host,
@@ -235,8 +152,8 @@ class index extends React.Component {
               disabled={isDisable}
               onChange={this.handleSelect}
             >
-              {domains &&
-                domains.map((item) => (
+              {domainList &&
+                domainList.map((item) => (
                   <Select.Option
                     proto={item.proto}
                     key={item.domain}

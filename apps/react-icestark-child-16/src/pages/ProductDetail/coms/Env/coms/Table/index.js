@@ -137,7 +137,7 @@ class Tables extends React.PureComponent {
           className="table"
           dataSource={data}
           columns={columns}
-          rowKey={record => record.domain}
+          rowKey={record => record.env}
           pagination={false}
         />
       </div>

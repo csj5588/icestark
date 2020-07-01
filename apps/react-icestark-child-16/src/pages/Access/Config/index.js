@@ -16,7 +16,7 @@ class Config extends React.Component {
       app: curApp,
     }
     const paramsStr = $common.stringifyParams(params)
-    return `${iframeRoot}config/index.html?${paramsStr}`
+    return `${iframeRoot}apps/react/config/index.html?${paramsStr}`
   }
 
   render () {

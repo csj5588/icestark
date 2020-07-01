@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import $common from 'utils/common';
-import { getTableList } from './model/action';
+import { getTableList, getDomainList } from './model/action';
 import Action from './coms/Action';
 import Table from './coms/Table';
 import Create from './coms/Create';
@@ -16,6 +16,7 @@ class buried extends React.Component {
 
   getTableList = () => {
     const { dispatch, curApp } = this.props;
+    dispatch(getDomainList({app_key: curApp, use: 'BuryPointUpload' } ))
     dispatch(getTableList({ app_key: curApp, function_key: BURY }));
   }
 

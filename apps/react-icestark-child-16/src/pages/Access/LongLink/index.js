@@ -10,7 +10,7 @@ import styles from './index.less'
 const cx = $common.classnames('product', styles);
 class longLink extends React.Component {
   componentDidMount () {
-    this.getTableList();
+    // this.getTableList();
   }
 
   getTableList = () => {

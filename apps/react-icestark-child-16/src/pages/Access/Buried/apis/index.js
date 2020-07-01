@@ -56,6 +56,14 @@ class Apis {
   // @mockAdd
   @messageDecorator({ successMsg: showSuccess('操作成功，请到工单系统查看'), errorMsg: showErrorMessage() })
   update = (id, params) => post(`api_web/v1/controlcenter/function/apply/update?id=${id}`)(params)
+
+  /**
+   *  接口：获取域名地址
+   *  @example https://xxx.busi.inke.cn/login/rbac/module/data_modify
+   */
+  // @mockAdd
+  @messageDecorator({  errorMsg: showErrorMessage() })
+  getDomainList = get('api_web/v1/controlcenter/business/app/domain/list/get')
 }
 
 export default new Apis()

@@ -31,6 +31,7 @@ export const saveDomainList = (payload) => ({
 });
 export const saveUsage = (payload) => ({ type: SAVE_USAGE, payload });
 
+
 export const getTableList = (payload = {}) => async (dispatch, getState) => {
   const { buried: state } = getState();
   const params = {
@@ -41,7 +42,12 @@ export const getTableList = (payload = {}) => async (dispatch, getState) => {
     const { data = [] } = res;
     const [first, ...otr] = data;
     dispatch(saveSearchParams(params));
-    if (!first) return;
+    if (!first) {
+      dispatch(saveTable({data: []}));
+      dispatch(saveUsage({}));
+      dispatch(initCreateParams())
+      return
+    };
     try {
       const { id, buz_config: buzConfig, usage_config: usagConfig } = first;
       const buzConfigObj = JSON.parse(buzConfig);
@@ -52,7 +58,7 @@ export const getTableList = (payload = {}) => async (dispatch, getState) => {
       } = buzConfigObj;
       dispatch(
         saveTable({
-          data: domainConfig || {},
+          data: domainConfig || [],
         })
       );
       // 回存
@@ -91,10 +97,11 @@ export const update = (id, payload) => async (dispatch, getState) => {
   });
 };
 
-// 发布、回滚
-export const publish = (payload) => async (dispatch, getState) => {
-  S.publish(payload).then(() => {
-    // 刷新列表
-    dispatch(getTableList());
+// 获取domainList
+export const getDomainList = (payload) => async (dispatch, getState) => {
+  S.getDomainList(payload).then(res => {
+    const { data } = res
+    const { domains = [] } = data || {}
+    dispatch(saveDomainList(domains))
   });
 };

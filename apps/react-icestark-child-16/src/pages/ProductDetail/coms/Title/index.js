@@ -260,7 +260,7 @@ class Action extends React.Component {
               className="mt20"
               dataSource={accessList}
               columns={this.columnsServer}
-              rowKey={(record) => record.platform}
+              rowKey={(record) => record.function_name}
               pagination={false}
             />
           </Col>

@@ -77,7 +77,7 @@ class index extends React.Component {
         {curApp && (
           <div>
             <ProductList handleTabs={this.handleTabs} />
-            <Header />
+            <Header pathname={pathname} />
             {switchPageShow ? (
               <div className="content">
                 <div className="layout-content">

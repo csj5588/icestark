@@ -14,7 +14,6 @@ import { saveCreateParams } from '../../../model/action';
 import { DETAIL, DOMAIN_CONFIG, UPDATE } from '../../../constants/modalTypes';
 import { selectList } from '../../../constants/selectLists'
 import FormItem from './FormItem'
-const { TextArea } = Input;
 const formItemLayout = {
   labelCol: { span: 6 },
   wrapperCol: { span: 18 },
@@ -59,14 +58,16 @@ class Content extends React.Component {
   }
 
   render() {
-    const { form, store, appKey } = this.props;
+    const { form, store, appKey, curAppItem } = this.props;
     const { isShow } = this.state
+    const { appid, name} = curAppItem
     const {
       create: { type },
       createParams: {
         service_config: serviceConfig,
         domain_config: domainConfig
       },
+      domainList,
     } = store;
     const {
       app_name: appName,
@@ -83,35 +84,35 @@ class Content extends React.Component {
         <div style={style.title}>服务配置</div>
         <Form.Item label="app_name" {...formItemLayout}>
           {getFieldDecorator('service_config.app_name', {
-            initialValue: 'gmu',
+            initialValue: appName || appid,
             rules: [
               {
                 required: true,
-                message: '请输入域名说明',
+                message: '请输入app_name',
               },
             ],
           })(
             <Input
               style={{ width: '240px' }}
-              placeholder="请输入版本号"
-              disabled={isDisable}
+              placeholder="请输入app_name"
+              disabled
             />
           )}
         </Form.Item>
         <Form.Item label="应用名称" {...formItemLayout}>
           {getFieldDecorator('service_config.comment', {
-            initialValue: '积目',
+            initialValue: comment || name,
             rules: [
               {
                 required: true,
-                message: '请输入域名说明',
+                message: '请输入应用名称',
               },
             ],
           })(
             <Input
-              placeholder="请输入域名说明"
+              placeholder="请输入应用名称"
               style={{ width: '240px' }}
-              disabled={isDisable}
+              disabled
             />
           )}
         </Form.Item>
@@ -188,6 +189,7 @@ class Content extends React.Component {
             <FormItem
               key={index}
               isEdit={isEdit}
+              domainList={domainList}
               form={form}
               data={item}
               appKey={appKey}

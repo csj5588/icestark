@@ -44,7 +44,7 @@ class Create extends React.Component {
   }
 
   render() {
-    const { form, store, appKey, dispatch } = this.props;
+    const { form, store, appKey, dispatch, curAppItem } = this.props;
     const { create } = store;
     return (
       <Modal
@@ -60,6 +60,7 @@ class Create extends React.Component {
           store={store}
           form={form}
           appKey={appKey}
+          curAppItem={curAppItem}
         />
       </Modal>
     )
@@ -70,5 +71,6 @@ export default compose(
   Form.create(),
   connect(stores => ({
     store: stores.buried,
+    curAppItem: stores.stark.authApp.curAppItem
   })),
 )(Create);
