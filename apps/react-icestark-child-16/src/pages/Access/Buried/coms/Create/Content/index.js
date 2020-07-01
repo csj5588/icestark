@@ -2,129 +2,92 @@ import React from 'react';
 import {
   Form,
   Input,
-  message,
-  Radio,
-  Row,
-  Col,
-  Upload,
-  Button,
+  Select,
   Icon,
 } from 'antd';
 import { filterOption } from 'ik-utils';
 import $user from 'user';
 import $common from 'utils/common';
+import _cloneDeep from 'lodash/cloneDeep'
 import srcConfig from 'src/config';
 import { saveCreateParams } from '../../../model/action';
-import { DETAIL, AUTO, MANUAL, UPDATE } from '../../../constants/modalTypes';
+import { DETAIL, DOMAIN_CONFIG, UPDATE } from '../../../constants/modalTypes';
+import { selectList } from '../../../constants/selectLists'
+import FormItem from './FormItem'
 const { TextArea } = Input;
 const formItemLayout = {
   labelCol: { span: 6 },
   wrapperCol: { span: 18 },
 };
 
-// 获取文件后缀名
-const extname = (filename) => {
-  if (!filename || typeof filename !== 'string') {
-    return false;
-  }
-  const a = filename.split('').reverse().join('');
-  const b = a.substring(0, a.search(/\./)).split('').reverse().join('');
-  return b;
-};
 class Content extends React.Component {
   constructor(props) {
     super(props);
+    const { store } = props
+    const {
+      createParams: {
+        service_config: serviceConfig,
+      },
+    } = store;
+    const {
+      is_replication: isReplication,
+    } = serviceConfig || {};
     this.state = {
-      myAction: `${srcConfig.APIS.root}api_web/v1/controlcenter/business/app/version/upload`,
-      radioStatus: '',
+      myAction: `${srcConfig.APIS.root}api_web/v1/controlcenter/private/upload`,
+      isShow: isReplication,
     };
   }
 
-  uploadRef = null;
+  handleAdd = () => {
+    const { store: { createParams }, dispatch } = this.props
+    const { domain_config: domainConfig } = createParams
+    const newDomainConfig = _cloneDeep(domainConfig)
+    newDomainConfig.push(DOMAIN_CONFIG)
+    dispatch(saveCreateParams({ domain_config: newDomainConfig }))
+  }
 
-  onChange = (e) => {
-    const { form, dispatch } = this.props;
-    dispatch(saveCreateParams({ qrcode_url: '', download_url: '' }));
-    this.setState({ radioStatus: e.target.value });
-    form.setFieldsValue({ download_url: '' });
+  handleSelect = (val) => {
+    this.setState({ isShow: val });
   };
 
-  //  上传文件钩子函数
-  handleBeforeUpload = (file) => {
-    const { appKey } = this.props;
-    const { name } = file;
-    // 上传文件名
-    // 获取 原子擦数／app
-    const user = $user.get();
-    const params = {
-      ...user,
-      app_key: appKey,
-      filename: name,
-    };
-    const paramsStr = $common.stringifyParams(params);
-    const newUrl = `${srcConfig.APIS.root}api_web/v1/controlcenter/business/app/version/upload?${paramsStr}`;
-    this.setState({ myAction: newUrl });
-  };
-
-  // 上传一个文件状态
-  handleChange = (info) => {
-    if (info.file.status !== 'uploading') {
-      console.log(info.file, info.fileList);
-    }
-    if (info.file.status === 'done') {
-      const { form, dispatch } = this.props;
-      const { data, error_msg: errorMsg } = info.file.response;
-      if (!data) {
-        message.error(`上传失败 ${errorMsg}`);
-        return;
-      }
-      const { qrcode_url: qrcodeUrl, download_url: downloadUrl } = data || {};
-      form.setFieldsValue({ download_url: downloadUrl });
-      dispatch(
-        saveCreateParams({ qrcode_url: qrcodeUrl, download_url: downloadUrl })
-      );
-      message.success(`${info.file.name} 上传成功`);
-    } else if (info.file.status === 'error') {
-      message.error(`${info.file.name} 上传失败`);
-    }
-  };
-
-  handleText = (e) => {
-    const { form, dispatch } = this.props;
-    form.setFieldsValue({ download_url: e.target.value });
-    dispatch(saveCreateParams({ download_url: e.target.value }));
-  };
+  handleDelete = index => {
+    const { store: { createParams }, dispatch } = this.props
+    const { domain_config: domainConfig } = createParams
+    const newDomainConfig = _cloneDeep(domainConfig)
+    newDomainConfig.splice(index, 1)
+    dispatch(saveCreateParams({ domain_config: newDomainConfig }))
+  }
 
   render() {
-    const { radioStatus } = this.state;
     const { form, store, appKey } = this.props;
+    const { isShow } = this.state
     const {
       create: { type },
       createParams: {
-        cv,
-        desc,
-        download_url: downloadUrl,
-        qrcode_url: qrcodeUrl,
+        service_config: serviceConfig,
+        domain_config: domainConfig
       },
     } = store;
+    const {
+      app_name: appName,
+      comment,
+      cv_prefix: cvPrefix,
+      is_replication: isReplication,
+      replicate_from: replicateFrom,
+    } = serviceConfig || {};
     const { getFieldDecorator } = form;
     const isDisable = type === DETAIL;
     const isEdit = type === UPDATE;
-    const radioValue =
-      radioStatus || (isEdit ? (qrcodeUrl ? AUTO : MANUAL) : AUTO);
     return (
       <Form onSubmit={this.handleSubmit}>
-        <Form.Item label="版本号" {...formItemLayout}>
-          {getFieldDecorator('cv', {
-            initialValue: cv,
+        <div style={style.title}>服务配置</div>
+        <Form.Item label="app_name" {...formItemLayout}>
+          {getFieldDecorator('service_config.app_name', {
+            initialValue: 'gmu',
             rules: [
               {
                 required: true,
-                message: '请输入版本号',
-              },
-              {
-                pattern: /^[a-zA-Z]+\d+(\.\d+)+_[a-zA-Z]+$/,
-                message: '版本号由产品缩写+数字版本号+下划线+系统名称组成',
+                message: '请输入域名说明',
               },
             ],
           })(
@@ -135,9 +98,9 @@ class Content extends React.Component {
             />
           )}
         </Form.Item>
-        <Form.Item label="版本ChangeLog" {...formItemLayout}>
-          {getFieldDecorator('desc', {
-            initialValue: desc,
+        <Form.Item label="应用名称" {...formItemLayout}>
+          {getFieldDecorator('service_config.comment', {
+            initialValue: '积目',
             rules: [
               {
                 required: true,
@@ -145,83 +108,97 @@ class Content extends React.Component {
               },
             ],
           })(
-            <TextArea
+            <Input
               placeholder="请输入域名说明"
-              style={style.text}
-              autoSize={{ minRows: 3, maxRows: 5 }}
+              style={{ width: '240px' }}
               disabled={isDisable}
             />
           )}
         </Form.Item>
-        <div style={style.https}>长传https证书上传</div>
-        <Form.Item label="公钥证书" {...formItemLayout}>
-          {getFieldDecorator('download_url', {
-            initialValue: downloadUrl,
+        <Form.Item label="CV样例" {...formItemLayout}>
+          {getFieldDecorator('service_config.cv_prefix', {
+            initialValue: cvPrefix,
             rules: [
               {
                 required: true,
-                message: '请上传公钥证书',
+                message: '请输入CV样例',
               },
             ],
-          })(<Input style={style.none} disabled={isDisable} />)}
-          <Row>
-            <div>
-              <Upload
-                disabled={radioValue === MANUAL}
-                ref={(upload) => {
-                  this.uploadRef = upload;
-                }}
-                action={this.state.myAction}
-                headers={{
-                  'uberctx-_namespace_appkey_': appKey,
-                }}
-                name="file"
-                showUploadList={true}
-                beforeUpload={this.handleBeforeUpload}
-                onChange={this.handleChange}
-              >
-                <Button>
-                  <Icon type="upload" />
-                  点击上传文件
-                </Button>
-              </Upload>
-            </div>
-          </Row>
+          })(
+            <Input
+              placeholder="请输入CV样例"
+              style={{ width: '240px' }}
+              disabled={isDisable}
+            />
+          )}
         </Form.Item>
-        <Form.Item label="私钥证书" {...formItemLayout}>
-          {getFieldDecorator('download_url', {
-            initialValue: downloadUrl,
+        <Form.Item label="是否是马甲包" {...formItemLayout}>
+          {getFieldDecorator('service_config.is_replication', {
+            initialValue: isReplication,
             rules: [
               {
                 required: true,
-                message: '请上传私钥证书',
+                message: '请输入CV样例',
               },
             ],
-          })(<Input style={style.none} disabled={isDisable} />)}
-          <Row>
-            <div>
-              <Upload
-                disabled={radioValue === MANUAL}
-                ref={(upload) => {
-                  this.uploadRef = upload;
-                }}
-                action={this.state.myAction}
-                headers={{
-                  'uberctx-_namespace_appkey_': appKey,
-                }}
-                name="file"
-                showUploadList={true}
-                beforeUpload={this.handleBeforeUpload}
-                onChange={this.handleChange}
-              >
-                <Button>
-                  <Icon type="upload" />
-                  点击上传文件
-                </Button>
-              </Upload>
-            </div>
-          </Row>
+          })(
+            <Select
+              allowClear
+              showSearch
+              style={{ width: '240px' }}
+              placeholder="请选择域名"
+              filterOption={filterOption}
+              disabled={isDisable}
+              onChange={this.handleSelect}
+            >
+              {selectList &&
+                selectList.map((item) => (
+                  <Select.Option key={item.label} value={item.value}>
+                    {item.label}
+                  </Select.Option>
+                ))}
+            </Select>
+          )}
         </Form.Item>
+        { isShow && <Form.Item label="马甲包业务线" {...formItemLayout}>
+          {getFieldDecorator('service_config.replicate_from', {
+            initialValue: replicateFrom,
+            rules: [
+              {
+                required: true,
+                message: '请输入马甲包业务线',
+              },
+            ],
+          })(
+            <Input
+              placeholder="请输入马甲包业务线"
+              style={{ width: '240px' }}
+              disabled={isDisable}
+            />
+          )}
+        </Form.Item>}
+        <div style={style.title}>域名配置
+          <Icon
+            onClick={this.handleAdd}
+            style={style.icon}
+            type="plus-circle" />
+        </div>
+        {
+          domainConfig && domainConfig.map((item, index) => (
+            <FormItem
+              key={index}
+              isEdit={isEdit}
+              form={form}
+              data={item}
+              appKey={appKey}
+              getFieldDecorator={getFieldDecorator}
+              isDisable={isDisable}
+              index={index}
+              handleDelete={() => this.handleDelete(index)}
+            />
+          )
+          )
+        }
       </Form>
     );
   }
@@ -231,31 +208,17 @@ const style = {
   none: {
     display: 'none',
   },
-  radioStyle: {
-    display: 'block',
-  },
-  auto: {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'space-around',
-    alignItems: 'center',
-  },
-  text: {
-    width: '340px',
-  },
-  manual: {
-    display: 'block',
-    margin: '20px 0',
-  },
-  img: {
-    width: '200px',
-    height: '200px',
-  },
-  https: {
+  title: {
     color: 'rgba(0, 0, 0, 0.85)',
     margin: '0 0 20px 20px',
     fontWeight: 'bold',
+    fontSize: '16px',
   },
+  icon: {
+    marginLeft: '25px',
+    fontSize: '16px',
+    cursor: 'pointer'
+  }
 };
 
 export default Content;

@@ -7,6 +7,7 @@ import Table from './coms/Table';
 import Create from './coms/Create';
 import styles from './index.less'
 
+const BURY = 'BuryPoint' // 埋点功能标识
 const cx = $common.classnames('buried', styles);
 class buried extends React.Component {
   componentDidMount () {
@@ -15,7 +16,7 @@ class buried extends React.Component {
 
   getTableList = () => {
     const { dispatch, curApp } = this.props;
-    dispatch(getTableList({ app_key: curApp }));
+    dispatch(getTableList({ app_key: curApp, function_key: BURY }));
   }
 
   render () {
@@ -32,5 +33,5 @@ class buried extends React.Component {
 
 export default connect(store => ({
   store: store.buried,
-  authApp: store.stark.authApp.curApp
+  curApp: store.stark.authApp.curApp
 }))(buried);

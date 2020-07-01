@@ -12,6 +12,7 @@ const formItemLayout = {
 }
 class Content extends React.Component {
   setAtomToParams = () => {
+    const { curApp } = this.props
     const user = $user.get()
     const { user_id: userId, system_id: systemId, username, email, department } = user
     const params = {
@@ -21,7 +22,7 @@ class Content extends React.Component {
       email,
       department,
       ticket: $user.getToken(),
-      app_key: 'ceshi',
+      app_key: curApp,
       opt: 'product_img',
     }
     const url = `/api_web/v1/controlcenter/resource/upload?${stringify(params)}`;

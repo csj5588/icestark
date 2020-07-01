@@ -23,3 +23,9 @@ export const AUTO = 'auto'
 
 // 手动添加地址
 export const MANUAL = 'manual'
+
+// 域名配置
+export const DOMAIN_CONFIG = {
+  host: undefined,
+  comment: '',
+}

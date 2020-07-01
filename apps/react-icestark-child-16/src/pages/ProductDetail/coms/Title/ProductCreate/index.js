@@ -36,7 +36,7 @@ class Create extends React.Component {
   }
 
   render() {
-    const { form, store } = this.props;
+    const { form, store, curApp } = this.props;
     const { createPro } = store;
     return (
       <Modal
@@ -49,6 +49,7 @@ class Create extends React.Component {
         <Content
           store={store}
           form={form}
+          curApp={curApp}
         />
       </Modal>
     )
@@ -59,5 +60,6 @@ export default compose(
   Form.create(),
   connect(stores => ({
     store: stores.productDetail,
+    curApp: store.stark.authApp.curApp
   })),
 )(Create);

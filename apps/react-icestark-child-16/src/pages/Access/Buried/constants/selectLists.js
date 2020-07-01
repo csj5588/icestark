@@ -1,17 +1,13 @@
 
 export const selectList = [
   {
-    value: '11',
-    label: '选项11'
+    value: true,
+    label: '是'
   },
   {
-    value: '12',
-    label: '选项12'
+    value: false,
+    label: '否'
   },
-  {
-    value: '13',
-    label: '选项13'
-  }
 ]
 
 export const multipleSelectList = [

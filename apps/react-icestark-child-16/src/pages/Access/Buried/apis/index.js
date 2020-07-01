@@ -39,31 +39,23 @@ class Apis {
    */
   // @mockGetDataList
   @messageDecorator({ errorMsg: showErrorMessage() })
-  getDataList = get('api_web/v1/controlcenter/business/app/version/list/get')
+  getDataList = get('api_web/v1/controlcenter/function/config/list/get')
 
   /**
-   *  接口：新增、编辑
+   *  接口：新增
    *  @example https://xxx.busi.inke.cn/login/rbac/module/data_modify
    */
   // @mockAdd
-  @messageDecorator({ successMsg: showSuccess('操作成功'), errorMsg: showErrorMessage() })
-  add = post('api_web/v1/controlcenter/business/app/version/add')
+  @messageDecorator({ successMsg: showSuccess('操作成功，请到工单系统查看'), errorMsg: showErrorMessage() })
+  add = post('api_web/v1/controlcenter/function/apply/add')
 
   /**
-   *  接口：安装包上传接口
+   *  接口：编辑
    *  @example https://xxx.busi.inke.cn/login/rbac/module/data_modify
    */
   // @mockAdd
-  @messageDecorator({ successMsg: showSuccess('上传成功'), errorMsg: showErrorMessage() })
-  upload = post('/api_web/v1/controlcenter/business/app/version/upload')
-
-  /**
-   *  接口： 产品版本发布接口
-   *  @example https://xxx.busi.inke.cn/login/rbac/module/data_del
-   */
-  // @mockDelete
-  @messageDecorator({ successMsg: showSuccess('操作成功'), errorMsg: showErrorMessage() })
-  publish = post('/api_web/v1/controlcenter/business/app/version/publish')
+  @messageDecorator({ successMsg: showSuccess('操作成功，请到工单系统查看'), errorMsg: showErrorMessage() })
+  update = (id, params) => post(`api_web/v1/controlcenter/function/apply/update?id=${id}`)(params)
 }
 
 export default new Apis()
