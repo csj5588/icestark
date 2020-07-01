@@ -14,7 +14,6 @@ export const saveAllSearchParams = payload => ({ type: SAVE_ALL_SEARCH_PARAMS, p
 
 export const getTableList = (payload = {}) => async (dispatch, getState) => {
   const { overView: state } = getState();
-  console.log(payload)
   const params = {
     ...state.searchParams,
     ...payload,

@@ -178,6 +178,6 @@ class Content extends React.Component {
 export default compose(
   connect((stores) => ({
     store: stores.dispatcherDetail,
-    curApp: stores.authApp.curApp
+    curApp: stores.stark.authApp.curApp
   }))
 )(Content);

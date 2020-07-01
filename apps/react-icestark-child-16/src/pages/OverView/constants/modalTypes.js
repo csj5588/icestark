@@ -34,14 +34,20 @@ export const STATUS_TYPE = {
 }
 
 // 路由页面
-export const SERVICE = 'serviceinfo'
+export const SERVICE = 'ServiceInfo'
 
-export const DISPATCHER = 'dispatcher'
+export const DISPATCHER = 'Dispatcher'
 
-export const CONFIG = '动态配置'
+export const CONFIG = 'DynamicConfig'
+
+export const LONG = 'LongConnect'
+
+export const BURY = 'BuryPoint'
 
 export const ROUTER = {
   [SERVICE]: '/access/service',
   [CONFIG]: '/access/config',
   [DISPATCHER]: '/access/dispatcher',
+  [LONG]: '/access/longLink',
+  [BURY]: '/access/buried',
 }

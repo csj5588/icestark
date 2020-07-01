@@ -19,7 +19,7 @@ class DispatcherDetail extends React.Component {
     const { search } = location
     const { id } = getUrlParams(search);
     dispatch(getConfig());
-    dispatch(getTableList({ id }));
+    dispatch(getTableList({ id, curApp }));
   }
 
   render () {
@@ -35,5 +35,5 @@ class DispatcherDetail extends React.Component {
 
 export default connect(store => ({
   store: store.dispatcherDetail,
-  authApp: store.stark.authApp.curApp
+  curApp: store.stark.authApp.curApp
 }))(DispatcherDetail);

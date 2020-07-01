@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
+import { Link } from 'react-router-dom';
 import { Button, Table, Modal, Pagination, Switch, Tooltip } from 'antd';
 import $common from 'utils/common';
 import Ellipsis from 'components/Ellipsis';
@@ -8,7 +9,7 @@ import { UN_USE, USEING } from '../../constants/modalTypes'
 import { update, getTableList, del } from './../../model/action';
 import styles from './index.less';
 
-const cx = $common.classnames('component-service-table', styles);
+const cx = $common.classnames('component-dispatcher-table', styles);
 const { confirm } = Modal;
 const pageSizeList = ['10', '20', '30', '40', '50', '100'];
 const DEFAULT_PAGE = 1;
@@ -69,16 +70,17 @@ class Tables extends React.PureComponent {
         key: 'operate',
         render: (...args) => {
           const [text, record, index] = args;
-          const { item = {} } = record;
+          const { ev_info: { id } } = record;
+          const toPath = `/access/dispatcherDetail?id=${id}`
           return (
             <div className={cx('operate')}>
-              <Button
-                className="ml10"
-                type="primary"
-                onClick={() => this.handelUpdate(record)}
+              <Link
+                className="btn"
+                key={id}
+                to={toPath}
               >
                 详情
-              </Button>
+              </Link>
               <Button
                 className="ml10"
                 type="danger"

@@ -2,6 +2,7 @@ import React from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
+import { Link } from 'react-router-dom';
 import {
   Button,
   Table,
@@ -25,7 +26,6 @@ import {
   del,
   getTableList,
 } from './../../model/action';
-
 import {
   ADD,
   UPDATE,
@@ -44,6 +44,7 @@ import Create from './Create';
 import TabCreate from './TabCreate';
 import ProductCreate from './ProductCreate';
 import styles from './index.less';
+
 const ButtonGroup = Button.Group;
 const cx = $common.classnames('product-detail-title', styles);
 const DEFAULT_URL = 'http://img.ikstatic.cn/MTU4NzcxNzc5NTU1MiMzODkjanBn.jpg';
@@ -88,7 +89,7 @@ class Action extends React.Component {
   columnsServer = [
     {
       title: '服务对接',
-      dataIndex: 'name',
+      dataIndex: 'function_name',
     },
     {
       title: '接入状态',
@@ -100,46 +101,22 @@ class Action extends React.Component {
       dataIndex: 'oprate',
       render: (...args) => {
         const [text, record, index] = args;
-        const { name, state } = record;
+        const { name, state, function_key: functionKey } = record;
+        const toPath = ROUTER[functionKey]
         return (
-          <Button size="small" onClick={() => this.handlePush(name, state)}>
+          <Link
+            className="btn"
+            key={functionKey}
+            to={toPath}
+            type="primary"
+          >
             {state === ON_ACCESS ? '查看详情' : '一键接入'}
-          </Button>
+          </Link>
         );
       },
     },
   ];
 
-  handlePush = (name, state) => {
-    const { dispatch } = this.props;
-    const routerObj = {
-      [SERVICE]: () => {
-        dispatch(push(ROUTER[name]));
-        if (state !== ON_ACCESS) {
-          setTimeout(() => {
-            dispatch(saveCreateService({ show: true, title: '新增', type: ADD }))
-          }, 500);
-        }
-      },
-      [DISPATCHER]: () => {
-        dispatch(push(ROUTER[name]));
-        if (state !== ON_ACCESS) {
-          setTimeout(() => {
-            dispatch(saveCreateDispather({ show: true, title: '新增', type: ADD }))
-          }, 500);
-        }
-      },
-      [CONFIG]: () => {
-        dispatch(push(ROUTER[name]));
-        if (state === ON_ACCESS) {
-          dispatch(push(ROUTER[name]));
-        } else {
-          dispatch(push(`/access/config?show=1`));
-        }
-      },
-    }
-    routerObj[name]()
-  }
 
   handleMenu = (key) => {
     const { store, dispatch, curApp } = this.props;
@@ -204,9 +181,9 @@ class Action extends React.Component {
     dispatch(saveCreate({ show: true, title: '加入申请', type: ADD }));
   };
 
-  handelBack = () => {
+  handelAdd = () => {
     const { dispatch } = this.props;
-    dispatch(push('/product'));
+    dispatch(saveCreatePro({ show: true, title: '产品新增', type: ADD }));
   };
 
   render() {
@@ -228,9 +205,9 @@ class Action extends React.Component {
     } = store;
     return (
       <div className={cx('root')}>
-        <div className="mb20">
-          <Button type="primary" icon="left" onClick={this.handelBack}>
-            返回
+        <div className="mb20 addBtn">
+          <Button type="primary" icon="plus" onClick={this.handelAdd}>
+            新增产品
           </Button>
         </div>
         <div className="top">

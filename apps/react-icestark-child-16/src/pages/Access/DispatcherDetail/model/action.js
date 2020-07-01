@@ -42,8 +42,8 @@ export const saveSearchParams = (payload) => ({
 });
 
 export const getTableList = (payload = {}) => async (dispatch, getState) => {
-  const { authApp: { curApp } } = getState();
-  const [dataRes, envsRes] = await Promise.all([S.getData(payload), S.getEnvList({ app_key: curApp })])
+  const { id, curApp } = payload
+  const [dataRes, envsRes] = await Promise.all([S.getData({ id }), S.getEnvList({ app_key: curApp })])
   const { data } = dataRes
   const { detail = [] } = data || {}
   const detailEnvlist = (detail && detail.map(x => x.env)) || []

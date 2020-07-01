@@ -32,5 +32,5 @@ class BusiVersion extends React.Component {
 
 export default connect(store => ({
   store: store.busiVersion,
-  authApp: store.stark.authApp.curApp
+  curApp: store.stark.authApp.curApp
 }))(BusiVersion);

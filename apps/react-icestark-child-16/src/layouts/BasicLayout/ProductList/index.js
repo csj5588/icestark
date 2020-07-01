@@ -1,11 +1,13 @@
 import React from 'react';
 import { Tabs } from 'antd';
 import { syncStarkUp } from '@/store/action-stark';
+import Cookie from '@/utils/cookies'
 import { connect } from 'react-redux';
 import common from 'utils/common';
 import styles from './index.less';
 
 const { TabPane } = Tabs;
+const saveAppKey = 'cur-auth-app'
 const BASE_IMG = 'https://img.ikstatic.cn/MTU5MzQ5NjYzODUyOCM4NzcjcG5n.png'
 const cx = common.classnames('meeshow-basic-layout-product-list', styles);
 
@@ -31,6 +33,7 @@ class index extends React.Component {
     const { dispatch, authApp, handleTabs } = this.props
     const { authList } = authApp || {}
     const curAppItem = this.getDefaultAppItem(activeKey, authList)
+    Cookie.setItem(saveAppKey, activeKey);
     dispatch(syncStarkUp('setAuthAppList', {
       curApp: activeKey,
       curAppItem,

@@ -21,8 +21,6 @@ class Action extends React.Component {
   }
 
   render () {
-    const { location: { search } } = this.props;
-    const { app_key: appKey } = getUrlParams(search);
     return (
       <div className={cx('root')}>
         <div className="operate">

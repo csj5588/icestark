@@ -35,5 +35,5 @@ class Dispatcher extends React.Component {
 
 export default connect(store => ({
   store: store.dispatcher,
-  authApp: store.stark.authApp.curApp
+  curApp: store.stark.authApp.curApp
 }))(Dispatcher);

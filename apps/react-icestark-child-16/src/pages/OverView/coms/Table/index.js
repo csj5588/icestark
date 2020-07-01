@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
+import { Link } from 'react-router-dom';
 import { Button, Table, Modal, Pagination, Tooltip } from 'antd';
 import $common from 'utils/common';
 import { formatTime } from '../../constants/timeFormat';
@@ -69,14 +70,17 @@ class Tables extends React.PureComponent {
         width: 180,
         render: (...args) => {
           const [text, record, index] = args
-          return <div className={cx('operate')}>
-            <Button
-              type="primary"
-              onClick={() => this.handelDetail(record)}
+          const { function_key: functionKey } = record
+          const _path = ROUTER[functionKey]
+          return (<div className={cx('operate')}>
+            <Link
+              className="btn"
+              key={functionKey}
+              to={_path}
             >
               查看
-            </Button>
-          </div>
+            </Link>
+          </div>)
         }
       },
     ]

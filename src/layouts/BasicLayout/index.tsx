@@ -167,7 +167,7 @@ class BasicLayout extends React.Component {
               })
             */}
             <div className="layout-menu-top-items">
-              <a className={`layout-menu-top-document`}>文档中心</a>
+              <a className={`layout-menu-top-document`} href="https://cloud.inkept.cn/#production">文档中心</a>
               <AppLink
                 to="/react/overView"
                 className={`layout-menu-top-control ${

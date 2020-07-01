@@ -26,7 +26,7 @@ class index extends React.Component {
     }, 200);
   };
 
-  handleTabs = () => {
+  handleTabs = () => {    
     this.switchPage();
   };
 

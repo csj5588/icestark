@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { push } from 'react-router-redux';
+import { Link } from 'react-router-dom';
 import common from 'utils/common';
 import _cloneDeep from 'lodash/cloneDeep'
 import { DETAIL } from './../../constants/modalTypes';
@@ -89,7 +90,9 @@ class index extends React.Component {
           <Button type="primary" onClick={this.handleSubmit}>
             确定
           </Button>
-          <Button className='ml20' onClick={this.handelBlack}>取消</Button>
+          <Link
+            className='ml20 btn'
+            to="/access/dispatcher">取消</Link>
         </div>
       </Form>
     );

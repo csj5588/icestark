@@ -14,18 +14,16 @@ class BusiVersion extends React.Component {
   }
 
   getTableList = () => {
-    const { dispatch, location: { search } } = this.props;
-    const { app_key: appKey } = getUrlParams(search);
-    dispatch(getTableList({ app_key: appKey }));
+    const { dispatch, curApp } = this.props;
+    dispatch(getTableList({ app_key: curApp }));
   }
 
   render () {
-    const { location: { search } } = this.props;
-    const { app_key: appKey } = getUrlParams(search);
+    const { curApp } = this.props;
     return (
       <div>
-        <Table appKey={appKey}/>
-        <Create appKey={appKey}/>
+        <Table appKey={curApp}/>
+        <Create appKey={curApp}/>
       </div>
     )
   }
@@ -34,4 +32,5 @@ class BusiVersion extends React.Component {
 export default connect(store => ({
   store: store.busiVersion,
   productDetail: store.productDetail,
+  curApp: store.stark.authApp.curApp,
 }))(BusiVersion);
