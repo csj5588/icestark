@@ -49,7 +49,7 @@ const asideMenuConfig = [
         path: '/access/longLink',
       },
       {
-        name: '埋点服务',
+        name: '埋点服务接入',
         path: '/access/buried',
       },
     ],

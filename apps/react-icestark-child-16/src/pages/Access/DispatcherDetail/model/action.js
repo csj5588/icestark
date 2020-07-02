@@ -42,7 +42,12 @@ export const saveSearchParams = (payload) => ({
 });
 
 export const getTableList = (payload = {}) => async (dispatch, getState) => {
-  const { id, curApp } = payload
+  const { dispatcherDetail: state } = getState();
+  const params = {
+    ...state.searchParams,
+    ...payload,
+  };
+  const { id, curApp } = params
   const [dataRes, envsRes] = await Promise.all([S.getData({ id }), S.getEnvList({ app_key: curApp })])
   const { data } = dataRes
   const { detail = [] } = data || {}
@@ -59,6 +64,7 @@ export const getTableList = (payload = {}) => async (dispatch, getState) => {
     name: x.item && x.item.name,
   }));
   // 存储详情数据 和 环境列表
+  dispatch(saveSearchParams(params));
   dispatch(saveAllEnvList(allEnvList));
   dispatch(saveEnvList(envList));
   dispatch(saveTable(data || {}));

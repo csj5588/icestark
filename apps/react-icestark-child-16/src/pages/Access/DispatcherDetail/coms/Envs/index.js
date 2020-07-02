@@ -75,7 +75,7 @@ class index extends React.Component {
         <div className="row">
           <Row gutter={[20, 20]}>
             {detail && detail.map((item, index) => (
-              <Col sm={24} lg={24} xl={24} xxl={12} key={item.id}>
+              <Col sm={24} lg={24} xl={24} xxl={24} key={item.id}>
                 <Content
                   form={form}
                   index={index}

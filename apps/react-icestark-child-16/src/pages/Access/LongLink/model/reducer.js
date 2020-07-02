@@ -9,12 +9,15 @@ import {
 import { DETAIL } from '../constants/modalTypes';
 
 const defualtCreateParams = {
-  app_key: '',
-  domain: '',
-  proto: undefined,
-  env: undefined,
-  usage: undefined,
-  desc: '',
+  buz_config: [{
+    ev: 'c.jr',
+    uri: '/api/test',
+    dc: 'ali-test',
+    service_name: 'room.live.test',
+    read_timeout: 2500,
+    endpoints: ''
+  }],
+  usage_cluster: undefined
 };
 
 const initialState = {
@@ -31,16 +34,10 @@ const initialState = {
     ...defualtCreateParams,
   },
   searchParams: {
-    app_key: '',
-    domain: '',
     page: 1,
-    size: 10,
+    size: 999,
   },
-  configList: {
-    protos: [], // 协议
-    envs: [], // 环境
-    usages: [], // 用途
-  }
+  configList: []
 }
 
 export default function reducer (state = initialState, action) {
@@ -81,10 +78,9 @@ export default function reducer (state = initialState, action) {
       })
     case SAVE_CONFIG_LIST:
       return Object.assign({}, state, {
-        configList: {
-          ...state.table,
+        configList: [
           ...action.payload,
-        }
+        ]
       })
     default:
       return state;

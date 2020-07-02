@@ -136,11 +136,20 @@ class BasicLayout extends React.Component {
     return menuChildren;
   };
 
+  // 判断是否有管理权限
+  getManageAuth = () => {
+    const { treeRight } = this.props;
+    const [treeRightItem, ...otr] = treeRight;
+    const { children: authChildren } = treeRightItem || {};
+    const hasManageAuth = authChildren.some(item => item.root === AUTH)
+    return hasManageAuth
+  }
+
   render() {
     const { children, pathname, appToken } = this.props;
     const menuChildren = this.renderChildMenu();
     const needSideMenu = !_isEmpty(menuChildren);
-
+    const hasManageAuth = this.getManageAuth()
     return (
       <Shell
         type="brand"
@@ -180,14 +189,14 @@ class BasicLayout extends React.Component {
               </AppLink>
             </div>
             <div className={`layout-menu-top-items`}>
-              <AppLink
+              { hasManageAuth ? <AppLink
                 to="/auth-pageButtonMs"
                 className={`layout-menu-top-manage ${
                   pathname.includes(MANAGE) ? 'act' : ''
                 }`}
               >
                 系统管理
-              </AppLink>
+              </AppLink> : null }
               <AppLink
                 to="/vue-app"
                 className={`layout-menu-top-order ${

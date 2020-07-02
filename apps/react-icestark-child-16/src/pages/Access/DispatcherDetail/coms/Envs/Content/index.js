@@ -31,6 +31,7 @@ class Content extends React.Component {
 
   handeleChange = (val, index) => {
     // 找到对应的环境配置进行表格处理 改变data数据
+    console.log(val, index)
     const {
       dispatch,
       store: { data },
@@ -109,11 +110,12 @@ class Content extends React.Component {
       after_fe: afterFe,
     } = data;
     const count = beforeCustomVerify && beforeCustomVerify.length;
+    const beforeCustomData = beforeCustomVerify && beforeCustomVerify.map((item, index) => ({ id: index, ...item }))
     const { getFieldDecorator } = form;
     return (
       <div className={cx('root')}>
         <div className="item-title">{title}<Icon className="icon" type="minus-circle" onClick={() => this.handleDeleteEnv(index)} /></div>
-        <div className="line"></div>
+        <div className="line" />
         <div className="title">before配置:</div>
         <Form.Item label="配置校验" {...formItemLayout}>
           {getFieldDecorator(`detail[${index}].before_verify`, {
@@ -136,13 +138,13 @@ class Content extends React.Component {
         </Form.Item>
         <div className="edit-table">
           <EditableTable
-            dataSource={beforeCustomVerify || []}
+            dataSource={beforeCustomData || []}
             count={count}
             handleDelete={val => this.handleDelete(val, index)}
             onChange={(val) => this.handeleChange(val, index)}
           />
         </div>
-        <div className="line mt10 ml20"></div>
+        <div className="line mt10 ml20" />
         <div className="title">now配置:</div>
         <FormItem
           form={form}
@@ -150,7 +152,7 @@ class Content extends React.Component {
           required={true}
           label={`detail[${index}].now`}
         />
-        <div className="line ml20"></div>
+        <div className="line ml20" />
         <div className="title after">
           after配置:
           <Icon

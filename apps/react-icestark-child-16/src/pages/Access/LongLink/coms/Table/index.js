@@ -1,135 +1,111 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Button, Table, Modal, Pagination } from 'antd';
+import { Button, Table } from 'antd';
 import $common from 'utils/common';
-import { DETAIL, UPDATE } from './../../constants/modalTypes';
-import { formatDate } from './../../constants/timeFormat';
-import { saveCreate, del, saveCreateParams, getTableList } from './../../model/action';
+import _isEmpty from 'lodash/isEmpty';
+import {
+  saveCreate,
+  saveCreateParams,
+} from './../../model/action';
+import { UPDATE } from '../../constants/modalTypes'
 import styles from './index.less';
 
 const cx = $common.classnames('table', styles);
-const { confirm } = Modal;
-const pageSizeList = ['10', '20', '30', '40', '50', '100']
-const DEFAULT_PAGE = 1;
 
 class Tables extends React.PureComponent {
   state = {
     columns: [
       {
-        title: '域名',
-        dataIndex: 'domain',
+        title: '事件名',
+        dataIndex: 'ev',
       },
       {
-        title: '用途',
-        dataIndex: 'item.label',
+        title: '转发URI',
+        dataIndex: 'uri',
       },
       {
-        title: '机房环境',
-        dataIndex: 'item.env',
+        title: '业务方集群',
+        dataIndex: 'dc',
       },
       {
-        title: '操作时间',
-        dataIndex: 'item.update_time',
-        render: text => formatDate(text)
+        title: '服务发现名',
+        dataIndex: 'service_name',
       },
       {
-        title: '操作人',
-        dataIndex: 'item.operator',
+        title: '超时时长(ms)',
+        dataIndex: 'read_timeout',
       },
       {
-        title: '操作',
-        dataIndex: 'operate',
-        key: 'operate',
-        width: 100,
-        render: (...args) => {
-          const [text, record, index] = args
-          return (
-            <div className={cx('operate')}>
-              <Button
-                type="primary"
-                onClick={() => this.handelUpdate(record)}
-              >
-                编辑
-              </Button>
-            </div>
-          )
-        }
+        title: 'endpoints',
+        dataIndex: 'endpoints',
       },
-    ]
-  }
+    ],
+  };
 
-  handelUpdate = rows => {
+  handelUpdate = (rows) => {
     const { dispatch } = this.props;
-    const { domain, proto, env, usage, desc } = rows;
+    const { id, buzConfig, usage_cluster: usageCluster } = rows;
     const params = {
-      domain,
-      proto,
-      env,
-      usage,
-      desc
+      id,
+      buz_config: buzConfig,
+      usage_cluster: usageCluster,
     };
     dispatch(saveCreateParams(params));
-    dispatch(saveCreate({ show: true, title: '域名编辑', type: UPDATE }));
-  }
+    dispatch(saveCreate({ show: true, title: '编辑配置', type: UPDATE }));
+  };
 
-  handlePageChange = (page, size) => {
-    const { dispatch } = this.props;
-    const params = {
-      page,
-      size,
-    };
-    dispatch(getTableList(params));
-  }
-
-  handleSizeChange = (page, size) => {
-    const { dispatch } = this.props;
-    const params = {
-      page: DEFAULT_PAGE,
-      size,
-    };
-    dispatch(getTableList(params));
-  }
-
-  render () {
+  render() {
     const { columns } = this.state;
     const { store } = this.props;
     const {
-      table: {
-        data,
-        total
-      },
-      searchParams: {
-        page,
-        size,
-      }
+      table: { data },
     } = store;
     return (
       <div className={cx('root')}>
-        <Table
-          className="table"
-          dataSource={data}
-          columns={columns}
-          rowKey={record => record.domain}
-          pagination={false}
-        />
-        <Pagination
-          className={cx('pagination')}
-          total={total}
-          showTotal={num => `共 ${num} 条`}
-          current={page}
-          defaultCurrent={page}
-          pageSize={size}
-          pageSizeOptions={pageSizeList}
-          showSizeChanger
-          onChange={this.handlePageChange}
-          onShowSizeChange={this.handleSizeChange}
-          showQuickJumper
-        />
+        {!_isEmpty(data) ? (
+          <div>
+            {data.map((item) => (
+              <div className="box">
+                <div className="long-header">
+                  <div className="title-text">
+                    usage_cluster: <span>{item.usage_cluster}</span>
+                  </div>
+                  <div className="title-text">
+                    <span>usahe_config: </span>
+                    {Object.keys(item.usageConfig).map((key) => (
+                      <span>
+                        {key}-{item.usageConfig[key]}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="long-header">
+                    <Button
+                      type="primary"
+                      className="ml10 mr10"
+                      onClick={() => this.handelUpdate(item)}
+                    >
+                      编辑
+                    </Button>
+                  </div>
+                </div>
+                <Table
+                  className="table"
+                  dataSource={item.buzConfig}
+                  columns={columns}
+                  rowKey="ev"
+                  pagination={false}
+                />
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className="title-text">暂无数据，请发起工单</div>
+        )}
       </div>
-    )
+    );
   }
 }
 
-export default connect(stores => ({
+export default connect((stores) => ({
   store: stores.longLink,
 }))(Tables);

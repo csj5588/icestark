@@ -2,29 +2,35 @@ import React from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { Modal, Form } from 'antd';
-import { DETAIL } from './../../constants/modalTypes';
-import { momentToTime } from './../../constants/timeFormat';
-import { saveCreate, add, initCreateParams } from './../../model/action';
+import $user from 'src/utils/user';
+import { DETAIL, UPDATE, ADD } from './../../constants/modalTypes';
+import { saveCreate, add, initCreateParams, update } from './../../model/action';
 import Content from './Content';
 
+const LONG = 'LongConnect' // 长链接功能标识
 class Create extends React.Component {
   handleSubmit = e => {
     const { form, store } = this.props;
-    const { create: { type } } = store;
+    const { create: { type }, createParams: { id, buz_config: buzConfig } } = store;
     if (type === DETAIL) {
       this.handleCancel();
       return;
     }
     e.preventDefault();
     form.validateFields((err, values) => {
-      if (!err) {
-        const { dispatch, createParams, appKey } = this.props
-        const params = {
-          ...createParams,
-          ...values,
-          app_key: appKey,
-        }
-        dispatch(add(params));
+      if (err) return
+      const { dispatch } = this.props
+      const formatParams = {
+        function_key: LONG,
+        function_config: {
+          buz_config: JSON.stringify(buzConfig),
+          ...values
+        },
+      }
+      if (type === ADD) {
+        dispatch(add(formatParams))
+      } else {
+        dispatch(update(id, formatParams))
       }
     });
   };
@@ -36,11 +42,12 @@ class Create extends React.Component {
   }
 
   render() {
-    const { form, store } = this.props;
+    const { form, store, dispatch } = this.props;
     const { create } = store;
     return (
       <Modal
         title={create.title}
+        width={1000}
         visible={create.show}
         onOk={this.handleSubmit}
         onCancel={this.handleCancel}
@@ -49,6 +56,7 @@ class Create extends React.Component {
         <Content
           store={store}
           form={form}
+          dispatch={dispatch}
         />
       </Modal>
     )

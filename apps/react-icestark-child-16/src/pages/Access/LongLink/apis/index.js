@@ -34,28 +34,36 @@ const errorMessageDecorator = messageDecorator({ errorMsg: getErrorMsg('接口�
  */
 class Apis {
   /**
-   *  接口：域名列表&信息查询接口
+   *  接口：查询、导出
    *  @example https://xxx.busi.inke.cn/login/rbac/module/data_list
    */
   // @mockGetDataList
   @messageDecorator({ errorMsg: showErrorMessage() })
-  getDataList = get('api_web/v1/controlcenter/business/app/domain/list/get')
+  getDataList = get('api_web/v1/controlcenter/function/config/list/get')
 
   /**
-   *  接口：新增、编辑
+   *  接口：新增
    *  @example https://xxx.busi.inke.cn/login/rbac/module/data_modify
    */
   // @mockAdd
-  @messageDecorator({ successMsg: showSuccess('操作成功'), errorMsg: showErrorMessage() })
-  add = post('api_web/v1/controlcenter/business/app/domain/add')
+  @messageDecorator({ successMsg: showSuccess('操作成功，请到工单系统查看'), errorMsg: showErrorMessage() })
+  add = post('api_web/v1/controlcenter/function/apply/add')
 
   /**
-   *  接口：下线
-   *  @example https://xxx.busi.inke.cn/login/rbac/module/data_del
+   *  接口：编辑
+   *  @example https://xxx.busi.inke.cn/login/rbac/module/data_modify
    */
-  // @mockDelete
-  @messageDecorator({ successMsg: showSuccess('下线成功'), errorMsg: showErrorMessage() })
-  del = post('api_web/v1/controlcenter/business/app/domain/del')
+  // @mockAdd
+  @messageDecorator({ successMsg: showSuccess('操作成功，请到工单系统查看'), errorMsg: showErrorMessage() })
+  update = (id, params) => post(`api_web/v1/controlcenter/function/apply/update?id=${id}`)(params)
+
+  /**
+   *  接口：集群列表获取接口
+   *  @example https://xxx.busi.inke.cn/login/rbac/module/data_modify
+   */
+  // @mockAdd
+  @messageDecorator({ errorMsg: showErrorMessage() })
+  getClusters = get('api_web/v1/controlcenter/clusters/get')
 }
 
 export default new Apis()

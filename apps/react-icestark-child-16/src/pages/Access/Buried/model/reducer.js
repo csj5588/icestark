@@ -29,7 +29,7 @@ const initialState = {
   },
   searchParams: {
     page: 1,
-    limit: 10,
+    limit: 999,
   },
   domainList: [],
   usage: {},

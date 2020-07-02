@@ -61,25 +61,25 @@ const appConfig = {
         sandbox: false,
         // Angular app demo: https://github.com/ice-lab/icestark-child-apps/tree/master/child-common-angular-9 
         // entry: 'http://localhost:3334/',
-        url: [
-          'http://localhost:4444/app.js',
-          'http://localhost:4444/css/app.css'
-        ]
         // url: [
-        //   './../apps/vue/js/app.js',
-        //   './../apps/vue/css/app.css'
-        // ] // 注意
+        //   'http://localhost:4444/app.js',
+        //   'http://localhost:4444/css/app.css'
+        // ]
+        url: [
+          './../apps/vue/js/app.js',
+          './../apps/vue/css/app.css'
+        ] // 注意
       },
       {
         path: '/react',
         title: '管控中心',
         sandbox: true,
         // Angular app demo: https://github.com/ice-lab/icestark-child-apps/tree/master/child-common-angular-9 
-        entry: 'http://localhost:3444/',
-        // url: [
-        //   './../apps/react/js/index.js',
-        //   './../apps/react/css/index.css'
-        // ] // 注意
+        // entry: 'http://localhost:3444/',
+        url: [
+          './../apps/react/js/index.js',
+          './../apps/react/css/index.css'
+        ] // 注意
       }
     ];
       return apps;
