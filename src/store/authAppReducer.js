@@ -1,6 +1,7 @@
 import * as types from './action-types'
 const authAppState = {
   curApp: '', // haokan
+  hasAppAuth: false, // 是否有当前app权限
   curAppItem: {}, // 当前app
   appList: [], // [{ appid: 'haokan', name: '好看' }]
   authList: [], // 所有app 列表权限页面专用

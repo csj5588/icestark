@@ -9,13 +9,14 @@ import { ACCESS_ROUTE } from './constant';
 import styles from './index.less';
 import Header from './Header';
 import ProductList from './ProductList';
+import NoRermission from './NoPermission';
 
 const cx = common.classnames('meeshow-basic-layout', styles);
 class index extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      switchPageShow: true
+      switchPageShow: true,
     };
   }
 
@@ -23,16 +24,19 @@ class index extends React.Component {
     this.setState({ switchPageShow: false });
     setTimeout(() => {
       this.setState({ switchPageShow: true });
-    }, 200);
+    }, 500);
   };
 
-  handleTabs = () => {    
+  handleTabs = () => {
     this.switchPage();
   };
 
   renderChildMenu = () => {
-    const { location: { pathname }, treeRight } = this.props;
-    if(!pathname.includes(ACCESS_ROUTE)) return []
+    const {
+      location: { pathname },
+      treeRight,
+    } = this.props;
+    if (!pathname.includes(ACCESS_ROUTE)) return [];
     const menuChildren = this.formatAuthMenu(
       pathname,
       ACCESS_ROUTE,
@@ -45,19 +49,19 @@ class index extends React.Component {
   //  判断接入管理内的子页面
   formatAuthMenu = (pathname, target, treeRight, asideMenuConfig) => {
     const menuChild =
-      asideMenuConfig.find(x => {
+      asideMenuConfig.find((x) => {
         return x.path.includes(ACCESS_ROUTE);
       }) || {};
     const [treeRightItem, ...otr] = treeRight;
     const { children: authChildren } = treeRightItem || {};
     const auth =
-      (authChildren && authChildren.find(x => x.root === ACCESS_ROUTE)) || {};
+      (authChildren && authChildren.find((x) => x.root === ACCESS_ROUTE)) || {};
     const authMenuChildren =
       menuChild.children &&
-      menuChild.children.filter(x => {
+      menuChild.children.filter((x) => {
         const filterItem =
           auth.children &&
-          auth.children.find(y => {
+          auth.children.find((y) => {
             return x.path.includes(y.root);
           });
         return filterItem;
@@ -67,9 +71,12 @@ class index extends React.Component {
   };
 
   render() {
-    const { authApp, location: { pathname } } = this.props;
+    const {
+      authApp,
+      location: { pathname },
+    } = this.props;
     const { switchPageShow } = this.state;
-    const { curApp } = authApp || {};
+    const { curApp, hasAppAuth } = authApp || {};
     const menuChildren = this.renderChildMenu();
     const needSideMenu = !_isEmpty(menuChildren);
     return (
@@ -79,31 +86,37 @@ class index extends React.Component {
             <ProductList handleTabs={this.handleTabs} />
             <Header pathname={pathname} />
             {switchPageShow ? (
-              <div className="content">
-                <div className="layout-content">
-                  {needSideMenu ? (
-                    <div className="side-menu">
-                      <div>
-                        {menuChildren.map((item, idx) => {
-                          return (
-                            <Link
-                              key={idx}
-                              to={item.path}
-                              className={`layout-menu-top-items ${
-                                pathname === item.path ? 'act' : ''
-                              }`}
-                            >
-                              {item.name}
-                            </Link>
-                          );
-                        })}
+              <div>
+                {hasAppAuth ? (
+                  <div className="content">
+                    <div className="layout-content">
+                      {needSideMenu ? (
+                        <div className="side-menu">
+                          <div>
+                            {menuChildren.map((item, idx) => {
+                              return (
+                                <Link
+                                  key={idx}
+                                  to={item.path}
+                                  className={`layout-menu-top-items ${
+                                    pathname === item.path ? 'act' : ''
+                                  }`}
+                                >
+                                  {item.name}
+                                </Link>
+                              );
+                            })}
+                          </div>
+                        </div>
+                      ) : null}
+                      <div className="layout-content-router">
+                        {this.props.children}
                       </div>
                     </div>
-                  ) : null}
-                  <div className="layout-content-router">
-                    {this.props.children}
                   </div>
-                </div>
+                ) : (
+                  <NoRermission pathname={pathname} />
+                )}
               </div>
             ) : (
               <SwitchPage />
@@ -115,7 +128,7 @@ class index extends React.Component {
   }
 }
 
-export default connect(stores => ({
+export default connect((stores) => ({
   authApp: stores.stark.authApp,
-  treeRight: stores.stark.auth.pageButtonTreeRight
+  treeRight: stores.stark.auth.pageButtonTreeRight,
 }))(index);

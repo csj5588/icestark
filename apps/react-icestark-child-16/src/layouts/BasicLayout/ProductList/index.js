@@ -31,12 +31,15 @@ class index extends React.Component {
 
   handleTabs = activeKey => {
     const { dispatch, authApp, handleTabs } = this.props
-    const { authList } = authApp || {}
+    const { authList, appList } = authApp || {}
     const curAppItem = this.getDefaultAppItem(activeKey, authList)
+    // 判断有没有当前app的权限
+    const hasAppAuth = appList.some(app => app.appid === activeKey)
     Cookie.setItem(saveAppKey, activeKey);
     dispatch(syncStarkUp('setAuthAppList', {
       curApp: activeKey,
       curAppItem,
+      hasAppAuth,
     }));
     handleTabs()
   }

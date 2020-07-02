@@ -57,7 +57,7 @@ const appConfig = {
       },
       {
         path: '/vue-app',
-        title: '工单系统',
+        title: '管控中心',
         sandbox: false,
         // Angular app demo: https://github.com/ice-lab/icestark-child-apps/tree/master/child-common-angular-9 
         // entry: 'http://localhost:3334/',

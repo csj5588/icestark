@@ -75,6 +75,8 @@ class BasicLayout extends React.Component {
       const defaultApp = this.getDefaultApp(appList);
       const defaultAppItem = this.getDefaultAppItem(appList);
       Cookie.setItem(saveAppKey, defaultApp);
+      // 判断有没有当前app的权限
+      const hasAppAuth = appListOptions.some(app => app.appid === defaultApp)
       this.setState({
         dataAuthComplete: true,
         defaultApp,
@@ -84,6 +86,7 @@ class BasicLayout extends React.Component {
       dispatch(
         actions.setAuthAppList({
           curApp: defaultApp,
+          hasAppAuth,
           appList: appListOptions,
           authList,
           curAppItem: defaultAppItem,
