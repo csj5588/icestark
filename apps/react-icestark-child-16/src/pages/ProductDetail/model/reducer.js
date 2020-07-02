@@ -10,7 +10,8 @@ import {
   SAVE_CREATE_PRODUCT_PARAMS,
   INIT_CREATE_PRODUCT_PARAMS,
   SAVE_TAB_LIST,
-  SAVE_ACCESS_LIST
+  SAVE_ACCESS_LIST,
+  SAVE_DOMAIL,
 } from './type';
 import { DETAIL } from '../constants/modalTypes';
 const defualtCreateParams = {
@@ -66,6 +67,7 @@ const initialState = {
     limit: 10
   },
   accessList: [],
+  domain: {},
 }
 
 export default function reducer (state = initialState, action) {
@@ -144,6 +146,10 @@ export default function reducer (state = initialState, action) {
     case SAVE_TAB_LIST:
       return Object.assign({}, state, {
         tabList: [...action.payload]
+      })
+    case SAVE_DOMAIL:
+      return Object.assign({}, state, {
+        domain: action.payload
       })
     default:
       return state;

@@ -11,6 +11,7 @@ import {
   INIT_CREATE_PRODUCT_PARAMS,
   SAVE_TAB_LIST,
   SAVE_ACCESS_LIST,
+  SAVE_DOMAIL,
 } from './type';
 import S from './../apis';
 
@@ -47,6 +48,7 @@ export const initCreateProParams = (payload) => ({
   type: INIT_CREATE_PRODUCT_PARAMS,
   payload,
 });
+export const saveDomain = payload => ({ type: SAVE_DOMAIL, payload });
 
 // 获取产品详情信息
 export const getAppDetail = (payload = {}) => async (dispatch, getState) => {
@@ -134,5 +136,15 @@ export const del = (payload) => async (dispatch, getState) => {
   S.del(payload).then(() => {
     // 刷新列表
     dispatch(getAppDetail({ app_key: appKey }));
+  });
+};
+
+export const getDomailList = payload => async (dispatch, getState) => {
+  console.log('detail')
+  await S.getDomailList(payload).then((res) => {
+    const { data } = res
+    const { domains = [] } = data || {}
+    const [ first = {}, ...other ] = domains || []
+    dispatch(saveDomain(first));
   });
 };

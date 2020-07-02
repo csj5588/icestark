@@ -18,7 +18,7 @@ import { getRequestsByRoot, getMessageDecorator, serviceHocs } from 'axios-servi
 const root = srcConfig.APIS.root
 
 const { getErrorMsg } = serviceHocs
-const { post } = getRequestsByRoot({ root })
+const { get, post } = getRequestsByRoot({ root })
 
 // 消息装饰器
 const showSuccess = msg => msg || '请求成功'
@@ -36,6 +36,13 @@ class Apis {
   // @mockAdd
   @messageDecorator({ successMsg: showSuccess('新增产品成功') }, { errorMsg: showErrorMessage() })
   add = post('/api_web/v1/controlcenter/business/app/add')
+
+  /**
+   *  接口：获取文件上传接口
+   *  @example https://xxx.busi.inke.cn/login/rbac/module/data_del
+   */
+  @messageDecorator({ errorMsg: showErrorMessage() })
+  getDomailList = get('api_web/v1/controlcenter/business/app/domain/list/get')
 }
 
 export default new Apis()

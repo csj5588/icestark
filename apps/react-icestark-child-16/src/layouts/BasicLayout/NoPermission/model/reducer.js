@@ -1,10 +1,8 @@
 import {
-  SAVE_CREATE,
-  SAVE_CREATE_PARAMS,
-  INIT_CREATE_PARAMS,
-  SAVE_TABLE,
-  SAVE_SEARCH_PARAMS,
-  SAVE_DETAIL,
+  SAVE_CREATE_PRODUCT,
+  SAVE_CREATE_PRODUCT_PARAMS,
+  INIT_CREATE_PRODUCT_PARAMS,
+  SAVE_DOMAIL,
 } from './type';
 import { DETAIL } from '../constants/modalTypes';
 
@@ -19,67 +17,43 @@ const defualtCreateParams = {
 };
 
 const initialState = {
-  create: {
+  createPro: {
     show: false,
     type: DETAIL,
     title: '',
   },
-  table: {
-    data: [],
-    total: 0,
-  },
-  createParams: {
+  createProParams: {
     ...defualtCreateParams,
   },
-  searchParams: {
-    wd: '',
-    scope: 'all',
-    page: 1,
-    limit: 10
-  },
-  detail: {},
+  domain: {},
 }
 
 export default function reducer (state = initialState, action) {
   switch (action.type) {
-    case SAVE_CREATE:
+    case SAVE_CREATE_PRODUCT:
       return Object.assign({}, state, {
-        create: {
-          ...state.create,
+        createPro: {
+          ...state.createPro,
           ...action.payload,
         }
       })
-    case SAVE_DETAIL:
+    case SAVE_CREATE_PRODUCT_PARAMS:
       return Object.assign({}, state, {
-        detail: action.payload,
-      })
-    case SAVE_CREATE_PARAMS:
-      return Object.assign({}, state, {
-        createParams: {
-          ...state.createParams,
+        createProParams: {
+          ...state.createProParams,
           ...action.payload,
         }
       })
-    case INIT_CREATE_PARAMS:
+    case INIT_CREATE_PRODUCT_PARAMS:
       return Object.assign({}, state, {
-        createParams: {
+        createProParams: {
           ...defualtCreateParams,
         }
       })
-    case SAVE_SEARCH_PARAMS:
-      return Object.assign({}, state, {
-        searchParams: {
-          ...state.searchParams,
-          ...action.payload,
-        }
-      })
-    case SAVE_TABLE:
-      return Object.assign({}, state, {
-        table: {
-          ...state.table,
-          ...action.payload,
-        }
-      })
+      case SAVE_DOMAIL:
+        return Object.assign({}, state, {
+          domain: action.payload
+        })
     default:
       return state;
   }

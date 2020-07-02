@@ -5,7 +5,7 @@ import config from '@/config';
 const systemManage = [
   {
     name: '系统管理',
-    path: '/auth-pageButtonMs',
+    path: '/auth',
     icon: 'setting',
     children: [
       {

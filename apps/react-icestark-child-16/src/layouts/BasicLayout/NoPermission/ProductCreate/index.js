@@ -5,13 +5,13 @@ import { syncStarkUp } from '@/store/action-stark';
 import { Modal, Form } from 'antd';
 import { DETAIL } from '../constants/modalTypes';
 import { momentToTime } from '../constants/timeFormat';
-import { saveCreate, add, initCreateParams } from '../model/action';
+import { saveCreatePro, add, initCreateProParams } from '../model/action';
 import Content from './Content';
 
 class Create extends React.Component {
   handleSubmit = e => {
     const { form, store } = this.props;
-    const { create: { type } } = store;
+    const { createPro: { type } } = store;
     if (type === DETAIL) {
       this.handleCancel();
       return;
@@ -34,17 +34,17 @@ class Create extends React.Component {
 
   handleCancel = () => {
     const { dispatch } = this.props;
-    dispatch(saveCreate({ show: false }));
-    dispatch(initCreateParams());
+    dispatch(saveCreatePro({ show: false }));
+    dispatch(initCreateProParams());
   }
 
   render() {
     const { form, store, curApp } = this.props;
-    const { create } = store;
+    const { createPro, domain } = store;
     return (
       <Modal
-        title={create.title}
-        visible={create.show}
+        title={createPro.title}
+        visible={createPro.show}
         onOk={this.handleSubmit}
         onCancel={this.handleCancel}
         destroyOnClose
@@ -53,6 +53,7 @@ class Create extends React.Component {
           store={store}
           form={form}
           curApp={curApp}
+          domain={domain}
         />
       </Modal>
     )
@@ -62,7 +63,7 @@ class Create extends React.Component {
 export default compose(
   Form.create(),
   connect(stores => ({
-    store: stores.product,
+    store: stores.productDetail,
     curApp: stores.stark.authApp.curApp
   })),
 )(Create);

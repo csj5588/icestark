@@ -1,6 +1,7 @@
 import React from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
+import { syncStarkUp } from '@/store/action-stark';
 import { Modal, Form } from 'antd';
 import { DETAIL } from '../../../constants/modalTypes';
 import { momentToTime } from '../../../constants/timeFormat';
@@ -24,7 +25,9 @@ class Create extends React.Component {
           ...values,
           launch_date: momentToTime(date),
         }
-        dispatch(uplate(params));
+        dispatch(uplate(params)).then(() => {
+          dispatch(syncStarkUp('getProductList', {}));
+        });
       }
     });
   };
@@ -37,7 +40,7 @@ class Create extends React.Component {
 
   render() {
     const { form, store, curApp } = this.props;
-    const { createPro } = store;
+    const { createPro, domain } = store;
     return (
       <Modal
         title={createPro.title}
@@ -50,6 +53,7 @@ class Create extends React.Component {
           store={store}
           form={form}
           curApp={curApp}
+          domain={domain}
         />
       </Modal>
     )

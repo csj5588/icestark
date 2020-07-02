@@ -1,6 +1,5 @@
 import React from 'react';
-import { Form, Input, Select, DatePicker } from 'antd';
-import { stringify } from 'qs';
+import { Form, Input, message, DatePicker } from 'antd';
 import $user from 'user'
 import { timeFormat, timeToMoment } from '../../../../constants/timeFormat'
 import UploadRes from 'components/UploadRes'
@@ -12,20 +11,13 @@ const formItemLayout = {
 }
 class Content extends React.Component {
   setAtomToParams = () => {
-    const { curApp } = this.props
-    const user = $user.get()
-    const { user_id: userId, system_id: systemId, username, email, department } = user
-    const params = {
-      user_id: userId,
-      system_id: systemId,
-      username,
-      email,
-      department,
-      ticket: $user.getToken(),
-      app_key: curApp,
-      opt: 'product_img',
+    const { domain } = this.props
+    const { proto, domain: domainData } = domain || {}
+    if(!proto) {
+      message.error('无法上传，请先设置文件上传域名')
+      return
     }
-    const url = `/api_web/v1/controlcenter/resource/upload?${stringify(params)}`;
+    const url = `${proto}://${domainData}/upload/image`
     return url
   }
 
@@ -158,8 +150,7 @@ class Content extends React.Component {
               fileExt = {['jpg', 'jpeg', 'png']}
               maxCount = {1}
               limitSize = {5}
-              headers={{ 'uberctx-_namespace_appkey_': 'demo' }}
-              responseDataUrlName = "download_url"
+              responseDataUrlName = "url"
               action={this.setAtomToParams}
               previewStyle = {{ width: '100px', height: '90px' }}
               isDisabled = {isDisable}

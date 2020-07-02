@@ -58,7 +58,7 @@ class Apis {
    *  @example https://xxx.busi.inke.cn/login/rbac/module/data_modify
    */
   @messageDecorator({ successMsg: showSuccess('编辑成功') }, { errorMsg: showErrorMessage() })
-  uplate = post('/api_web/v1/controlcenter/business/app/add')
+  uplate = post('api_web/v1/controlcenter/business/app/add')
 
   /**
    *  接口:申请加入接口
@@ -73,7 +73,14 @@ class Apis {
    *  @example https://xxx.busi.inke.cn/login/rbac/module/data_del
    */
   @messageDecorator({ successMsg: showSuccess('操作成功') }, { errorMsg: showErrorMessage() })
-  del = post('/api_web/v1/controlcenter/business/app/del')
+  del = post('api_web/v1/controlcenter/business/app/del')
+
+  /**
+   *  接口：获取文件上传接口
+   *  @example https://xxx.busi.inke.cn/login/rbac/module/data_del
+   */
+  @messageDecorator({ errorMsg: showErrorMessage() })
+  getDomailList = get('api_web/v1/controlcenter/business/app/domain/list/get')
 }
 
 export default new Apis()

@@ -5,15 +5,16 @@ import common from 'utils/common';
 import ProductCreate from './ProductCreate'
 import { ADD } from './constants/modalTypes'
 import { PRODUCT } from '../constant'
-import { saveCreate } from './model/action'
+import { saveCreatePro, getDomailList } from './model/action'
 import styles from './index.less';
 
 const cx = common.classnames('no-permission', styles);
-
+const FILE = 'FileUpload' // 域名用途， 可选值
 class index extends React.Component {
   handleCreate = () => {
-    const { dispatch } = this.props;
-    dispatch(saveCreate({ show: true, title: '产品新增', type: ADD }));
+    const { dispatch, curApp } = this.props;
+    dispatch(getDomailList({ app_key: curApp, use: FILE }));
+    dispatch(saveCreatePro({ show: true, title: '产品新增', type: ADD }));
   };
 
   render() {
@@ -39,6 +40,6 @@ class index extends React.Component {
 }
 
 export default connect((stores) => ({
-  store: stores.product,
+  store: stores.productDetail,
   curApp: stores.stark.authApp.curApp,
 }))(index);

@@ -190,7 +190,7 @@ class BasicLayout extends React.Component {
             </div>
             <div className={`layout-menu-top-items`}>
               { hasManageAuth ? <AppLink
-                to="/auth-pageButtonMs"
+                to="/auth-userMs"
                 className={`layout-menu-top-manage ${
                   pathname.includes(MANAGE) ? 'act' : ''
                 }`}

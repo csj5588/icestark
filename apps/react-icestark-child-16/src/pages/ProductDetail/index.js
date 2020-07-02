@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import $common from 'utils/common';
 import { getUrlParams } from 'ik-utils';
-import { getAppDetail } from './model/action';
+import { getAppDetail, getDomailList } from './model/action';
 import Title from './coms/Title';
 import DomainAction from './coms/DomainAction';
 import DomainDetail from './coms/DomainDetail';
@@ -11,6 +11,7 @@ import VersionDetail from './coms/VersionDetail';
 import Env from './coms/Env';
 import styles from './index.less'
 
+const FILE = 'FileUpload' // 域名用途， 可选值
 const cx = $common.classnames('productDetail', styles);
 class ProductDetail extends React.Component {
   componentDidMount () {
@@ -20,6 +21,7 @@ class ProductDetail extends React.Component {
   getTableList = () => {
     const { dispatch, authApp } = this.props;
     const { curApp } = authApp || {}
+    dispatch(getDomailList({ app_key: curApp, use: FILE }));
     if(!curApp) return
     dispatch(getAppDetail({ app_key: curApp }));
   }
