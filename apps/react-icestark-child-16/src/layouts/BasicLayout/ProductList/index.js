@@ -56,8 +56,6 @@ class index extends React.Component {
               <TabPane tab={this.renderTab(item, curApp)} key={item.appid} />
             ))}
           </Tabs>
-          <div className='tabs-left' />
-          <div className='tabs-right' />
         </div>
       </div>
     );

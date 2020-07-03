@@ -54,6 +54,11 @@
       "enable": true,
       "target": "http://testapi.meeshow.com/",
       "name": "serviceInfo"
+    },
+    "/workorder/api/**": {
+      "enable": true,
+      "target": "http://test.pe.inkept.cn/",
+      "name": "work"
     }
   }
 }

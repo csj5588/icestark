@@ -9,10 +9,11 @@ import { connect } from 'react-redux'
 import { stringifyParams } from 'ik-utils'
 import $log from '@/utils/log'
 import { message } from 'antd'
-import S from './apis'
 import srcConfig from '@/config'
-import { ADD, VIEW, MODIFY } from './constants/modalTypes'
-import { SYSTEM_START_TIME } from './constants/timeFormat'
+import moment from 'moment'
+import S from './apis'
+import { VIEW } from './constants/modalTypes'
+import { SYSTEM_START_TIME, timeToMomentArray, currentDay } from './constants/timeFormat'
 
 import PageFilter from './components/PageFilter'
 import PageTable from './components/PageTable'
@@ -26,7 +27,7 @@ const creatSearchParams = () => {
     button_identify: undefined,
     operater: '',
     operater_email: '',
-    date: [],
+    date: timeToMomentArray(moment().format('YYYY-MM-DD 00:00:00'), currentDay()),
     page: 1,
     size: 10
   }

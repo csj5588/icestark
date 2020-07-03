@@ -19,11 +19,38 @@
            font-size: 14px;
         }
       }
-      .tabs-left {
-
+      .ant-tabs-tab-prev {
+        &::before {
+          content: '';
+          position: absolute;
+          width: 69px;
+          height: 68px;
+          left: -10px;
+          top: 23px;
+          background: url(https://img.ikstatic.cn/MTU5Mzc0MjkyMDcxMiM3MDkjcG5n.png) no-repeat center center;
+          background-size: 100%;
+        }
+        &.ant-tabs-tab-btn-disabled::before {
+          content: '';
+          display: none;
+        }
       }
-      .tabs-right {
-
+      .ant-tabs-tab-next {
+        &::after {
+          content: '';
+          position: absolute;
+          width: 69px;
+          height: 68px;
+          right: -30px;
+          top: 23px;
+          z-index: -1;
+          background: url(https://img.ikstatic.cn/MTU5Mzc0MjkxMjk2MSM0ODYjcG5n.png) no-repeat center center;
+          background-size: 100%;
+        }
+        &.ant-tabs-tab-btn-disabled::after {
+          content: '';
+          display: none;
+        }
       }
       .ant-tabs-ink-bar {
         height: 3px;

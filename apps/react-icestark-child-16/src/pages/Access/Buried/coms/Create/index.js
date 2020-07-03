@@ -1,7 +1,7 @@
 import React from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import { Modal, Form } from 'antd';
+import { Modal, Form, message } from 'antd';
 import $user from 'src/utils/user';
 import { DETAIL, ADD, UPDATE } from './../../constants/modalTypes';
 import { momentToTime } from './../../constants/timeFormat';
@@ -23,6 +23,11 @@ class Create extends React.Component {
       const { dispatch, appKey } = this.props;
       const user = $user.get()
       const { email } = user
+      const { domain_config: domainConfig } = values
+      if(!domainConfig || domainConfig.length === 0 ) {
+        message.error('请至少填写一个域名配置')
+        return
+      }
       const params = {
         function_key: BURY,
         function_config: {

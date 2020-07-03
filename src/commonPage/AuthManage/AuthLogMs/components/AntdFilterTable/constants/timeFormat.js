@@ -3,7 +3,7 @@ import moment from 'moment'
 export const timeFormat = 'YYYY-MM-DD HH:mm:ss'
 
 // 当前天
-export const currentDay = moment().format(timeFormat)
+export const currentDay = () => moment().format(timeFormat)
 
 // 当前月第一天
 export const monthStartDay = moment().startOf('month').format(timeFormat)
@@ -18,3 +18,8 @@ export const timeToMoment = time => (time ? moment(time) : moment())
 export const momentToTime = time => (time ? time.format(timeFormat) : '')
 
 export const SYSTEM_START_TIME = '2019-05-12 00:00:00'
+
+export function timeToMomentArray(start, end) {
+  if (!start || !end) return [null, null];
+  return [moment(start, timeFormat), moment(end, timeFormat)];
+}

@@ -16,10 +16,11 @@ class Config extends React.Component {
       app: curApp,
     }
     const paramsStr = $common.stringifyParams(params)
-    return `${iframeRoot}apps/react/config/index.html?${paramsStr}`
+    return `${iframeRoot}config/index.html?${paramsStr}`
   }
 
   render () {
+    console.log(this.formatSrc())
     return (
       <div className={cx('root')}>
         <iframe
@@ -36,5 +37,5 @@ class Config extends React.Component {
 
 export default connect(store => ({
   store: store.dispatcher,
-  authApp: store.stark.authApp.curApp
+  curApp: store.stark.authApp.curApp
 }))(Config)

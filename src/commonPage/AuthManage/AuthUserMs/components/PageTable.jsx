@@ -122,7 +122,7 @@ class PageTable extends Component {
             size="small"
             style={styles.btn}
             onClick={() => { this.handleEdit(record) }}
-            disabled={this.handleButtonDisabled('MODIFY')}
+            // disabled={this.handleButtonDisabled('MODIFY')}
           >
             编辑
           </Button>

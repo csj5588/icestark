@@ -30,56 +30,57 @@ const appConfig = {
     type: 'framework',
     Layout: FrameworkLayout,
     getApps: async () => {
-      const apps = [{
-        path: '/seller',
-        title: '商家平台',
-        sandbox: true,
-        // React app demo: https://github.com/ice-lab/icestark-child-apps/tree/master/child-seller-react-16
-        url: [
-          '//ice.alicdn.com/icestark/child-seller-react/index.js',
-          '//ice.alicdn.com/icestark/child-seller-react/index.css',
-        ],
-      }, {
-        path: '/waiter',
-        title: '小二平台',
-        sandbox: true,
-        url: [
-          // Vue app demo: https://github.com/ice-lab/icestark-child-apps/tree/master/child-waiter-vue-2
-          '//ice.alicdn.com/icestark/child-waiter-vue/app.js',
-          '//ice.alicdn.com/icestark/child-waiter-vue/app.css'
-        ],
-      }, {
-        path: '/angular',
-        title: 'Angular',
-        sandbox: true,
-        // Angular app demo: https://github.com/ice-lab/icestark-child-apps/tree/master/child-common-angular-9 
-        entry: '//ice.alicdn.com/icestark/child-common-angular/index.html',
-      },
+      const apps = [
+      // {
+      //   path: '/seller',
+      //   title: '商家平台',
+      //   sandbox: true,
+      //   // React app demo: https://github.com/ice-lab/icestark-child-apps/tree/master/child-seller-react-16
+      //   url: [
+      //     '//ice.alicdn.com/icestark/child-seller-react/index.js',
+      //     '//ice.alicdn.com/icestark/child-seller-react/index.css',
+      //   ],
+      // }, {
+      //   path: '/waiter',
+      //   title: '小二平台',
+      //   sandbox: true,
+      //   url: [
+      //     // Vue app demo: https://github.com/ice-lab/icestark-child-apps/tree/master/child-waiter-vue-2
+      //     '//ice.alicdn.com/icestark/child-waiter-vue/app.js',
+      //     '//ice.alicdn.com/icestark/child-waiter-vue/app.css'
+      //   ],
+      // }, {
+      //   path: '/angular',
+      //   title: 'Angular',
+      //   sandbox: true,
+      //   // Angular app demo: https://github.com/ice-lab/icestark-child-apps/tree/master/child-common-angular-9 
+      //   entry: '//ice.alicdn.com/icestark/child-common-angular/index.html',
+      // },
       {
         path: '/vue-app',
         title: '管控中心',
         sandbox: false,
         // Angular app demo: https://github.com/ice-lab/icestark-child-apps/tree/master/child-common-angular-9 
         // entry: 'http://localhost:3334/',
-        url: [
-          'http://localhost:4444/app.js',
-          'http://localhost:4444/css/app.css'
-        ] // 注意开发解开
         // url: [
-        //   './../apps/vue/js/app.js',
-        //   './../apps/vue/css/app.css'
-        // ] // 注意打包解开
+        //   'http://localhost:4444/app.js',
+        //   'http://localhost:4444/css/app.css'
+        // ] // 注意开发解开
+        url: [
+          './../apps/vue/js/app.js',
+          './../apps/vue/css/app.css'
+        ] // 注意打包解开
       },
       {
         path: '/react',
         title: '管控中心',
         sandbox: true,
         // Angular app demo: https://github.com/ice-lab/icestark-child-apps/tree/master/child-common-angular-9 
-        entry: 'http://localhost:3444/', // 注意开发解开
-        // url: [
-        //   './../apps/react/js/index.js',
-        //   './../apps/react/css/index.css'
-        // ] // 注意打包解开
+        // entry: 'http://localhost:3444/', // 注意开发解开
+        url: [
+          './../apps/react/js/index.js',
+          './../apps/react/css/index.css'
+        ] // 注意打包解开
       }
     ];
       return apps;
