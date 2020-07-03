@@ -20,7 +20,7 @@ class Create extends React.Component {
       if (!err) {
         const { dispatch } = this.props;
         const { checkList } = values
-        const newAddDetail = checkList.map(x => ({ env: x, ev_id: id }))
+        const newAddDetail = checkList.map(x => ({ env: x, ev_id: id, isAdd: true }))
         const newDetail = _concat(detail || [], newAddDetail)
         // 根据选择环境添加配置
         dispatch(saveTable({ detail: newDetail }))

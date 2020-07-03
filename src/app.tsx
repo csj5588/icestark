@@ -62,25 +62,25 @@ const appConfig = {
         sandbox: false,
         // Angular app demo: https://github.com/ice-lab/icestark-child-apps/tree/master/child-common-angular-9 
         // entry: 'http://localhost:3334/',
-        // url: [
-        //   'http://localhost:4444/app.js',
-        //   'http://localhost:4444/css/app.css'
-        // ] // 注意开发解开
         url: [
-          './../apps/vue/js/app.js',
-          './../apps/vue/css/app.css'
-        ] // 注意打包解开
+          'http://localhost:4444/app.js',
+          'http://localhost:4444/css/app.css'
+        ] // 注意开发解开
+        // url: [
+        //   './../apps/vue/js/app.js',
+        //   './../apps/vue/css/app.css'
+        // ] // 注意打包解开
       },
       {
         path: '/react',
         title: '管控中心',
         sandbox: true,
         // Angular app demo: https://github.com/ice-lab/icestark-child-apps/tree/master/child-common-angular-9 
-        // entry: 'http://localhost:3444/', // 注意开发解开
-        url: [
-          './../apps/react/js/index.js',
-          './../apps/react/css/index.css'
-        ] // 注意打包解开
+        entry: 'http://localhost:3444/', // 注意开发解开
+        // url: [
+        //   './../apps/react/js/index.js',
+        //   './../apps/react/css/index.css'
+        // ] // 注意打包解开
       }
     ];
       return apps;

@@ -8,15 +8,23 @@ import { getAllTableList } from '../../model/action';
 import styles from './index.less';
 
 const cx = $common.classnames('overview-all-table', styles);
-const pageSizeList = ['10', '20', '30', '40', '50', '100']
 const DEFAULT_PAGE = 1;
+const BASE_IMG = 'https://img.ikstatic.cn/MTU5MzQ5NjYzODUyOCM4NzcjcG5n.png'
 
 class Tables extends React.PureComponent {
-  state = {
-    columns: [
+    columns = [
       {
         title: '产品线名称',
         dataIndex: 'app_name',
+        render: (text, record) => {
+          const { icon } = record;
+          return (
+            <div className={cx('app')}>
+              <img src={icon || BASE_IMG} alt=""/>
+              <div className="text">{text}</div>
+            </div>
+          )
+        }
       },
       {
         title: '接入服务',
@@ -62,7 +70,6 @@ class Tables extends React.PureComponent {
         render: text => formatTime(text)
       }
     ]
-  }
 
   handlePageChange = (pageToken, count) => {
     const { dispatch } = this.props;
@@ -83,7 +90,6 @@ class Tables extends React.PureComponent {
   }
 
   render () {
-    const { columns } = this.state;
     const { store } = this.props;
     const {
       allTable: {
@@ -96,7 +102,7 @@ class Tables extends React.PureComponent {
         <Table
           className="table"
           dataSource={data || []}
-          columns={columns}
+          columns={this.columns}
           rowKey={record => record.function}
           pagination={false}
         />

@@ -2,24 +2,28 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
 import { Link } from 'react-router-dom';
-import { Button, Table, Modal, Pagination, Tooltip } from 'antd';
+import { Table } from 'antd';
 import $common from 'utils/common';
 import { formatTime } from '../../constants/timeFormat';
 import { ROUTER } from '../../constants/modalTypes'
-import { ENV } from './../../constants/selectLists';
-import { getTableList } from '../../model/action';
 import styles from './index.less';
 
 const cx = $common.classnames('overview-table', styles);
-const pageSizeList = ['10', '20', '30', '40', '50', '100']
-const DEFAULT_PAGE = 1;
-
+const BASE_IMG = 'https://img.ikstatic.cn/MTU5MzQ5NjYzODUyOCM4NzcjcG5n.png'
 class Tables extends React.PureComponent {
-  state = {
-    columns: [
+    columns = [
       {
         title: '产品线名称',
         dataIndex: 'app_name',
+        render: (text, record) => {
+          const { icon } = record;
+          return (
+            <div className={cx('app')}>
+              <img src={icon || BASE_IMG} alt=""/>
+              <div className="text">{text}</div>
+            </div>
+          )
+        }
       },
       {
         title: '接入服务',
@@ -71,12 +75,12 @@ class Tables extends React.PureComponent {
         render: (...args) => {
           const [text, record, index] = args
           const { function_key: functionKey } = record
-          const _path = ROUTER[functionKey]
+          const pathRouter = ROUTER[functionKey]
           return (<div className={cx('operate')}>
             <Link
               className="btn"
               key={functionKey}
-              to={_path}
+              to={pathRouter}
             >
               查看
             </Link>
@@ -84,7 +88,6 @@ class Tables extends React.PureComponent {
         }
       },
     ]
-  }
 
   openWebsite = (web) => {
     window.open(web)
@@ -97,7 +100,6 @@ class Tables extends React.PureComponent {
   }
 
   render () {
-    const { columns } = this.state;
     const { store } = this.props;
     const {
       table: {
@@ -110,7 +112,7 @@ class Tables extends React.PureComponent {
         <Table
           className="table"
           dataSource={data || []}
-          columns={columns}
+          columns={this.columns}
           rowKey={record => record.function}
           pagination={false}
         />

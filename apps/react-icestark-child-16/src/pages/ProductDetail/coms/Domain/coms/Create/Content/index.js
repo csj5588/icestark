@@ -2,6 +2,8 @@ import React from 'react';
 import { Form, Input, Select } from 'antd';
 import { filterOption } from 'ik-utils'
 import { DETAIL, UPDATE } from '../../../constants/modalTypes'
+import { selectList } from '../../../constants/selectLists'
+
 const { TextArea } = Input;
 const formItemLayout = {
   labelCol: { span: 6 },
@@ -20,6 +22,7 @@ class Content extends React.Component {
         env,
         usage,
         desc,
+        use,
       },
       configList: {
         protos,
@@ -121,8 +124,8 @@ class Content extends React.Component {
         </Form.Item>
         <Form.Item label="域名用途" {...formItemLayout}>
           {
-            getFieldDecorator('usage', {
-              initialValue: usage,
+            getFieldDecorator('use', {
+              initialValue: use,
               rules: [
                 {
                   required: true,
@@ -135,6 +138,39 @@ class Content extends React.Component {
                 showSearch
                 style={{ width: '240px' }}
                 placeholder="请选择域名用途"
+                filterOption={filterOption}
+                disabled={isDisable}
+              >
+                {
+                  selectList && selectList.map(item =>
+                    <Select.Option
+                      key={item.value}
+                      value={`${item.value}`}
+                    >
+                      { item.label }
+                    </Select.Option>
+                  )
+                }
+              </Select>
+            )
+          }
+        </Form.Item>
+        <Form.Item label="域名使用方" {...formItemLayout}>
+          {
+            getFieldDecorator('usage', {
+              initialValue: usage,
+              rules: [
+                {
+                  required: true,
+                  message: '请选择域名使用方',
+                },
+              ],
+            })(
+              <Select
+                allowClear
+                showSearch
+                style={{ width: '240px' }}
+                placeholder="请选择域名使用方"
                 filterOption={filterOption}
                 disabled={isDisable}
               >

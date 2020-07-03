@@ -108,13 +108,14 @@ class Content extends React.Component {
       before_custom_verify: beforeCustomVerify,
       now,
       after_fe: afterFe,
+      isAdd,
     } = data;
     const count = beforeCustomVerify && beforeCustomVerify.length;
     const beforeCustomData = beforeCustomVerify && beforeCustomVerify.map((item, index) => ({ id: index, ...item }))
     const { getFieldDecorator } = form;
     return (
       <div className={cx('root')}>
-        <div className="item-title">{title}<Icon className="icon" type="minus-circle" onClick={() => this.handleDeleteEnv(index)} /></div>
+        <div className="item-title">{title}{isAdd && <Icon className="icon" type="minus-circle" onClick={() => this.handleDeleteEnv(index)} />}</div>
         <div className="line" />
         <div className="title">before配置:</div>
         <Form.Item label="配置校验" {...formItemLayout}>

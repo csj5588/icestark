@@ -1,17 +1,17 @@
 
 export const selectList = [
   {
-    value: '11',
-    label: '选项11'
+    value: 'FileUpload',
+    label: '文件上传'
   },
   {
-    value: '12',
-    label: '选项12'
+    value: 'BuryPointUpload',
+    label: '埋点上传'
   },
   {
-    value: '13',
-    label: '选项13'
-  }
+    value: '',
+    label: '其他'
+  },
 ]
 
 export const multipleSelectList = [
