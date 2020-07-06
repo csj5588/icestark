@@ -14,7 +14,7 @@ const defualtCreateParams = {
     uri: '/api/test',
     dc: 'ali-test',
     service_name: 'room.live.test',
-    read_timeout: 2500,
+    read_timeout: 200,
     endpoints: ''
   }],
   usage_cluster: undefined

@@ -149,6 +149,7 @@ class index extends React.Component {
               style={{ width: '240px' }}
               placeholder="请选择域名"
               filterOption={filterOption}
+              notFoundContent="请去域名管理添加文件上传域名"
               disabled={isDisable}
               onChange={this.handleSelect}
             >

@@ -68,13 +68,12 @@ class Tables extends React.PureComponent {
               <div className="box">
                 <div className="long-header">
                   <div className="title-text">
-                    usage_cluster: <span>{item.usage_cluster}</span>
+                    长链接集群: <span>{item.usage_cluster}</span>
                   </div>
                   <div className="title-text">
-                    <span>usahe_config: </span>
                     {Object.keys(item.usageConfig).map((key) => (
                       <span>
-                        {key}-{item.usageConfig[key]}
+                        {key}: {item.usageConfig[key]}
                       </span>
                     ))}
                   </div>

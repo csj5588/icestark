@@ -79,7 +79,7 @@ class Tables extends React.PureComponent {
           <div>
             <div className="box">
               <Row>
-                <div className="title-text">usage_config</div>
+                <div className="title-text">客户端埋点配置</div>
                 {Object.keys(usage).map((key) => (
                   <Col className="col-text" span={12}>
                     {`${key}: ${usage[key]}`}
@@ -89,26 +89,26 @@ class Tables extends React.PureComponent {
             </div>
             <div className="box">
               <Row title="service_confignfig">
-                <div className="title-text">service_confignfig</div>
+                <div className="title-text">产品配置</div>
                 <Col span={8} className="col-text">
                   {`app_name: ${appName}`}
                 </Col>
                 <Col span={8} className="col-text">
                   {`应用名称: ${comment}`}
                 </Col>
-                <Col span={8} className="col-text">{`CV样例: ${cvPrefix}`}</Col>
+                <Col span={8} className="col-text">{`CV前缀: ${cvPrefix}`}</Col>
                 <Col span={8} className="col-text">
-                {`是否是马甲包: ${isReplication ? '是' : '否'}`}
+                  {`是否是马甲包: ${isReplication ? '是' : '否'}`}
                 </Col>
                 {isReplication && (
                   <Col span={8} className="col-text">
-                  {`业务线: ${replicateFrom}`}
+                    {`马甲包app_name: ${replicateFrom}`}
                   </Col>
                 )}
               </Row>
             </div>
             <div className="box">
-              <div className="title-text">domain.config</div>
+              <div className="title-text">域名配置</div>
               <Table
                 className="table"
                 dataSource={data}

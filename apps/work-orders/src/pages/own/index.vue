@@ -8,6 +8,7 @@ import VueClassDecorator from 'vue-class-component'
 import myOrder from './my-order'
 import pendingOrder from './pending-order'
 import finishOrder from './finish-order'
+import { mapState }  from 'vuex'
 // import { Row, Col } from 'iview-ui/grid'
 // import Card from 'iview-ui/card'
 // import Input from 'iview-ui/input'
@@ -26,6 +27,9 @@ const classPrefix = 'work-orders-my'
 
 export default
 @VueClassDecorator({
+  computed: {
+    ...mapState(['info'])
+  },
   components: {
     FormItem: Form.Item,
     myOrder,
@@ -56,7 +60,6 @@ class WorkOrdersDetail extends Vue {
   searchHandler () {
     let searchData = ''
     this.searchData ? searchData = this.searchData : searchData = 'all'
-    console.log(this.$S)
     this.$S.SEARCH_ORDER_LIST({
       restful: `status/${this.status}/search/${searchData}/ref_type/${this.type}/ref_user/${this.user}/page_size/${this.limit}/page_index/${this.page}`
     }).then((res) => {

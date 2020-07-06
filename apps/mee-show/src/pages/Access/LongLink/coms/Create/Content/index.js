@@ -49,6 +49,7 @@ class Content extends React.Component {
       dataIndex: 'dc',
       editable: true,
       formtype: SELECT,
+      list: (this.props.store && this.props.store.configList) || [],
       isrequire: 1,
       render: (text) => (
         <Ellipsis key="dc" width={80}>
@@ -142,6 +143,8 @@ class Content extends React.Component {
 
     const count = (buzConfig && buzConfig.length) || 0;
 
+    const buzConfigData = buzConfig && buzConfig.map((item, index) => ({ id: index, ...item }))
+
     return (
       <Form onSubmit={this.handleSubmit} className={cx('root')}>
         <Form.Item label="长链接集群" {...formItemLayout}>
@@ -172,7 +175,7 @@ class Content extends React.Component {
         </Form.Item>
         <div className="edit-table">
           <EditableTable
-            dataSource={buzConfig}
+            dataSource={buzConfigData}
             columns={this.columns}
             count={count}
             configList={configList}

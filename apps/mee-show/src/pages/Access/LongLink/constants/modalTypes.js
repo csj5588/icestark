@@ -16,10 +16,10 @@ export const INPUTNUM = 'inputnum'
 
 // 默认添加对象
 export const CONFIG_ITEM = {
-  ev: 'c.jr',
+  ev: 'c.demo',
   uri: '/api/test',
-  dc: 'ali-test',
+  dc: undefined,
   service_name: 'room.live.test',
-  read_timeout: 2500,
+  read_timeout: 200,
   endpoints: ''
 }

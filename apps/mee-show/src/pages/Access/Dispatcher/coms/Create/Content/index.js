@@ -21,12 +21,12 @@ const formItemLayout = {
   labelCol: { span: 4 },
   wrapperCol: { span: 20 },
 };
-const HTTP = 'http'
-const LONG = 'persistent_connection' // 长链接
+const HTTP = 'http';
+const LONG = 'persistent_connection'; // 长链接
 const LABEL_OBJ = {
   ev_name: '示例: c.jr',
-  URI: '示例：/api/test'
-}
+  URI: '示例：/api/test',
+};
 
 const { TextArea } = Input;
 class Content extends React.Component {
@@ -34,7 +34,7 @@ class Content extends React.Component {
     super(props);
     this.state = {
       isShowAfter: false,
-      label: 'ev_name'
+      label: 'ev_name',
     };
   }
 
@@ -134,19 +134,19 @@ class Content extends React.Component {
     }
   };
 
-  handleGroupChange = e => {
-    const value = e.target.value
+  handleGroupChange = (e) => {
+    const value = e.target.value;
     if (value === HTTP) {
       this.setState({
-        label: 'URI'
-      })
+        label: 'URI',
+      });
     } else {
       this.setState({
-        label: 'ev_name'
-      })
+        label: 'ev_name',
+      });
     }
-    const { form } = this.props
-  }
+    const { form } = this.props;
+  };
 
   render() {
     const { form, store } = this.props;
@@ -183,7 +183,7 @@ class Content extends React.Component {
               },
             ],
           })(
-            <Radio.Group onChange={this.handleGroupChange} >
+            <Radio.Group onChange={this.handleGroupChange}>
               <Radio value="persistent_connection">长链接</Radio>
               <Radio value="http">http</Radio>
             </Radio.Group>
@@ -198,57 +198,10 @@ class Content extends React.Component {
                 message: `请输入${label}`,
               },
             ],
-          })(<Input placeholder={`${LABEL_OBJ[label]}`} disabled={isDisable} />)}
-        </Form.Item>
-        <div className="line"></div>
-        <div className="title">before配置:</div>
-        <Form.Item label="配置校验" {...formItemLayout}>
-          {getFieldDecorator('before_verify', {
-            initialValue: beforeVerify,
           })(
-            <Select
-              allowClear
-              showSearch
-              mode="multiple"
-              placeholder="请选择配置校验"
-              filterOption={filterOption}
-              disabled={isDisable}
-            >
-              {config.map((item) => (
-                <Select.Option key={item.key} value={item.key}>
-                  {item.show}
-                </Select.Option>
-              ))}
-            </Select>
+            <Input placeholder={`${LABEL_OBJ[label]}`} disabled={isDisable} />
           )}
         </Form.Item>
-        <div className="edit-table">
-          <EditableTable
-            dataSource={beforeCustomVerify}
-            columns={this.columns}
-            count={count}
-            onChange={this.handeleChange}
-          />
-        </div>
-        <div className="line mt10"></div>
-        <div className="title">now配置:</div>
-        <FormItem form={form} required={true} label="now" />
-        <div className="line"></div>
-        <div className="title after">
-          after配置:
-          <Icon
-            onClick={this.handleShow}
-            className="icon"
-            type={!isShowAfter ? 'plus-circle' : 'minus-circle'}
-          />
-          <span className="text">{`点击${
-            !isShowAfter ? '新增' : '删除'
-          }after配置`}</span>
-        </div>
-        {isShowAfter ? (
-          <FormItem form={form} required={true} label="after_fe" />
-        ) : null}
-        <div className="line mb10"></div>
         <Form.Item label="环境" {...formItemLayout}>
           {getFieldDecorator('env', {
             initialValue: env,
@@ -286,6 +239,55 @@ class Content extends React.Component {
             ],
           })(<TextArea rows={2} />)}
         </Form.Item>
+        <div className="line" />
+        <div className="title">before配置:</div>
+        <Form.Item label="配置校验" {...formItemLayout}>
+          {getFieldDecorator('before_verify', {
+            initialValue: beforeVerify,
+          })(
+            <Select
+              allowClear
+              showSearch
+              mode="multiple"
+              placeholder="请选择配置校验"
+              filterOption={filterOption}
+              disabled={isDisable}
+            >
+              {config.map((item) => (
+                <Select.Option key={item.key} value={item.key}>
+                  {item.show}
+                </Select.Option>
+              ))}
+            </Select>
+          )}
+        </Form.Item>
+        <div className="edit-table">
+          <EditableTable
+            dataSource={beforeCustomVerify}
+            columns={this.columns}
+            count={count}
+            onChange={this.handeleChange}
+          />
+        </div>
+        <div className="line mt10" />
+        <div className="title">now配置:</div>
+        <FormItem form={form} required={true} label="now" />
+        <div className="line" />
+        <div className="title after">
+          after配置:
+          <Icon
+            onClick={this.handleShow}
+            className="icon"
+            type={!isShowAfter ? 'plus-circle' : 'minus-circle'}
+          />
+          <span className="text">{`点击${
+            !isShowAfter ? '新增' : '删除'
+          }after配置`}</span>
+        </div>
+        {isShowAfter ? (
+          <FormItem form={form} required={true} label="after_fe" />
+        ) : null}
+        <div className="line mb10" />
       </Form>
     );
   }

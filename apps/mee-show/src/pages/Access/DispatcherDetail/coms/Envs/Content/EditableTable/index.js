@@ -1,3 +1,4 @@
+/* eslint-disable max-classes-per-file */
 import React from 'react';
 import { Table, Input, Icon, Select, Form, InputNumber, Popconfirm } from 'antd';
 import $common from 'utils/common';

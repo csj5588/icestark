@@ -116,18 +116,18 @@ class Content extends React.Component {
             />
           )}
         </Form.Item>
-        <Form.Item label="CV样例" {...formItemLayout}>
+        <Form.Item label="CV前缀" {...formItemLayout}>
           {getFieldDecorator('service_config.cv_prefix', {
             initialValue: cvPrefix,
             rules: [
               {
                 required: true,
-                message: '请输入CV样例',
+                message: '请输入CV前缀',
               },
             ],
           })(
             <Input
-              placeholder="请输入CV样例"
+              placeholder="请输入CV前缀"
               style={{ width: '240px' }}
               disabled={isDisable}
             />
@@ -139,7 +139,7 @@ class Content extends React.Component {
             rules: [
               {
                 required: true,
-                message: '请输入CV样例',
+                message: '请输入CV前缀',
               },
             ],
           })(
@@ -161,18 +161,18 @@ class Content extends React.Component {
             </Select>
           )}
         </Form.Item>
-        { isShow && <Form.Item label="马甲包业务线" {...formItemLayout}>
+        { isShow && <Form.Item label="马甲包app_name" {...formItemLayout}>
           {getFieldDecorator('service_config.replicate_from', {
             initialValue: replicateFrom,
             rules: [
               {
                 required: true,
-                message: '请输入马甲包业务线',
+                message: '请输入马甲包app_name',
               },
             ],
           })(
             <Input
-              placeholder="请输入马甲包业务线"
+              placeholder="请输入马甲包app_name"
               style={{ width: '240px' }}
               disabled={isDisable}
             />

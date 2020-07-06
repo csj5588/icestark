@@ -1,3 +1,4 @@
+/* eslint-disable max-classes-per-file */
 import React from 'react';
 import { Table, Input, Icon, Select, Form, InputNumber } from 'antd';
 import $common from 'utils/common';
@@ -50,8 +51,9 @@ class EditableCell extends React.Component {
       const params = {
         ...record,
         ...values,
-        read_timeout: $common.formatStrToNum(values.read_timeout, 200),
+        // read_timeout: $common.formatStrToNum(values.read_timeout, 200),
       };
+      console.log(params)
       handleSave(params);
     });
   };
@@ -74,7 +76,7 @@ class EditableCell extends React.Component {
   };
 
   renderForm = (props, form) => {
-    const { dataIndex, record, title, formtype, isrequire, configList } = props;
+    const { dataIndex, record, title, formtype, isrequire, list } = props;
     if (!formtype) {
       return (
         <Form.Item style={{ margin: 0 }}>
@@ -110,13 +112,13 @@ class EditableCell extends React.Component {
             initialValue: record[dataIndex],
           })(
             <Select
-              style={{ width: '100px' }}
-              placeholder="请选择method"
+              style={{ width: '140px' }}
+              placeholder={`请选择${dataIndex}`}
               onPressEnter={this.save}
               onBlur={this.save}
               dropdownMatchSelectWidth={false}
             >
-              {configList && configList.map((item) => (
+              {list && list.map((item) => (
                 <Select.Option key={item} value={item}>
                   {item}
                 </Select.Option>
@@ -244,6 +246,7 @@ class EditableTable extends React.Component {
           title: col.title,
           isrequire: col.isrequire,
           formtype: col.formtype,
+          list: col.list,
           handleSave: this.handleSave,
         }),
       };
