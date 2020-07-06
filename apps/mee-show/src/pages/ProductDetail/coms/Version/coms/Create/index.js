@@ -36,7 +36,7 @@ class Create extends React.Component {
   }
 
   render() {
-    const { form, store, appKey, dispatch } = this.props;
+    const { form, store, appKey, dispatch, productDetail: { domain } } = this.props;
     const { create } = store;
     return (
       <Modal
@@ -52,6 +52,7 @@ class Create extends React.Component {
           store={store}
           form={form}
           appKey={appKey}
+          domain={domain}
         />
       </Modal>
     )
@@ -62,5 +63,6 @@ export default compose(
   Form.create(),
   connect(stores => ({
     store: stores.busiVersion,
+    productDetail: stores.productDetail,
   })),
 )(Create);

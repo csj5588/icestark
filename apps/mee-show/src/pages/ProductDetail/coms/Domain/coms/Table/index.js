@@ -1,20 +1,17 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Button, Table, Modal, Pagination } from 'antd';
+import { Button, Table } from 'antd';
 import $common from 'utils/common';
-import { USE, UPDATE } from './../../constants/modalTypes';
-import { formatDate } from './../../constants/timeFormat';
-import { saveCreate, del, saveCreateParams, getTableList } from './../../model/action';
+import { USE, UPDATE } from '../../constants/modalTypes';
+import { formatDate } from '../../constants/timeFormat';
+import { saveCreate, saveCreateParams, getTableList } from '../../model/action';
 import styles from './index.less';
 
 const cx = $common.classnames('table', styles);
-const { confirm } = Modal;
-const pageSizeList = ['10', '20', '30', '40', '50', '100']
 const DEFAULT_PAGE = 1;
 
 class Tables extends React.PureComponent {
-  state = {
-    columns: [
+    columns = [
       {
         title: '域名',
         dataIndex: 'domain',
@@ -61,7 +58,6 @@ class Tables extends React.PureComponent {
         }
       },
     ]
-  }
 
   handelUpdate = rows => {
     const { dispatch } = this.props;
@@ -97,24 +93,18 @@ class Tables extends React.PureComponent {
   }
 
   render () {
-    const { columns } = this.state;
     const { store } = this.props;
     const {
       table: {
-        data,
-        total
+        data
       },
-      searchParams: {
-        page,
-        size,
-      }
     } = store;
     return (
       <div className={cx('root')}>
         <Table
           className="table"
           dataSource={data}
-          columns={columns}
+          columns={this.columns}
           rowKey={record => record.domain}
           pagination={false}
         />

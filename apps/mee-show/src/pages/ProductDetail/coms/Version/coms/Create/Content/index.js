@@ -40,7 +40,7 @@ class Content extends React.Component {
   }
 
   //  上传文件钩子函数
-  handleBeforeUpload = file => {
+  handleBeforeUpload = () => {
     const { domain } = this.props
     const { proto, domain: domainData } = domain || {}
     if(!proto) {
@@ -48,24 +48,26 @@ class Content extends React.Component {
       return
     }
     const url = `${proto}://${domainData}/upload/media`
+    console.log(url)
     this.setState({ myAction: url })
   }
 
   // 上传一个文件状态
   handleChange = info => {
     if (info.file.status !== 'uploading') {
-      console.log(info.file, info.fileList)
+      console.log('done1',info.file, info.fileList)
     }
     if (info.file.status === 'done') {
       const { form, dispatch } = this.props
-      const { data, error_msg: errorMsg } = info.file.response
-      if (!data) {
+      console.log('done', info.file.response)
+      const { url, error_msg: errorMsg } = info.file.response
+      if (!url) {
         message.error(`上传失败 ${errorMsg}`)
         return
       }
-      const { qrcode_url: qrcodeUrl, download_url: downloadUrl } = data || {}
-      form.setFieldsValue({ download_url: downloadUrl })
-      dispatch(saveCreateParams({ qrcode_url: qrcodeUrl, download_url: downloadUrl }))
+      // const { qrcode_url: qrcodeUrl, download_url: downloadUrl } = url || {}
+      form.setFieldsValue({ download_url: url })
+      dispatch(saveCreateParams({ download_url: url }))
       message.success(`${info.file.name} 上传成功`)
     } else if (info.file.status === 'error') {
       message.error(`${info.file.name} 上传失败`)
@@ -169,7 +171,7 @@ class Content extends React.Component {
                         'uberctx-_namespace_appkey_': appKey
                       }}
                       name="file"
-                      responseDataUrlName="result.data.url"
+                      responseDataUrlName="result.url"
                       showUploadList={true}
                       beforeUpload={this.handleBeforeUpload}
                       onChange={this.handleChange}
