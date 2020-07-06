@@ -1,5 +1,5 @@
 
-export const selectList = [
+export const selectList =  [
   {
     value: 'FileUpload',
     label: '文件上传'

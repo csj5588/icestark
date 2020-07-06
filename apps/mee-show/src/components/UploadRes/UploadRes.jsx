@@ -41,8 +41,10 @@
 
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Upload, Icon, message, Modal, Button } from 'antd'
+import { Upload, Icon, message, Modal } from 'antd'
+import _get from 'lodash/get'
 import ServerRequest from './ServerRequest'
+
 // https://github.com/forsigner/browser-md5-file
 import Md5File from 'browser-md5-file';
 
@@ -221,7 +223,7 @@ export default class UploadResource extends React.Component {
         let url = result.url || result.data.url
         const { fileList } = this.state;
         fileList.push({
-          url: result[responseDataUrlName],
+          url: _get(result, responseDataUrlName),
           file
         })
         this.setState({

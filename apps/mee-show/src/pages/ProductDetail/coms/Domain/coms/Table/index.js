@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Button, Table, Modal, Pagination } from 'antd';
 import $common from 'utils/common';
-import { DETAIL, UPDATE } from './../../constants/modalTypes';
+import { USE, UPDATE } from './../../constants/modalTypes';
 import { formatDate } from './../../constants/timeFormat';
 import { saveCreate, del, saveCreateParams, getTableList } from './../../model/action';
 import styles from './index.less';
@@ -20,8 +20,13 @@ class Tables extends React.PureComponent {
         dataIndex: 'domain',
       },
       {
-        title: '用途',
+        title: '域名使用方',
         dataIndex: 'item.label',
+      },
+      {
+        title: '用途',
+        dataIndex: 'use',
+        render: text => USE[text]
       },
       {
         title: '机房环境',
@@ -60,13 +65,14 @@ class Tables extends React.PureComponent {
 
   handelUpdate = rows => {
     const { dispatch } = this.props;
-    const { domain, proto, env, usage, desc } = rows;
+    const { domain, proto, env, usage, desc, use } = rows;
     const params = {
       domain,
       proto,
       env,
       usage,
-      desc
+      desc,
+      use
     };
     dispatch(saveCreateParams(params));
     dispatch(saveCreate({ show: true, title: '域名编辑', type: UPDATE }));

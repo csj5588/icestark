@@ -25,7 +25,7 @@ class Content extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      myAction: `${srcConfig.APIS.root}api_web/v1/controlcenter/business/app/version/upload`,
+      myAction: '',
       radioStatus: ''
     }
   }
@@ -41,19 +41,14 @@ class Content extends React.Component {
 
   //  上传文件钩子函数
   handleBeforeUpload = file => {
-    const { appKey } = this.props
-    const { name } = file
-    // 上传文件名
-    // 获取 原子擦数／app
-    const user = $user.get()
-    const params = {
-      ...user,
-      app_key: appKey,
-      filename: name,
+    const { domain } = this.props
+    const { proto, domain: domainData } = domain || {}
+    if(!proto) {
+      message.error('无法上传，请先设置文件上传域名')
+      return
     }
-    const paramsStr = $common.stringifyParams(params)
-    const newUrl = `${srcConfig.APIS.root}api_web/v1/controlcenter/business/app/version/upload?${paramsStr}`
-    this.setState({ myAction: newUrl })
+    const url = `${proto}://${domainData}/upload/media`
+    this.setState({ myAction: url })
   }
 
   // 上传一个文件状态
@@ -174,6 +169,7 @@ class Content extends React.Component {
                         'uberctx-_namespace_appkey_': appKey
                       }}
                       name="file"
+                      responseDataUrlName="result.data.url"
                       showUploadList={true}
                       beforeUpload={this.handleBeforeUpload}
                       onChange={this.handleChange}

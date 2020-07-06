@@ -11,7 +11,8 @@ const formItemLayout = {
 }
 class Content extends React.Component {
   setAtomToParams = () => {
-    const { domain } = this.props
+    const { domain, store: { createPro: { show } } } = this.props
+    if(!show) return
     const { proto, domain: domainData } = domain || {}
     if(!proto) {
       message.error('无法上传，请先设置文件上传域名')
@@ -141,7 +142,7 @@ class Content extends React.Component {
             />,
           )}
         </Form.Item>
-        <Form.Item label="产品图标" {...formItemLayout} extra="">
+        {this.setAtomToParams() ? <Form.Item label="产品图标" {...formItemLayout} extra="">
           {getFieldDecorator('icon', {
             initialValue: icon || '',
             rules: []
@@ -150,13 +151,13 @@ class Content extends React.Component {
               fileExt = {['jpg', 'jpeg', 'png']}
               maxCount = {1}
               limitSize = {5}
-              responseDataUrlName = "url"
-              action={this.setAtomToParams}
+              responseDataUrlName='result.url'
+              action={this.setAtomToParams()}
               previewStyle = {{ width: '100px', height: '90px' }}
               isDisabled = {isDisable}
             />
           )}
-        </Form.Item>
+        </Form.Item> : null}
       </Form>
     )
   }
