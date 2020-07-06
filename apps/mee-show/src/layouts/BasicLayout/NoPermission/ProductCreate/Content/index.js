@@ -12,12 +12,9 @@ const formItemLayout = {
 }
 class Content extends React.Component {
   setAtomToParams = () => {
-    const { domain, store: { createPro: { show } } } = this.props
-    if(!show) return
+    const { domain } = this.props
     const { proto, domain: domainData } = domain || {}
-    if(!proto) {
-      return
-    }
+    if(!domainData) return
     const url = `${proto}://${domainData}/upload/image`
     return url
   }

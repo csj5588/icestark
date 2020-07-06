@@ -1,6 +1,5 @@
 import React from 'react';
 import { Form, Input, message, DatePicker } from 'antd';
-import $user from 'user'
 import { timeFormat, timeToMoment } from '../../../../constants/timeFormat'
 import UploadRes from 'components/UploadRes'
 
@@ -11,13 +10,9 @@ const formItemLayout = {
 }
 class Content extends React.Component {
   setAtomToParams = () => {
-    const { domain, store: { createPro: { show } } } = this.props
-    if(!show) return
+    const { domain } = this.props
     const { proto, domain: domainData } = domain || {}
-    if(!proto) {
-      message.error('无法上传，请先设置文件上传域名')
-      return
-    }
+    if(!domainData) return
     const url = `${proto}://${domainData}/upload/image`
     return url
   }

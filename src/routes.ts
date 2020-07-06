@@ -10,7 +10,7 @@ const routes = [
   {
     path: '/',
     exact: true,
-    // redirect: '/react/overView',
+    redirect: '/react/overView',
     component: Home,
   },
   {
