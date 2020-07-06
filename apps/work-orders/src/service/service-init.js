@@ -3,17 +3,16 @@ import axios from 'axios'
 // import Message from 'iview-ui/message'
 import { Message } from 'ik-iview'
 
-// function setTokenToHeaders (config) {
-//   const { headers } = config
-//   const token = user.getToken()
-//   headers.ticket = token
-// }
+function setTokenToHeaders (config) {
+  const { headers } = config
+  const token = localStorage.getItem('TOKEN')
+  headers.ticket = token
+}
 
 export default () => {
   S.$use(axios)
-
   S.$http.interceptors.request.use(function (config) {
-    // setTokenToHeaders(config)
+    setTokenToHeaders(config)
     return config;
   }, function (error) {
     console.log('service-init req error', error)

@@ -6,6 +6,6 @@
 
 <style scoped>
 .icestark-child-app{
-  padding: 30px;
+  /* padding: 30px; */
 }
 </style>

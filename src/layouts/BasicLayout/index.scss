@@ -3,6 +3,10 @@
   margin: 0 auto;
   display: flex;
   align-items: center;
+  .ant-layout-header {
+    height: 60px;
+    line-height: 60px;
+  }
   .layout-logo{
     width: 131px;
     display: flex;
@@ -18,7 +22,7 @@
     justify-content: space-between;
     .layout-menu-top-items{
       display: flex;
-      font-size: 16px;
+      font-size: 14px;
       align-items: center;
     }
     .layout-menu-top-document{
@@ -91,7 +95,7 @@
         width: 18px;
         height: 18px;
         left: 0px;
-        top: calc(50% - 10px);
+        top: calc(50% - 7px);
         background: url(https://img.ikstatic.cn/MTU5MzQ4MzE0ODUxOCMgNDYjcG5n.png) no-repeat center center;
         background-size: 100%;
       }
@@ -116,7 +120,7 @@
         width: 18px;
         height: 18px;
         left: 0px;
-        top: calc(50% - 10px);
+        top: calc(50% - 9px);
         background: url(https://img.ikstatic.cn/MTU5MzQ4MzE2NDU4NCMxMDgjcG5n.png) no-repeat center center;
         background-size: 100%;
       }

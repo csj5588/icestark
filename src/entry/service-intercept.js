@@ -73,7 +73,6 @@ axios.interceptors.request.use(config => {
   // 将 ticket 放入 header 或 query 中，按需选用，二选一
   // setTicketToHeader(config)
   setTicketToParams(config)
-
   return config
 }, error => {
   // loading.hide()

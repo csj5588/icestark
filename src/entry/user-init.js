@@ -19,7 +19,6 @@ const requestWithTicket = (ticket, next) => {
   // 如果有token 就去请求用户信息
   if (ticket) {
     user.setTicket(ticket)
-    console.log('请求用户数据')
     getUserInfo({ ticket }).then(userResolve, next)
   } else {
     next({ dm_error: 'ticket不存在' })
