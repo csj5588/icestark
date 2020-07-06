@@ -39,7 +39,7 @@ const setTicketToParams = config => {
     username,
     email,
     department,
-    ticket: localStorage.getItem('TOKEN')
+    ticket: $user.getToken()
   }
 }
 
@@ -108,6 +108,7 @@ axios.interceptors.request.use(config => {
 
   if (autoLoading === undefined || autoLoading === true) {
   }
+
   // 将 ticket 放入 header 或 query 中，按需选用，二选一
   // setTicketToHeader(config)
   setTicketToParams(config)

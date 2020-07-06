@@ -19,10 +19,9 @@
   "devDependencies": {
     "@ice/spec": "^0.1.1",
     "@inke-design/utils": "^1.0.2",
-    "antd": "^3.26.16",
+    "antd": "^3.12.1",
     "browser-md5-file": "^1.1.1",
     "eslint": "^6.0.1",
-    "faker": "^4.1.0",
     "ice-plugin-fusion": "^0.1.4",
     "ice-scripts": "^2.0.0",
     "react-redux": "^5.0.7",

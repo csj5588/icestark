@@ -221,7 +221,7 @@ export default class UploadResource extends React.Component {
         let url = result.url || result.data.url
         const { fileList } = this.state;
         fileList.push({
-          url: result[responseDataUrlName],
+          url: result.data[responseDataUrlName],
           file
         })
         this.setState({
