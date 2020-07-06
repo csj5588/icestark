@@ -210,7 +210,7 @@ class BasicLayout extends React.Component {
         </Shell.Branding>
 
         <Shell.Content>
-          <div className="layout-content">
+          <div className={`layout-content  ${pathname.includes(MANAGE) ? 'auth-manage' : ''}`}>
             {needSideMenu ? (
               <div className="side-menu">
                 <Router>
