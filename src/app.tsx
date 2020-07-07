@@ -58,7 +58,7 @@ const appConfig = {
       // },
       {
         path: '/vue-app',
-        title: '管控中心',
+        title: '映客云-管控中心',
         sandbox: false,
         // Angular app demo: https://github.com/ice-lab/icestark-child-apps/tree/master/child-common-angular-9 
         // entry: 'http://localhost:3334/',
@@ -73,7 +73,7 @@ const appConfig = {
       },
       {
         path: '/react',
-        title: '管控中心',
+        title: '映客云-管控中心',
         sandbox: true,
         // Angular app demo: https://github.com/ice-lab/icestark-child-apps/tree/master/child-common-angular-9 
         entry: 'http://localhost:3444/', // 注意开发解开
