@@ -137,7 +137,7 @@ class Content extends React.Component {
             />,
           )}
         </Form.Item>
-        {this.setAtomToParams() ? <Form.Item label="产品图标" {...formItemLayout} extra="">
+        <Form.Item label="产品图标" {...formItemLayout} extra="">
           {getFieldDecorator('icon', {
             initialValue: icon || '',
             rules: []
@@ -152,7 +152,8 @@ class Content extends React.Component {
               isDisabled = {isDisable}
             />
           )}
-        </Form.Item> : null}
+        </Form.Item>
+        <div style={{marginLeft: '46px', color: 'red'}}>注意：如果无法上传产品图标，请先到域名配置添加好文件上传域名，然后让运维配置/upload/image接口允许跨域</div>
       </Form>
     )
   }

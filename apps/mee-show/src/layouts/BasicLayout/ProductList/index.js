@@ -8,7 +8,7 @@ import styles from './index.less';
 
 const { TabPane } = Tabs;
 const saveAppKey = 'cur-auth-app'
-const BASE_IMG = 'https://img.ikstatic.cn/MTU5MzQ5NjYzODUyOCM4NzcjcG5n.png'
+const BASE_IMG = 'https://img.ikstatic.cn/MTU5NDEwNzc4NzM0NSM1MzQjcG5n.png'
 const cx = common.classnames('meeshow-basic-layout-product-list', styles);
 
 class index extends React.Component {

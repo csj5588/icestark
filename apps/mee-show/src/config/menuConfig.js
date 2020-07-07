@@ -34,23 +34,23 @@ const asideMenuConfig = [
     children: [
       {
         name: 'serviceInfo接入',
-        path: '/access/service',
+        path: '/access-service',
       },
       {
         name: '动态配置接入',
-        path: '/access/config',
+        path: '/access-config',
       },
       {
         name: 'dispatcher接入',
-        path: '/access/dispatcher',
+        path: '/access-dispatcher',
       },
       {
         name: '长链接接入',
-        path: '/access/longLink',
+        path: '/access-longLink',
       },
       {
         name: '埋点服务接入',
-        path: '/access/buried',
+        path: '/access-buried',
       },
     ],
   }

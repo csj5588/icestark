@@ -90,7 +90,7 @@ export const mockDetail = mockDecorator((...args) => {
               "launch_date": "2020-04-10",
               "contact_person": "老王",
               "desc": "简介",
-              "icon": "http://img.ikstatic.cn/MTU4NzcxNzc5NTU1MiMzODkjanBn.jpg"
+              "icon": "https://img.ikstatic.cn/MTU5NDEwNzc4NzM0NSM1MzQjcG5n.png"
           },
           "app_status": [
               {

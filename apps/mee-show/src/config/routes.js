@@ -34,27 +34,27 @@ const routerConfig = [
         component: OverView,
       },
       {
-        path: '/access/service',
+        path: '/access-service',
         component: Service,
       },
       {
-        path: '/access/config',
+        path: '/access-config',
         component: Config,
       },
       {
-        path: '/access/dispatcher',
+        path: '/access-dispatcher',
         component: Dispatcher,
       },
       {
-        path: '/access/dispatcherDetail',
+        path: '/access-dispatcherDetail',
         component: DispatcherDetail,
       },
       {
-        path: '/access/longLink',
+        path: '/access-longLink',
         component: LongLink,
       },
       {
-        path: '/access/buried',
+        path: '/access-buried',
         component: Buried,
       },
       {

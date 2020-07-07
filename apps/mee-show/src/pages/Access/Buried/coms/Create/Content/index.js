@@ -4,16 +4,16 @@ import {
   Input,
   Select,
   Icon,
+  Tooltip,
 } from 'antd';
 import { filterOption } from 'ik-utils';
-import $user from 'user';
-import $common from 'utils/common';
 import _cloneDeep from 'lodash/cloneDeep'
 import srcConfig from 'src/config';
 import { saveCreateParams } from '../../../model/action';
 import { DETAIL, DOMAIN_CONFIG, UPDATE } from '../../../constants/modalTypes';
 import { selectList } from '../../../constants/selectLists'
 import FormItem from './FormItem'
+
 const formItemLayout = {
   labelCol: { span: 6 },
   wrapperCol: { span: 18 },
@@ -32,7 +32,6 @@ class Content extends React.Component {
       is_replication: isReplication,
     } = serviceConfig || {};
     this.state = {
-      myAction: `${srcConfig.APIS.root}api_web/v1/controlcenter/private/upload`,
       isShow: isReplication,
     };
   }
@@ -132,6 +131,9 @@ class Content extends React.Component {
               disabled={isDisable}
             />
           )}
+          <Tooltip placement="top" title="必须为英文大小写字母, 示例：softvoice_android_1.0.1的CV前缀是：softvoice">
+            <Icon style={style.icon} type="question-circle" />
+          </Tooltip>
         </Form.Item>
         <Form.Item label="是否是马甲包" {...formItemLayout}>
           {getFieldDecorator('service_config.is_replication', {

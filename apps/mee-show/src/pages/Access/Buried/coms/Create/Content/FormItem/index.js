@@ -78,12 +78,12 @@ class index extends React.Component {
     }
     if (info.file.status === 'done') {
       const { form } = this.props;
-      const { data, error_msg: errorMsg } = info.file.response;
-      if (!data) {
+      const { data: { url }, error_msg: errorMsg } = info.file.response;
+      if (!url) {
         message.error(`上传失败 ${errorMsg}`);
         return;
       }
-      form.setFieldsValue({ [`domain_config[${index}].cert_public_key_url`]: data });
+      form.setFieldsValue({ [`domain_config[${index}].cert_public_key_url`]: url });
       message.success(`${info.file.name} 上传成功`);
     } else if (info.file.status === 'error') {
       message.error(`${info.file.name} 上传失败`);
@@ -107,12 +107,12 @@ class index extends React.Component {
     }
     if (info.file.status === 'done') {
       const { form } = this.props;
-      const { data, error_msg: errorMsg } = info.file.response;
-      if (!data) {
+      const { data: { url }, error_msg: errorMsg } = info.file.response;
+      if (!url) {
         message.error(`上传失败 ${errorMsg}`);
         return;
       }
-      form.setFieldsValue({ [`domain_config[${index}].cert_private_key_url`]: data });
+      form.setFieldsValue({ [`domain_config[${index}].cert_private_key_url`]: url });
       message.success(`${info.file.name} 上传成功`);
     } else if (info.file.status === 'error') {
       message.error(`${info.file.name} 上传失败`);

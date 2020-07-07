@@ -9,7 +9,7 @@ import { ROUTER } from '../../constants/modalTypes'
 import styles from './index.less';
 
 const cx = $common.classnames('overview-table', styles);
-const BASE_IMG = 'https://img.ikstatic.cn/MTU5MzQ5NjYzODUyOCM4NzcjcG5n.png'
+const BASE_IMG = 'https://img.ikstatic.cn/MTU5NDEwNzc4NzM0NSM1MzQjcG5n.png'
 class Tables extends React.PureComponent {
     columns = [
       {

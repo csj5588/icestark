@@ -2,7 +2,7 @@ export const OVERVIEW = '/overView'
 
 export const PRODUCT = '/productDetail'
 
-export const ACCESS = '/access/service'
+export const ACCESS = '/access-service'
 
 export const ACCESS_ROUTE = 'access'
 // 路由切换

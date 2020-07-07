@@ -71,7 +71,7 @@ class Tables extends React.PureComponent {
         render: (...args) => {
           const [text, record, index] = args;
           const { ev_info: { id } } = record;
-          const toPath = `/access/dispatcherDetail?id=${id}`
+          const toPath = `/access-dispatcherDetail?id=${id}`
           return (
             <div className={cx('operate')}>
               <Link
@@ -108,7 +108,7 @@ class Tables extends React.PureComponent {
   handelUpdate = (rows) => {
     const { dispatch } = this.props;
     const { ev_info: { id } } = rows;
-    dispatch(push(`/access/dispatcherDetail?id=${id}`));
+    dispatch(push(`/access-dispatcherDetail?id=${id}`));
   };
 
   handelDelete = (rows) => {

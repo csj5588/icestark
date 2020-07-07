@@ -47,7 +47,7 @@ import styles from './index.less';
 
 const ButtonGroup = Button.Group;
 const cx = $common.classnames('product-detail-title', styles);
-const DEFAULT_URL = 'http://img.ikstatic.cn/MTU4NzcxNzc5NTU1MiMzODkjanBn.jpg';
+const DEFAULT_URL = 'https://img.ikstatic.cn/MTU5NDEwNzc4NzM0NSM1MzQjcG5n.png';
 
 const { confirm } = Modal;
 const PAGE = 1;

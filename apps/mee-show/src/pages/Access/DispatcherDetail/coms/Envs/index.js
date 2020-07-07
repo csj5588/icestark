@@ -61,7 +61,7 @@ class index extends React.Component {
 
   handelBlack = () => {
     const { dispatch } = this.props;
-    dispatch(push('/access/dispatcher'));
+    dispatch(push('/access-dispatcher'));
   };
 
   render() {
@@ -92,7 +92,7 @@ class index extends React.Component {
           </Button>
           <Link
             className='ml20 btn'
-            to="/access/dispatcher">取消</Link>
+            to="/access-dispatcher">取消</Link>
         </div>
       </Form>
     );

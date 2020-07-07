@@ -40,9 +40,9 @@ export const LONG = 'LongConnect'
 export const BURY = 'BuryPoint'
 
 export const ROUTER = {
-  [SERVICE]: '/access/service',
-  [CONFIG]: '/access/config',
-  [DISPATCHER]: '/access/dispatcher',
-  [LONG]: '/access/longLink',
-  [BURY]: '/access/buried',
+  [SERVICE]: '/access-service',
+  [CONFIG]: '/access-config',
+  [DISPATCHER]: '/access-dispatcher',
+  [LONG]: '/access-longLink',
+  [BURY]: '/access-buried',
 }

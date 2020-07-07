@@ -1,11 +1,8 @@
 import React from 'react';
 import { Form, Input, message, Radio, Row, Col, Upload, Button, Icon } from 'antd';
-import { filterOption } from 'ik-utils'
-import $user from 'user'
-import $common from 'utils/common';
-import srcConfig from 'src/config'
-import { saveCreateParams } from '../../../model/action'
-import { DETAIL, AUTO, MANUAL, UPDATE } from '../../../constants/modalTypes'
+import { saveCreateParams } from '../../../model/action';
+import { DETAIL, AUTO, MANUAL, UPDATE } from '../../../constants/modalTypes';
+
 const { TextArea } = Input;
 const formItemLayout = {
   labelCol: { span: 6 },
@@ -134,7 +131,7 @@ class Content extends React.Component {
           })(
             <TextArea
               placeholder="请输入域名说明"
-              style={style.text}
+              style={styles.text}
               autoSize={{ minRows: 3, maxRows: 5 }}
               disabled={isDisable}
             />,
@@ -151,7 +148,7 @@ class Content extends React.Component {
             ],
           })(
             <Input
-              style={style.none}
+              style={styles.none}
               disabled={isDisable}
             />
           )}
@@ -159,7 +156,7 @@ class Content extends React.Component {
             <Radio.Group onChange={this.onChange} value={radioValue}>
               <Row type="flex" justify="start" align="top">
                 <Col>
-                  <Radio style={style.radioStyle} value={AUTO} />
+                  <Radio style={styles.radioStyle} value={AUTO} />
                 </Col>
                 <Col>
                   <div>
@@ -180,20 +177,20 @@ class Content extends React.Component {
                         <Icon type="upload" />点击上传文件
                       </Button>
                     </Upload>) : (
-                      <div style={style.auto}>
+                      <div style={styles.auto}>
                         <div>下载二维码</div>
-                        <img style={style.img} src={qrcodeUrl || 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png'} alt=""/>
+                        <img style={styles.img} src={qrcodeUrl || 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png'} alt=""/>
                         <a href={downloadUrl}>{downloadUrl}</a>
                       </div>
                     )}
                   </div>
                 </Col>
               </Row>
-              <Radio style={style.manual} value={MANUAL} >手动添加地址</Radio>
+              <Radio style={styles.manual} value={MANUAL} >手动添加地址</Radio>
 
               {isManual ? <TextArea
                 placeholder="请输入下载地址"
-                style={style.text}
+                style={styles.text}
                 value={downloadUrl}
                 autoSize={{ minRows: 3, maxRows: 5 }}
                 disabled={radioValue === AUTO}
@@ -202,12 +199,13 @@ class Content extends React.Component {
             </Radio.Group>
           </Row>
         </Form.Item>
+        <div style={styles.word}>注意：如果无法上传文件，请先到域名配置添加好文件上传域名，然后让运维配置/upload/media接口允许跨域</div>
       </Form>
     )
   }
 }
 
-const style = {
+const styles = {
   none: {
     display: 'none'
   },
@@ -230,6 +228,10 @@ const style = {
   img: {
     width: '200px',
     height: '200px',
+  },
+  word: {
+    marginLeft: '46px',
+    color: 'red'
   }
 }
 
