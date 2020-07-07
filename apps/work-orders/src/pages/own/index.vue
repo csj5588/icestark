@@ -5,10 +5,13 @@
 <script>
 import Vue from 'vue'
 import VueClassDecorator from 'vue-class-component'
+import { mapState }  from 'vuex'
+import _get from 'lodash/get'
 import myOrder from './my-order'
 import pendingOrder from './pending-order'
 import finishOrder from './finish-order'
-import { mapState }  from 'vuex'
+
+
 // import { Row, Col } from 'iview-ui/grid'
 // import Card from 'iview-ui/card'
 // import Input from 'iview-ui/input'
@@ -28,7 +31,7 @@ const classPrefix = 'work-orders-my'
 export default
 @VueClassDecorator({
   computed: {
-    ...mapState(['info'])
+    ...mapState(['stark'])
   },
   components: {
     FormItem: Form.Item,
@@ -50,7 +53,7 @@ class WorkOrdersDetail extends Vue {
   page = 1
 
   created () {
-    let user = cookie.getItem('mail')
+    let user = _get(this.stark, 'user.info.email')
     if (user) {
       this.user = user.split('@')[0]
     }
