@@ -18,7 +18,6 @@ module.exports = {
     src: path.resolve(__dirname, './src/'),
     dist: resolve('dist'),
     public: resolve('public'),
-    src: resolve('src'),
     components: resolve('src/components'),
     utils: resolve('src/utils'),
     user: resolve('src/utils/user.js'),
