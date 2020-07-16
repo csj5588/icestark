@@ -44,7 +44,7 @@ const asideMenuConfig = [
     icon: 'atm',
   },{
     name: 'React',
-    path: '/react/product',
+    path: '/react',
     icon: 'account',
   },
 ];
