@@ -117,7 +117,7 @@ export default {
 
   // 系统标识，获取请联系 @王合亮，2 为测试系统
   // https://wiki.inkept.cn/pages/viewpage.action?pageId=69332024
-  AUTH_SYSTEM_ID: 29, // 29
+  AUTH_SYSTEM_ID: 26, // 29
 
   // 手机登录情况下，登录页面路由地址
   PHONE_LOGGIN_PATH: 'login',
