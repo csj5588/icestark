@@ -38,7 +38,10 @@
     "start-vue": "cd ./apps/vue-apps/ && npm run start",
     "i-all": "npm install chalk && cross-env-shell node scripts/install.js",
     "i-all:cnpm": "cnpm install chalk && cross-env-shell INSTALL_SCRIPT=cnpm node scripts/install.js",
-    "build": "icejs build",
+    "build": "NODE_ENV=production npm run build-react && npm run build-vue && npm run build-tark && sh build.sh",
+    "build-tark": "icejs build",
+    "build-react": "cd ./apps/react-apps/ && npm run build",
+    "build-vue": "cd ./apps/vue-apps/ && npm run build",
     "lint": "npm run eslint && npm run stylelint",
     "eslint": "eslint --cache --ext .js,.jsx ./",
     "stylelint": "stylelint ./**/*.scss"

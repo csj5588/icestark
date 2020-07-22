@@ -165,29 +165,6 @@ class BasicLayout extends React.Component {
             />
           </div>
           <div className="layout-menu-top-item">
-            {/*
-              asideMenuConfig.map((item, idx) => {
-                return (
-                  <AppLink
-                    key={idx}
-                    to={item.path}
-                    className={`layout-menu-top-items`}
-                  >
-                    {item.name}
-                  </AppLink>
-                )
-              })
-            */}
-            <div className="layout-menu-top-items">
-              <a className={`layout-menu-top-document`} target="_blank" href="https://cloud.inkept.cn/#production">文档中心</a>
-              <AppLink
-                to="/react/overView"
-                className={`layout-menu-top-control ${
-                  pathname.includes(CONTROL) ? 'act' : ''}`}
-              >
-                管控中心
-              </AppLink>
-            </div>
             <div className={`layout-menu-top-items`}>
               { hasManageAuth ? <AppLink
                 to="/auth-userMs"
