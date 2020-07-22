@@ -3,10 +3,6 @@
   margin: 0 auto;
   display: flex;
   align-items: center;
-  .ant-layout-header {
-    height: 60px;
-    line-height: 60px;
-  }
   .layout-logo{
     width: 131px;
     display: flex;
@@ -17,123 +13,21 @@
   }
   .layout-menu-top-item{
     flex: 1;
-    display: flex;
-    align-items: center;
+    padding: 0 14px;
     .layout-menu-top-items{
-      display: flex;
-      font-size: 14px;
-      align-items: center;
-    }
-    .layout-menu-top-document{
-      color: #999;
-      cursor: pointer;
-      position: relative;
-      padding-left: 25px;
-      margin-left: 46px;
-      &:hover,
-      &.act{
-        color: #1EE0CA;
-        &::before{
-          background: url(https://img.ikstatic.cn/MTU5MzQ4MzE4MTYwMyMyMjAjcG5n.png) no-repeat center center;
-          background-size: 100%;
-        }
-      }
-      &::before{
-        content: '';
-        position: absolute;
-        width: 18px;
-        height: 18px;
-        left: 0px;
-        top: calc(50% - 8px);
-        background: url(https://img.ikstatic.cn/MTU5MzQ4MzEzOTQ2OSM0MDAjcG5n.png) no-repeat center center;
-        background-size: 100%;
-      }
-    }
-    .layout-menu-top-control{
-      color: #999;
-      cursor: pointer;
-      position: relative;
-      padding-left: 25px;
-      margin-left: 46px;
-      &:hover,
-      &.act{
-        color: #1EE0CA;
-        &::before{
-          background: url(https://img.ikstatic.cn/MTU5MzQ4MzEzMTYyMyM5NTkjcG5n.png) no-repeat center center;
-          background-size: 100%;
-        }
-      }
-      &::before{
-        content: '';
-        position: absolute;
-        width: 18px;
-        height: 18px;
-        left: 0px;
-        top: calc(50% - 8px);
-        background: url(https://img.ikstatic.cn/MTU5MzQ3OTM1NTA3OSM1NDEjcG5n.png) no-repeat center center;
-        background-size: 100%;
-      }
-    }
-    .layout-menu-top-manage{
-      color: #999;
-      cursor: pointer;
-      position: relative;
-      padding-left: 25px;
-      margin-left: 46px;
-      &:hover,
-      &.act{
-        color: #1EE0CA;
-        &::before{
-          background: url(https://img.ikstatic.cn/MTU5MzQ4MzE3MzU4OSM1MzgjcG5n.png) no-repeat center center;
-          background-size: 100%;
-        }
-      }
-      &::before{
-        content: '';
-        position: absolute;
-        width: 18px;
-        height: 18px;
-        left: 0px;
-        top: calc(50% - 7px);
-        background: url(https://img.ikstatic.cn/MTU5MzQ4MzE0ODUxOCMgNDYjcG5n.png) no-repeat center center;
-        background-size: 100%;
-      }
-    }
-    .layout-menu-top-order{
-      color: #999;
-      cursor: pointer;
-      position: relative;
-      padding-left: 25px;
-      margin: 0 31px 0 58px;
-      &:hover,
-      &.act{
-        color: #1EE0CA;
-        &::before{
-          background: url(https://img.ikstatic.cn/MTU5MzQ4MzE1Nzg0NCM2ODQjcG5n.png) no-repeat center center;
-          background-size: 100%;
-        }
-      }
-      &::before{
-        content: '';
-        position: absolute;
-        width: 18px;
-        height: 18px;
-        left: 0px;
-        top: calc(50% - 9px);
-        background: url(https://img.ikstatic.cn/MTU5MzQ4MzE2NDU4NCMxMDgjcG5n.png) no-repeat center center;
-        background-size: 100%;
+      padding: 0 20px;
+      &:hover{
+        color: #4A83C5;
       }
     }
   }
 }
 
 .layout-content{
-  // width: 1200px;
-  padding: 20px;
-  // padding-top: 44px;
+  width: 1200px;
+  padding-top: 44px;
   margin: 0 auto;
   display: flex;
-  margin-top: 44px;
   .side-menu{
     width: 17%;
     display: inline-table;
@@ -147,7 +41,6 @@
       padding: 16px 0 16px 46px;
       display: block;
       position: relative;
-      font-weight:500;
       &:hover,
       &.act{
         color: #1EE0CA;
@@ -172,16 +65,12 @@
   }
   .layout-content-router{
     flex: 1;
-    // height: calc(100vh - 170px);
-    // overflow-x: hidden;
-    // overflow-y: auto;
-    // background: #F6F6F6;
-    // border-radius: 8px;
+    height: calc(100vh - 170px);
+    overflow-x: hidden;
+    overflow-y: auto;
+    background: #FFF;
+    border-radius: 8px;
   }
-}
-.layout-content.auth-manage {
-  width: 1200px;
-  // padding: 20px;
 }
 
 .next-icestark-shell-brand .next-icestark-shell-header{

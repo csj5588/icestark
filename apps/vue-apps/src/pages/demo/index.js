@@ -215,7 +215,7 @@ export default class PageTableFilter extends Vue {
     const { searchData, formData, modalConfig, tableData, tableTotal } = this
     const { changeData, hideDialog, handleSearch, handleOper, handleExport, handleDel, handleSubmit } = this
 
-    return <div>
+    return <div style={{ padding: '15px' }}>
       <PageFilter
         searchData={ searchData }
         on-changeData={ changeData }
