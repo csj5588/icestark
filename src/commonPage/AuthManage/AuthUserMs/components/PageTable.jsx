@@ -50,12 +50,12 @@ class PageTable extends Component {
     {
       dataIndex: 'email',
       align: 'center',
-      title: '邮箱'
+      title: '邮箱',
     },
     {
       dataIndex: 'department',
       align: 'center',
-      title: '部门'
+      title: '部门',
     },
     {
       dataIndex: 'role_name',
@@ -105,7 +105,7 @@ class PageTable extends Component {
     {
       dataIndex: 'utime',
       align: 'center',
-      title: '操作时间'
+      title: '操作时间',
     },
     {
       dataIndex: 'operate',
@@ -122,7 +122,7 @@ class PageTable extends Component {
             size="small"
             style={styles.btn}
             onClick={() => { this.handleEdit(record) }}
-            disabled={this.handleButtonDisabled('MODIFY')}
+            // disabled={this.handleButtonDisabled('MODIFY')}
           >
             编辑
           </Button>
@@ -238,6 +238,7 @@ class PageTable extends Component {
 const styles = {
   table: {
     margin: '20px 0',
+    width: '922px',
   },
   btn: {
     margin: '0 4px',

@@ -2,7 +2,7 @@ import _get from 'lodash/get'
 import * as types from './action-types'
 import Cookie from '@/utils/cookies'
 import apis, { getModuleList, getDataAuth } from '@/entry/apis'
-import { Message } from 'antd'
+import { message } from 'antd'
 import S from './apis'
 
 const saveAppKey = 'cur-auth-app'
@@ -31,7 +31,7 @@ export const getPageButtonTree = params => async (dispatch, getState) => {
     // 4000005, 接口返回无权限时，设置为空
     // 接口报错也设置为 全部无权限
     dispatch(onGetPageButtonTree([]))
-    Message.error(error.error_msg || '接口响应异常，请联系管理员')
+    message.error(error.error_msg || '接口响应异常，请联系管理员')
   }
 }
 
@@ -43,7 +43,7 @@ export const getPageButtonTreeUid = params => async (dispatch, getState) => {
     // 4000005, 接口返回无权限时，设置为空
     // 接口报错也设置为 全部无权限
     dispatch(onGetPageButtonTreeUid([]))
-    Message.error(error.error_msg || '接口响应异常，请联系管理员')
+    message.error(error.error_msg || '接口响应异常，请联系管理员')
   }
 }
 
@@ -63,11 +63,20 @@ export const userLogout = params => (dispatch, getState) => {
 
 // 设置select 默认选中的app
 const getDefaultApp = list => {
-  let app = Cookie.getItem(saveAppKey)
+  const app = Cookie.getItem(saveAppKey)
   if (list.findIndex(x => x.appid === app) !== -1) {
     return app
   }
   return list[0] && list[0].appid
+}
+
+const getDefaultAppItem = list => {
+  const app = Cookie.getItem(saveAppKey);
+  const index = list.findIndex((x) => x.appid === app)
+  if ( index !== -1) {
+    return list[index];
+  }
+  return list[0] || {};
 }
 
 // 获取业务线下拉列表
@@ -79,6 +88,7 @@ export const getProductList = () => async (dispatch, getState) => {
     const dataPower = _get(dataAuth, 'data_power_tree.data_power', {})
     const { apps = [] } = dataPower
     const defaultApp = getDefaultApp(productList);
+    const defaultAppItem = getDefaultAppItem(productList);
     Cookie.setItem(saveAppKey, defaultApp);
     const appListOptions = (apps.includes(ALL)) ? productList : productList.filter(item => (apps.includes(item.appid)))
     const authList = [ ALL_AUTH, ...productList ]
@@ -86,10 +96,11 @@ export const getProductList = () => async (dispatch, getState) => {
       curApp: defaultApp,
       appList: appListOptions,
       authList,
+      curAppItem: defaultAppItem,
     }))
     // 默认去掉全局ALL这一选项
     // const appList = (dataPowerList.includes(ALL)) ? appFullOpt : appFullOpt.filter(item => dataPowerList.includes(item.app))
   } catch (error) {
-    Message.error(error || '接口响应异常，请联系管理员')
+    message.error(error || '接口响应异常，请联系管理员')
   }
 }

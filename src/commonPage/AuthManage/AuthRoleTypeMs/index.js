@@ -129,7 +129,7 @@ class PageFilterTable extends Component {
       case MODIFY:
         S.postRoleTypeModify(params)
           .then(() => {
-            this.$message.success('提交成功')
+            message.success('提交成功')
             this.getRoleTypeList()
             this.hideDialog()
           })

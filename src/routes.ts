@@ -14,6 +14,7 @@ const routes = [
   },
   {
     path: '/auth',
+    redirct: '/auth-pageButtonMs',
     component: AuthPageButtonMs,
   },
   {

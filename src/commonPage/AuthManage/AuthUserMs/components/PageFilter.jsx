@@ -222,7 +222,7 @@ class PageFilter extends Component {
           type="primary"
           style={styles.btn}
           onClick={handleSearch}
-          disabled={handleButtonDisabled('SEARCH')}
+          // disabled={handleButtonDisabled('SEARCH')}
         >
           查询
         </Button>
@@ -231,7 +231,7 @@ class PageFilter extends Component {
           type="primary"
           style={styles.btn}
           onClick={handleAdd}
-          disabled={handleButtonDisabled('ADD')}
+          // disabled={handleButtonDisabled('ADD')}
         >
           新增
         </Button>

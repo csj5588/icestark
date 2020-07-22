@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { Message } from '@alifd/next';
+import { message } from '@alifd/next';
 
 // Set baseUrl when debugging production url in dev mode
 // axios.baseUrl = '//xxxx.taobao.com';
@@ -18,7 +18,7 @@ export default async function request(options) {
     }
   } catch (err) {
     // 统一处理接口异常逻辑
-    Message.show({
+    message.show({
       type: 'error',
       title: '错误消息',
       content: err.message,

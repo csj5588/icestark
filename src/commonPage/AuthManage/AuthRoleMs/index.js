@@ -232,7 +232,7 @@ class PageFilterTable extends Component {
               module_id: moduleId
             })
               .then(() => {
-                this.$message.success('提交成功')
+                message.success('提交成功')
                 this.getRoleList()
                 this.hideDialog()
               })

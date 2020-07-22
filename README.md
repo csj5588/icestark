@@ -140,7 +140,6 @@ tsconfig.json               <span style="color: #007947">// typescript 根目录
 - 架构如有修改，请维护README.md 让架构更加优秀。
 - 接入过程中如有问题，请钉钉联系 [崔世杰](dingtalk://dingtalkclient/action/sendmsg)
 
-
 ## 辅助参考
 
 1. [运营后台权限接入](https://wiki.inkept.cn/pages/viewpage.action?pageId=55946806)
@@ -148,6 +147,19 @@ tsconfig.json               <span style="color: #007947">// typescript 根目录
 3. [常见图表 Api 使用说明](https://wiki.inkept.cn/pages/viewpage.action?pageId=67387957)
 4. [inke-design武库](http://ide.hnmlw.cn/)
 5. [question&answer文档库](http://qa.hnmlw.cn/#/index?_k=96u2dp)
+
+## redux物料使用
+1. [@inke-design/compile](https://wiki.inkept.cn/pages/viewpage.action?pageId=106883602)
+2. npm install @inke-design/compile -g
+3. 在业务目录比如（pages）下运行 `inke-design materials <fileName>` 即可将物料拉取;
+
+## 项目提测／上线
+  暂时手动提测／上线，后续可以完善用脚本实线；
+1. 在./src/app.tsx,按注释解开打包路径，关闭开发路径；
+2. 现在框架最外层打包，将build文件目录改成dist（后续改下打包配置），并在dist目录下面新增apps文件夹；
+3. 动态配置由于是iframe嵌入开发，需要种子视频仓库分支feature/wang-config单独打包，将打包文件名改成config放在dist目录下；
+3. 再到apps目录下面的子应用打包，mee-show管控项目打包，将打包文件目录名改成react，放在最外层dist／apps下面, work-orders工单系统同样处理;
+4. 最后将dist部署到测试／线上环境
 
 ## 效果图
 

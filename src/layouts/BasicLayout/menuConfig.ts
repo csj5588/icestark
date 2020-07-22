@@ -5,7 +5,7 @@ import config from '@/config';
 const systemManage = [
   {
     name: '系统管理',
-    path: '/auth',
+    path: '/auth-pageButtonMs',
     icon: 'setting',
     children: [
       {
@@ -37,6 +37,8 @@ const asideMenuConfig = [
     name: '首页',
     path: '/',
     icon: 'chart-pie',
+     // 不需要权限控制
+     escapeAuthorityControl: true,
   },
   {
     name: 'Vue',
