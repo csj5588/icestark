@@ -10,11 +10,11 @@ const routes = [
   {
     path: '/',
     exact: true,
-    redirect: '/',
     component: Home,
   },
   {
     path: '/auth',
+    redirct: '/auth-pageButtonMs',
     component: AuthPageButtonMs,
   },
   {
