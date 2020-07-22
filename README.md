@@ -159,14 +159,6 @@ tsconfig.json               <span style="color: #007947">// typescript 根目录
 - 架构如有修改，请维护README.md 让架构更加优秀。
 - 接入过程中如有问题，请钉钉联系 [崔世杰](dingtalk://dingtalkclient/action/sendmsg)
 
-## 辅助参考
-
-1. [运营后台权限接入](https://wiki.inkept.cn/pages/viewpage.action?pageId=55946806)
-2. [React 异步引入组件](https://reactjs.org/docs/code-splitting.html#reactlazy)
-3. [常见图表 Api 使用说明](https://wiki.inkept.cn/pages/viewpage.action?pageId=67387957)
-4. [inke-design武库](http://ide.hnmlw.cn/)
-5. [question&answer文档库](http://qa.hnmlw.cn/#/index?_k=96u2dp)
-
 ## redux物料使用
 1. [@inke-design/compile](https://wiki.inkept.cn/pages/viewpage.action?pageId=106883602)
 2. npm install @inke-design/compile -g
@@ -191,3 +183,11 @@ tsconfig.json               <span style="color: #007947">// typescript 根目录
 2. 业务接口代理名称重复了怎么办？
 
 答： 匹配规则请延长一些，尽量区分不一样的业务，以后会上动态代理模块。
+
+## 辅助参考
+
+1. [运营后台权限接入](https://wiki.inkept.cn/pages/viewpage.action?pageId=55946806)
+2. [React 异步引入组件](https://reactjs.org/docs/code-splitting.html#reactlazy)
+3. [常见图表 Api 使用说明](https://wiki.inkept.cn/pages/viewpage.action?pageId=67387957)
+4. [inke-design武库](http://ide.hnmlw.cn/)
+5. [question&answer文档库](http://qa.hnmlw.cn/#/index?_k=96u2dp)
