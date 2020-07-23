@@ -6,10 +6,6 @@ import { combineReducers } from 'redux'
 import { LOCATION_CHANGE } from 'react-router-redux'
 
 import someReducer from './demoreducer';
-import breadcrumb from './breadcrumbReducer'
-import auth from './auth'
-import user from './userReducer'
-import authApp from './authAppReducer'
 
 /*
  * routeReducer
@@ -43,10 +39,7 @@ function routeReducer (state = routeInitialState, action) {
  */
 export default function createReducer (injectedReducers) {
   return combineReducers({
-    auth,
-    breadcrumb,
-    user,
-    authApp,
+    someReducer,
     route: routeReducer,
     ...injectedReducers,
   })

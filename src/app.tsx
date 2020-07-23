@@ -2,7 +2,6 @@ import * as React from 'react';
 import { createApp } from 'ice';
 import { store as stark } from '@ice/stark-data';
 import '@/entry';
-import { userPromise } from '@/utils/user';
 import { Provider } from 'react-redux';
 import PageLoading from '@/components/PageLoading';
 import FrameworkLayout from '@/layouts/FrameworkLayout';
@@ -68,6 +67,4 @@ store.subscribe(() => {
   stark.set('stark', store.getState());
 })
 
-userPromise.finally(function() {
-  createApp(appConfig)
-});
+createApp(appConfig)

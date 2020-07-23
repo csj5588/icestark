@@ -4,37 +4,15 @@ import config from '@/config';
 
 const systemManage = [
   {
-    name: '系统管理',
-    path: '/auth-pageButtonMs',
+    name: 'Stark',
+    path: '/inside',
     icon: 'setting',
-    children: [
-      {
-        name: '页面与按钮管理',
-        path: '/auth-pageButtonMs',
-      },
-      {
-        name: '角色类型管理',
-        path: '/auth-roleTypeMs',
-      },
-      {
-        name: '角色管理',
-        path: '/auth-roleMs',
-      },
-      {
-        name: '用户管理',
-        path: '/auth-userMs',
-      },
-      {
-        name: '日志管理',
-        path: '/auth-logMs',
-      },
-    ],
   },
 ];
 
 const asideMenuConfig = [
   {
-    name: '首页',
+    name: 'Home',
     path: '/',
     icon: 'chart-pie',
      // 不需要权限控制
@@ -124,7 +102,6 @@ function getAuthorityMenuTree(tree, menu) {
       }
     });
   };
-  // console.log('getAuthorityMenuTree: ', menu)
   // 这种写法会产生地址引用, 对后续是否有副作用? 有待考证, 还是故意地址引用?
   setMenuNode(tree, [...menu]);
   return menu;

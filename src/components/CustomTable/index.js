@@ -1,14 +1,3 @@
-/**
- *  @name 定制表格
- *  @author wanghl
- *  @date 2019.04.24
- *
- *  @props
- *    @param needHighlight 是否需要高亮选中行，默认 true
- *    @param needScrollbar 是否需要自定义滚动条，默认 false
- *    @param highlightColor 高亮选中行背景颜色，默认 #e6fff9
- */
-
 import React, { Component } from 'react'
 import { findDOMNode } from 'react-dom'
 import PropTypes from 'prop-types'

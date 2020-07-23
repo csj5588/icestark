@@ -4,17 +4,6 @@ import srcConfig from '@/config'
 import $user from '@/utils/user'
 import { message } from 'antd'
 
-// 设置 ticket 和 system_id
-const setTicketAndSystemIdToParams = config => {
-  const { params = {} } = config
-
-  config.params = {
-    ...params,
-    ticket: $user.getToken(),
-    system_id: srcConfig.AUTH_SYSTEM_ID
-  }
-}
-
 const TIME_OUT = srcConfig.TIME_OUT
 
 // 单独走新的 axios 实例
@@ -43,22 +32,8 @@ instance.defaults.timeout = TIME_OUT
 
 // 请求拦截器
 instance.interceptors.request.use(config => {
-  const { autoLoading } = config
-
-  if (autoLoading === undefined || autoLoading === true) {
-    // loading.show()
-
-    // let _timer = setTimeout(() => {
-    //   clearTimeout(_timer)
-    //   loading.hide()
-    // }, TIME_OUT)
-  }
-
-  setTicketAndSystemIdToParams(config)
-
   return config
 }, error => {
-  // loading.hide()
   console.error('加载超时')
   message.error('服务器开小差了，请稍后再试')
   return Promise.reject(error)
@@ -67,22 +42,14 @@ instance.interceptors.request.use(config => {
 // 响应拦截器
 instance.interceptors.response.use(response => {
   const { autoLoading } = response.config
-
-  if (autoLoading === undefined || autoLoading === true) {
-    // loading.hide()
-  }
-
   const { data = {} } = response
 
-  if (data.dm_error === 4000001 || data.dm_error === 4000003) {
-    $user.logout()
-  } else if (data.dm_error !== 0) {
+  if (data.dm_error !== 0) {
     message.error(data.error_msg || '接口响应异常，请联系管理员')
   }
 
   return response
 }, error => {
-  // loading.hide()
   console.error('加载失败')
   message.error('服务器开小差了，请稍后再试')
   return Promise.reject(error)

@@ -1,21 +1,7 @@
-/**
- *  @name 产品版本
- *  @author 汪腾
- *  @date 2020.04.26
- *
- *  需求文档：
- *  @desc https://wiki.inkept.cn/pages/viewpage.action?pageId=104668752
- *
- *  接口文档：
- *  @desc https://wiki.inkept.cn/pages/viewpage.action?pageId=104675231#id-%E7%AE%A1%E6%8E%A7%E4%B8%AD%E5%BF%83-%E4%B8%9A%E5%8A%A1%E7%AE%A1%E7%90%86API%E6%96%87%E6%A1%A3-9.%E4%BA%A7%E5%93%81%E7%89%88%E6%9C%AC%E5%88%97%E8%A1%A8%E6%8E%A5%E5%8F%A3
- */
-
-import user from '@/utils/user'
 import { message } from 'antd'
 import srcConfig from '@/config'
 import { getRequestsByRoot, getMessageDecorator, serviceHocs } from 'axios-service'
 
-const ticket = user.getToken()
 const root = srcConfig.APIS.root
 
 const { getErrorMsg } = serviceHocs
@@ -33,10 +19,9 @@ const messageDecorator = getMessageDecorator({ success: message.success, error: 
 class Apis {
   /**
    *  接口：查询、导出
-   *  @example https://xxx.busi.inke.cn/login/rbac/module/data_list
    */
   @messageDecorator({ errorMsg: showErrorMessage() })
-  getAppList = get('api_web/v1/controlcenter/business/app/options/get')
+  getAppList = get('xxx')
 }
 
 export default new Apis()
