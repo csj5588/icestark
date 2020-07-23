@@ -2,6 +2,7 @@ import ReactDOM from 'react-dom';
 import { isInIcestark, getMountNode, registerAppEnter, registerAppLeave } from '@ice/stark-app';
 import '@/entry'
 import router from './router';
+import 'antd/dist/antd.css';
 
 if (isInIcestark()) {
   const mountNode = getMountNode();

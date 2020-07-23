@@ -11,7 +11,6 @@ import * as actions from '@/store/action'
 import Footer from './components/Footer';
 import Header from './components/Header/Header';
 import S from './apis';
-
 import 'antd/dist/antd.css';
 import './index.scss';
 

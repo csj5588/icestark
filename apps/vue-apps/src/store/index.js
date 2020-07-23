@@ -8,8 +8,6 @@ import mutations from './mutations';
 
 Vue.use(Vuex)
 
-
-
 const NODE_ENV = process.env.NODE_ENV
 const store = new Vuex.Store({
   actions,

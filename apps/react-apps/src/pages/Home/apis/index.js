@@ -1,15 +1,3 @@
-/**
- *  @name 项目名称
- *  @author 开发人员
- *  @date 开发时间
- *
- *  需求文档：
- *  @desc https://wiki.inkept.cn/pages/viewpage.action?pageId=
- *
- *  接口文档：
- *  @desc https://wiki.inkept.cn/pages/viewpage.action?pageId=
- */
-
 import user from 'utils/user'
 import { message } from 'antd'
 import srcConfig from 'src/config'
@@ -35,7 +23,6 @@ const errorMessageDecorator = messageDecorator({ errorMsg: getErrorMsg('接口�
 class Apis {
   /**
    *  接口：查询、导出
-   *  @example https://xxx.busi.inke.cn/login/rbac/module/data_list
    */
   @mockGetDataList
   @errorMessageDecorator
@@ -43,7 +30,6 @@ class Apis {
 
   /**
    *  接口：新增、编辑
-   *  @example https://xxx.busi.inke.cn/login/rbac/module/data_modify
    */
   @mockAdd
   @errorMessageDecorator
@@ -51,7 +37,6 @@ class Apis {
 
   /**
    *  接口：删除
-   *  @example https://xxx.busi.inke.cn/login/rbac/module/data_del
    */
   @mockDelete
   @errorMessageDecorator

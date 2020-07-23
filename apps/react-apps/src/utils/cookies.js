@@ -1,11 +1,9 @@
 /* eslint-disable */
 /**
- * 默认所有 .inke.cn子域名
  * @type {String}
  *
  * @example
  * locahost:8080 | 172.0.0.1:8080 => locahost | 172.0.0.1
- * act.inke.cn => .inke.cn
  */
 const DOMAIN = location.hostname.replace(/[a-z]+\./, '.')
 

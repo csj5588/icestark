@@ -29,28 +29,6 @@ const CONFIG = {
   PROD: PROD_CONF,
 
   /**
-   * 项目标识
-   */
-  SCHEME: 'zd.imilive.cn',
-
-  /**
-   * 项目名称
-   */
-  PROJECT_NAME: '种子视频',
-
-  /**
-   * 是否mock
-   */
-  IS_MOCK: false,
-
-  /**
-   * 别名
-   */
-  ALIAS: {
-
-  },
-
-  /**
    * 跨域代理
    */
   PROXY_TABLE: [{
@@ -59,16 +37,13 @@ const CONFIG = {
       '/api/*',
       '/service/*',
     ],
-    // host: 'testservice.imilive.cn', // 测试环境
-    host: 'service.imilive.cn', // 线上环境
-    // host: 'http://10.100.128.2:7030', // 测试环境
+    host: 'xxx', // 线上环境
   }],
 
   /**
    * 端口
    */
   PORT: 8586
-
 }
 
 module.exports = CONFIG

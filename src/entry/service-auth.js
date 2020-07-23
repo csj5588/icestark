@@ -1,6 +1,5 @@
 import axios from 'axios'
 import axiosService from 'axios-service'
-// import loading from 'components/loading'
 import srcConfig from '@/config'
 import $user from '@/utils/user'
 import { message } from 'antd'

@@ -6,9 +6,7 @@ import router from './router'
 import App from './App'
 import { getMountNode, registerAppLeave } from '@ice/stark-app';
 
-
 Vue.use(ElementUI);
-
 
 Vue.config.productionTip = false;
   

@@ -1,10 +1,7 @@
-import './proto-extension';
 import $user from 'user'
 import srcConfig from 'src/config'
 import _ from 'lodash'
-import moment from 'moment'
 import classnames from 'classnames';
-import { getButtonAuthority } from './authority'
 
 const userAgent = navigator.userAgent;
 const toString = Object.prototype.toString;
@@ -328,8 +325,6 @@ const $common = {
     form.submit()
     document.body.removeChild(form)
   },
-
-  getButtonAuthority,
 
   /**
    * less防污染命名

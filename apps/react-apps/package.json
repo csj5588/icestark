@@ -18,7 +18,6 @@
   },
   "devDependencies": {
     "@ice/spec": "^0.1.1",
-    "@inke-design/utils": "^1.0.2",
     "antd": "^3.12.1",
     "browser-md5-file": "^1.1.1",
     "eslint": "^6.0.1",

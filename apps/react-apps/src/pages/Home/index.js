@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import $common from '@inke-design/utils';
+import $common from 'utils/common';
 import { getTableList } from './model/action';
 import Action from './coms/Action';
 import Table from './coms/Table';
