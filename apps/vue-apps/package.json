@@ -10,7 +10,7 @@
   "dependencies": {
     "@ice/stark-app": "^1.0.1",
     "@ice/stark-data": "^0.1.2",
-    "axios": "^0.16.2",
+    "axios": "^0.19.2",
     "echarts": "^4.1.0",
     "element-resize-detector": "^1.2.0",
     "element-ui": "^2.12.0",
