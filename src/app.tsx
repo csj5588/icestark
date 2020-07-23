@@ -30,7 +30,7 @@ const appConfig = {
     getApps: async () => {
       const apps = [
       {
-        path: '/vue-app',
+        path: '/vue',
         title: 'Vue',
         sandbox: false,
         // Angular app demo: https://github.com/ice-lab/icestark-child-apps/tree/master/child-common-angular-9 

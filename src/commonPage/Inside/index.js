@@ -1,4 +1,5 @@
 import React from 'react';
+import { Empty } from 'antd';
 
 class index extends React.Component {
   constructor(props) {
@@ -11,7 +12,9 @@ class index extends React.Component {
   render() {
     return (
       <div>
-        x
+        <Empty
+          description="this can be any inside page"
+        />
       </div>
     );
   }

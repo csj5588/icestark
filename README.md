@@ -4,9 +4,9 @@
 
 ## 导读
 
-基于飞冰的微前端架构，适用于inke内部多框架集成。
+基于飞冰的微前端架构，架构内支持子应用类型为 工程化框架react, 工程化框架vue,模板引擎vue
 
-接入了rabc权限系统、用户信息模块、业务代理、公共布局、SSO单点登陆、消息总线等逻辑。
+接入消息总线模块、沙箱隔离、公共组件、应用代理、一键打包等模块
 
 让开发专心于业务，开箱即用。
 
@@ -15,20 +15,20 @@
 创建项目和接入项目之前，请先
 
 - [了解飞冰](https://ice.work/)
-- [映客接入飞冰规则](https://wiki.inkept.cn/pages/viewpage.action?pageId=41773307)
-- [映客飞冰物料](https://code.inke.cn/opd/fe-aws/ikice-materials/tree/master/react-materials/blocks/AntdFilterTable/src)
+- [飞冰物料](https://ice.work/docs/materials/about)
 - [@ice/stark](https://ice.work/docs/icestark/reference/api)
 
 以保证顺利开发。
 
 ## 架构导图
 
-![screenshot](https://img.ikstatic.cn/MTU5MjgxMDEwMjU0NyM1NDQjanBn.jpg)
+![screenshot](https://img.ikstatic.cn/MTU5NTQ5MTAwMTY0NCMyMjQjcG5n.png)
 
 ## 如何使用项目？
 
-- 安装依赖: `npm run i-all`
+- 安装依赖: `npm run i-all / npm run i-all:cnpm`
 - 全局启动: `npm run start`
+- 打包: `npm run build`
 - 独立启动应用模板: `npm run start-react`
 
 ## 如何接入应用
@@ -47,21 +47,15 @@
 
 ## 业务模块如何接入
 
-如需要编写**新**的业务模块，请先下载运行 [映客飞冰物料](https://code.inke.cn/opd/fe-aws/ikice-materials/tree/master/react-materials/blocks/AntdFilterTable/src)，熟悉代码逻辑，其中包含**vue**、react业务物料进行选择。
-
-如需要迁移**老**的业务木块进入，可将原业务文件夹复制至应用pages目录下, 按照以下步骤修改。
+如需要迁移**老**的业务模块进入，可将原业务文件夹复制至应用pages目录下, 按照以下步骤修改。
 
 1. [./build.json](./build.json) 配置代理
 2. 配至应用内部路由,
-    - react[./apps/react-icestark-child-16/src/router.jsx](./apps/react-icestark-child-16/src/router.jsx) 
-    - vue[./apps/vue-icestark-child/src/router/routes/index.js](./apps/vue-icestark-child/src/router/routes/index.js)
+    - react[./apps/react-apps/src/router.jsx](./apps/react-apps/src/router.jsx) 
+    - vue[./apps/vue-apps/src/router/routes/index.js](./apps/vue-apps/src/router/routes/index.js)
 3. 配置状态管理
-    - react [./apps/react-icestark-child-16/src/store/reducer.js](./apps/react-icestark-child-16/src/store/reducer.js)
-    - vue[./apps/vue-icestark-child/src/store/index.js](./apps/vue-icestark-child/src/store/index.js)
-
-将公共方法和公共组件提取至[inke-design](http://ide.hnmlw.cn/docs/react/introduce)中进行复用。
-
-具体接入方法请参照[introduce](http://ide.hnmlw.cn/docs/react/introduce)
+    - react [./apps/react-apps/src/store/reducer.js](./apps/react-apps/src/store/reducer.js)
+    - vue[./apps/vue-apps/src/store/index.js](./apps/vue-apps/src/store/index.js)
 
 ## 如何传递状态
 
@@ -110,8 +104,8 @@ npm run build
 
 <pre style="font-size: 12px">
 apps                        <span style="color: #007947">// 应用文件</span>
-  |-- react-icestark-child-16   <span style="color: #007947">// react16应用接入模版</span>
-  |-- vue-icestark-child        <span style="color: #007947">// vue应用接入模版</span>
+  |-- react-apps            <span style="color: #007947">// react16应用接入模版</span>
+  |-- vue-apps              <span style="color: #007947">// vue应用接入模版</span>
 build                       <span style="color: #007947">// 包文件</span>
 public                      <span style="color: #007947">// 公共文件</span>
 scripts                     <span style="color: #007947">// 脚本文件夹</span>
@@ -124,8 +118,6 @@ src
     |-- index               <span style="color: #007947">// 入口初始化</span>
     |-- service-auth        <span style="color: #007947">// 权限接口拦截器</span>
     |-- service-intercept   <span style="color: #007947">// 业务拦截器</span>
-    |-- ticket-replace      
-    |-- user-init           <span style="color: #007947">// 用户信息获取</span>
   |-- layouts               <span style="color: #007947">// stark配置目录</span>
     |-- BasicLayout         <span style="color: #007947">// 原始布局</span>
     |-- FrameworkLayout     <span style="color: #007947">// 嵌入布局</span>
@@ -157,17 +149,12 @@ tsconfig.json               <span style="color: #007947">// typescript 根目录
 ## 注意事项
 
 - 架构如有修改，请维护README.md 让架构更加优秀。
-- 接入过程中如有问题，请钉钉联系 [崔世杰](dingtalk://dingtalkclient/action/sendmsg)
-
-## redux物料使用
-1. [@inke-design/compile](https://wiki.inkept.cn/pages/viewpage.action?pageId=106883602)
-2. npm install @inke-design/compile -g
-3. 在业务目录比如（pages）下运行 `inke-design materials <fileName>` 即可将物料拉取;
+- 接入过程中如有问题，请邮件联系 cuishijie@inke.cn
 
 
 ## 效果图
 
-![screenshot](https://img.ikstatic.cn/MTU5MjgwOTEyMzg2MSM1MDUjanBn.jpg)
+![screenshot](https://img.ikstatic.cn/MTU5NTQ5Mjk0OTI0NiMyMTAjanBn.jpg)
 
 
 ## 常见问题
@@ -183,11 +170,3 @@ tsconfig.json               <span style="color: #007947">// typescript 根目录
 2. 业务接口代理名称重复了怎么办？
 
 答： 匹配规则请延长一些，尽量区分不一样的业务，以后会上动态代理模块。
-
-## 辅助参考
-
-1. [运营后台权限接入](https://wiki.inkept.cn/pages/viewpage.action?pageId=55946806)
-2. [React 异步引入组件](https://reactjs.org/docs/code-splitting.html#reactlazy)
-3. [常见图表 Api 使用说明](https://wiki.inkept.cn/pages/viewpage.action?pageId=67387957)
-4. [inke-design武库](http://ide.hnmlw.cn/)
-5. [question&answer文档库](http://qa.hnmlw.cn/#/index?_k=96u2dp)

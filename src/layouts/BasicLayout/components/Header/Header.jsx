@@ -15,7 +15,7 @@ class MHeader extends PureComponent {
   render () {
     return (
       <Header style={{ background: '#fff', padding: '0' }} className={`${classPrefix}`} >
-        欢迎
+        Welcome～
         <style>{`
           .ant-menu-submenu-horizontal > .ant-menu {
             width: 120px

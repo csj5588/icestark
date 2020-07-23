@@ -20,7 +20,7 @@ const asideMenuConfig = [
   },
   {
     name: 'Vue',
-    path: '/vue-app',
+    path: '/vue',
     icon: 'atm',
   },{
     name: 'React',
