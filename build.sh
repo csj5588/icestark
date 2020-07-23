@@ -1,4 +1,3 @@
-
 #!/bin/bash
 
 basedir=`dirname $0`

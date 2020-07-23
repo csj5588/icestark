@@ -7,7 +7,6 @@
 import Vue from 'vue'
 import VueClassDecorator from 'vue-class-component'
 import { message } from 'element-ui'
-import { stringifyParams } from 'ik-utils'
 
 import PageFilter from './components/PageFilter'
 import PageTable from './components/PageTable'
@@ -161,8 +160,22 @@ export default class PageTableFilter extends Vue {
     delete searchParmas.page
     delete searchParmas.size
 
-    console.log('导出', `${S.dataListExport}&${stringifyParams(searchParmas)}`)
+    console.log('导出', `${S.dataListExport}&${this.stringifyParams(searchParmas)}`)
     // window.open(`${S.dataListExport}&${stringifyParams(searchParmas)}`)
+  }
+
+  stringifyParams (params, cb) {
+    let name;
+    let value;
+    let str = '';
+
+    /* eslint-disable-next-line */
+    for (name in params) {
+      value = params[name];
+      str += `${name}=${typeof cb === 'function' ? cb(value, name) : value}&`;
+    }
+
+    return str.slice(0, -1);
   }
 
   // 删除

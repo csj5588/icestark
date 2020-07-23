@@ -3,7 +3,6 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { Button, Select, Input, Form, DatePicker } from 'antd';
 import $common from 'utils/common';
-import { filterOption } from 'ik-utils'
 import { saveCreate, getTableList } from './../../model/action';
 import { ADD } from './../../constants/modalTypes';
 import { selectList, multipleSelectList } from '../../constants/selectLists';
@@ -54,6 +53,7 @@ class Action extends React.Component {
       }
     } = store;
     const { getFieldDecorator } = form;
+    const filterOption = (input, option) => option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
     return (
       <div className={cx('root')}>
         <Form layout="inline">

@@ -2,7 +2,6 @@
 import Vue from 'vue'
 import VueClassDecorator from 'vue-class-component'
 import { Dialog, Form, FormItem, Select, Option, Input, Button, DatePicker } from 'element-ui'
-import { numCommaReplace } from 'ik-utils'
 
 import { VIEW } from '../constants/modalTypes'
 import { formRules } from '../constants/formRules'
@@ -74,6 +73,10 @@ export default class ModalForm extends Vue {
     })
   }
 
+  numCommaReplace(str) {
+    return ("" + str).trim().replace(/[^\d\,]/g, ',').replace(/\,+/g, ',');
+  }
+
   renderForm () {
     const { modalConfig: { type }, formData } = this
 
@@ -88,7 +91,7 @@ export default class ModalForm extends Vue {
           disabled={type === VIEW}
           value={ formData['uid'] }
           style="width: 300px"
-          on-input={ e => { this.$emit('changeData', 'formData', {uid: numCommaReplace(e)}) } }
+          on-input={ e => { this.$emit('changeData', 'formData', {uid: this.numCommaReplace(e)}) } }
           placeholder="支持批量UID查询，限200"
           clearable
         >

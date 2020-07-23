@@ -1,6 +1,5 @@
 import React from 'react';
 import { Form, Input, Select, DatePicker } from 'antd';
-import { filterOption } from 'ik-utils'
 import { selectList, multipleSelectList } from '../../../constants/selectLists'
 import { timeFormat, timeToMoment } from '../../../constants/timeFormat'
 
@@ -26,6 +25,8 @@ class Content extends React.Component {
     const { getFieldDecorator } = form;
 
     const isDisable = type === 'detail';
+    
+    const filterOption = (input, option) => option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
 
     return (
       <Form onSubmit={this.handleSubmit}>

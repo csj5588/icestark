@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import VueClassDecorator from 'vue-class-component'
 import { Row, Form, FormItem, Select, Option, Input, Button, DatePicker } from 'element-ui'
-import { numCommaReplace } from 'ik-utils'
 
 import '../style/index.css'
 
@@ -68,6 +67,10 @@ export default class PageFilter extends Vue {
     this.$emit('handleExport')
   }
 
+  numCommaReplace(str) {
+    return ("" + str).trim().replace(/[^\d\,]/g, ',').replace(/\,+/g, ',');
+  }
+
   render (h) {
     return <div>
       <p class={`${classPrefix}-p`}>查询条件</p>
@@ -77,7 +80,7 @@ export default class PageFilter extends Vue {
             <el-input
               style="width: 240px"
               value={ this.searchData['uid'] }
-              on-input={ e => { this.$emit('changeData', 'searchData', {uid: numCommaReplace(e)}) } }
+              on-input={ e => { this.$emit('changeData', 'searchData', {uid: this.numCommaReplace(e)}) } }
               placeholder="支持批量UID查询，限200"
               clearable
             ></el-input>

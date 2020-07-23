@@ -1,7 +1,7 @@
 {
-  "name": "@icedesign/stark-layout-scaffold",
+  "name": "@inke-design/icestark",
   "version": "0.1.0",
-  "description": "微前端方案 icestark 的框架应用，用于快速初始化框架应用",
+  "description": "微前端方案 icestark 的框架应用，用于快速接入应用",
   "dependencies": {
     "@alifd/next": "^1.x",
     "@alifd/theme-design-pro": "^0.x",
@@ -14,7 +14,6 @@
     "classnames": "^2.2.5",
     "concurrently": "^4.1.2",
     "cross-env": "^7.0.2",
-    "ik-utils": "git+ssh://git@code.inke.cn:opd/fe-aws/modules/ik-utils.git",
     "moment": "^2.24.0",
     "prop-types": "^15.5.8",
     "react": "^16.8.0",
