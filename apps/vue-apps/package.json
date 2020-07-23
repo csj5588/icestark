@@ -14,7 +14,7 @@
     "echarts": "^4.1.0",
     "element-resize-detector": "^1.2.0",
     "element-ui": "^2.12.0",
-    "highcharts": "^5.0.14",
+    "highcharts": "^8.1.2",
     "iview": "^2.8.0",
     "popper.js": "^1.14.6",
     "ramda": "^0.27.0",
