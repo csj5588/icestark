@@ -22,9 +22,9 @@
 
 ## 架构导图
 
-![screenshot](https://img.ikstatic.cn/MTU5NTQ5MTAwMTY0NCMyMjQjcG5n.png)
+![架构设计](https://img.ikstatic.cn/MTU5NTQ5MTAwMTY0NCMyMjQjcG5n.png)
 
-![screenshot2](https://img.ikstatic.cn/MTU5NTU4NDA4NjEyMSM3NzEjcG5n.png)
+![消息总线](https://img.ikstatic.cn/MTU5NTU4NDA4NjEyMSM3NzEjcG5n.png)
 
 ## 如何使用项目？
 
