@@ -105,9 +105,9 @@ npm run build
 ## 目录结构
 
 <pre style="font-size: 12px">
-apps                        <span style="color: #007947">// 应用文件</span>
-  |-- react-apps            <span style="color: #007947">// react16应用接入模版</span>
-  |-- vue-apps              <span style="color: #007947">// vue应用接入模版</span>
+apps 📁                       <span style="color: #007947">// 应用文件</span>
+  |-- 📁 react-apps            <span style="color: #007947">// react16应用接入模版</span>
+  |-- 📁 vue-apps              <span style="color: #007947">// vue应用接入模版</span>
 build                       <span style="color: #007947">// 包文件</span>
 public                      <span style="color: #007947">// 公共文件</span>
 scripts                     <span style="color: #007947">// 脚本文件夹</span>
