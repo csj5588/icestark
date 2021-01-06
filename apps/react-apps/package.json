@@ -18,7 +18,7 @@
   "devDependencies": {
     "@ice/spec": "^0.1.1",
     "antd": "^3.12.1",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "browser-md5-file": "^1.1.1",
     "eslint": "^6.0.1",
     "ice-plugin-fusion": "^0.1.4",
